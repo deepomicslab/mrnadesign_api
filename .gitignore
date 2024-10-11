@@ -2,7 +2,7 @@ __pycache__
 
 .idea/
 .vscode/
-Phage_api/settings_local.py
+mrnadesign_api/settings_local.py
 workspace
 *.sql
 *.csv
