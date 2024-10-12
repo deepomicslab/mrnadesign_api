@@ -5,8 +5,8 @@ from rest_framework.pagination import PageNumberPagination
 
 import json
 
-from antigen.models import antigen
-from antigen.serializers import antigenSerializer
+from tantigen.models import tantigen
+from tantigen.serializers import tantigenSerializer
 
 class LargeResultsSetPagination(PageNumberPagination):
     page_size = 30
@@ -14,10 +14,10 @@ class LargeResultsSetPagination(PageNumberPagination):
     max_page_size = 10000
 
 
-class antigenViewSet(APIView):
+class tantigenViewSet(APIView):
 
-    queryset = antigen.objects.order_by('id')
-    serializer_class = antigenSerializer
+    queryset = tantigen.objects.order_by('id')
+    serializer_class = tantigenSerializer
     pagination_class = LargeResultsSetPagination
 
     def get(self, request):
@@ -36,6 +36,6 @@ class antigenViewSet(APIView):
 
         paginator = self.pagination_class()
         result_page = paginator.paginate_queryset(self.queryset, request)
-        serializer = antigenSerializer(result_page, many=True)
+        serializer = tantigenSerializer(result_page, many=True)
         return paginator.get_paginated_response(serializer.data)
 
