@@ -44,12 +44,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'django_crontab',
+    'django.contrib.postgres',
 
     'antigen',
     # 'tantigen_db',
     # 'tantigen_rna_seq',
     'tantigen',
     'three_utr',
+    'mrna_task',
 
     
     # 'phage',

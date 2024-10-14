@@ -39,6 +39,7 @@ from three_utr.views import three_utrViewSet
 # from datasets.views import datasetsViewSet
 # from analysis.views import analysisViewSet
 # from task.views import taskViewSet
+from mrna_task.views import lineardesignView
 # from analysis.views import analysisViewSet
 
 # import phage.views
@@ -49,6 +50,7 @@ from three_utr.views import three_utrViewSet
 # import phage_hosts.views
 # import analysis.views
 # import task.views
+import mrna_task.views
 
 router = routers.DefaultRouter()
 
@@ -199,14 +201,16 @@ urlpatterns = [
 #     path('hosts/view/', phage_hosts.views.phage_hostsView.as_view()),
 #     path('hosts/filter/', phage_hosts.views.phage_hostsfilterView.as_view()),
 
-#     path('analyze/pipline/', task.views.piplineView.as_view()),
+    path('analyze/linear_design/', mrna_task.views.lineardesignView.as_view()),
+    # path('analyze/pipline/', task.views.piplineView.as_view()),
 #     path('analyze/clusterpipline/', task.views.clusterpiplineView.as_view()),
 #     path('analyze/inputcheck/', analysis.views.inputcheck.as_view()),
 
 
 #     path('tasks/detail/', task.views.viewtaskdetail),
 #     path('tasks/detail/log/',task.views.viewtasklog),
-#     path('tasks/list/', task.views.viewtask),
+    # path('tasks/list/', task.views.viewtask),
+    path('tasks/list/', mrna_task.views.viewtask),
 #     path('tasks/result/phage/', task.views.viewphage),
 #     path('tasks/result/phage/terminators/', task.views.viewphageterminators),
 #     path('tasks/result/phage/trnas/', task.views.viewphagetrnas),
