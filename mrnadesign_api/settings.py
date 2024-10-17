@@ -163,5 +163,6 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 30
 }
 CRONJOBS = [
-    ('*/1 * * * *', 'task.cron.task_status_updata')
+    # ('*/1 * * * *', 'task.cron.task_status_updata')
+    ('*/1 * * * *', 'mrna_task.cron.task_status_updata')
 ]

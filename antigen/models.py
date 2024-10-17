@@ -3,6 +3,7 @@ from django.db import models
 class antigen(models.Model):
     antigen_name = models.CharField(max_length=200, blank=True, null=True)
     antigen_aequence = models.CharField(max_length=20, blank=True, null=True)
+    db_info = models.TextField(blank=True, null=True)
     sequence = models.TextField(blank=True, null=True)
     antigen_type = models.CharField(max_length=20, blank=True, null=True)
     model_structure = models.CharField(max_length=20, blank=True, null=True)

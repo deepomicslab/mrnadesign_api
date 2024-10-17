@@ -23,9 +23,8 @@ def log(log_str):
 import_antigen.add_data()
 log(" [completed] scripts.import_antigen\n")
 
+# import_tantigen.add_data()
+# log(" [completed] scripts.import_tantigen\n")
 
-import_tantigen.add_data()
-log(" [completed] scripts.import_tantigen\n")
-
-import_three_utr.add_data()
-log(" [completed] scripts.import_three_utr\n")
+# import_three_utr.add_data()
+# log(" [completed] scripts.import_three_utr\n")

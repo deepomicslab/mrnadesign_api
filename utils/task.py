@@ -3,15 +3,7 @@ from utils import slurm_api
 import json
 import subprocess
 import re
-# annotation: false,
-# quality: false,
-# host: false,
-# lifestyle: false,
-# trna: false,
-# anticrispr: false,
-# crisprcas: false,
-# transmembrane: false,
-# terminator
+import glob
 
 def run_lineardesign(sbatch_dict):
     user_input_path = sbatch_dict['user_input_path']
@@ -39,6 +31,14 @@ def run_lineardesign(sbatch_dict):
         'status': status,
     }
     return taskdetail_dict
+
+def check_lineardesign_result(output_result_path):
+    with open(output_result_path+'result.txt') as f:
+        L = f.read()
+    if 'mRNA sequence' in L: 
+        return True
+    print('Linear Design Failed')
+    return False
 
 
 # #    infodict = {'taskid': newtask.id, 'userpath': usertask, 'modulelist': modulelist,

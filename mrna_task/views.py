@@ -9,6 +9,8 @@ from mrnadesign_api import settings_local as local_settings
 from utils import tools, task
 from mrna_task.models import mrna_task
 from mrna_task.serializers import mrna_taskSerializer
+from antigen.models import antigen
+from tantigen.models import tantigen
 
 
 import time
@@ -26,7 +28,6 @@ def generate_id():
 # Create your views here.
 class lineardesignView(APIView):
     def post(self, request, *args, **kwargs):
-        # print('-----------------------------------request.data', request.data)
         codonusage = request.data['codonusage']
         lambda_ = request.data['lambda']
         analysistype = request.data['analysistype']
@@ -47,33 +48,24 @@ class lineardesignView(APIView):
             submitfile = request.FILES['submitfile']
             path = local_settings.USER_PATH + usertask + '/input/' + submitfile.name
             _path = default_storage.save(path, ContentFile(submitfile.read()))
-        elif request.data['inputtype'] == 'paste':
-            path =local_settings.USER_PATH + usertask + '/input/' + 'sequence.fasta'
+        elif inputtype == 'paste':
+            path = local_settings.USER_PATH + usertask + '/input/' + 'sequence.fasta'
             with open(path, 'w') as file:
                 file.write(request.data['file'])
-
-        # if request.data['rundemo'] == 'true':
-        #     if 'demopath' in request.data:
-        #         shutil.copy(
-        #             local_settings.DEMOFILE+request.data['demopath'], uploadfilepath+'sequence.fasta')
-        #     else:
-        #         shutil.copy(
-        #             local_settings.DEMOFILE+"sequence.fasta", uploadfilepath+'sequence.fasta')
-        #     path = uploadfilepath+'sequence.fasta'
-        # else:
-        #     if request.data['inputtype'] == 'upload':
-        #         file = request.FILES['submitfile']
-        #         path = default_storage.save(
-        #             uploadfilepath+'sequence.fasta', ContentFile(file.read()))
-                
-        #     elif request.data['inputtype'] == 'paste':
-        #         path = uploadfilepath+'sequence.fasta'
-        #         with open(path, 'w') as file:
-        #             file.write(request.data['file'])
-        #     else:
-        #         phageids = json.loads(request.data['phageid'])
-        #         path = uploadfilepath+'sequence.fasta'
-        #         tools.searchphagefasta(phageids, path)
+        elif inputtype == 'enter':
+            path = local_settings.USER_PATH + usertask + '/input/' + 'sequence.fasta'
+            queryids = set(json.loads(request.data['queryids']))
+            datatable = request.data['datatable']
+            with open(path, 'w') as file:
+                for idx, id in enumerate(queryids):
+                    if datatable == 'antigen':
+                        antigen_obj = antigen.objects.get(id=id)
+                        file.write('>seq' + str(id) + '\n')
+                        file.write(antigen_obj.sequence + '\n')
+                    elif datatable == 'tantigen':
+                        tantigen_obj = tantigen.objects.get(id=id)
+                        file.write('>seq' + str(id) + '\n')
+                        file.write(tantigen_obj.sequence + '\n')
 
         with open(path, 'r') as file:
             # file format check
@@ -141,3 +133,48 @@ def viewtask(request):
     taskslist = mrna_task.objects.filter(user_id=userid)
     serializer = mrna_taskSerializer(taskslist, many=True)
     return Response({'results': serializer.data})
+
+class lineardesigninputcheckView(APIView):
+    def post(self, request, *args, **kwargs):
+        
+        res = {}
+        datatable = request.data['datatable']
+        _queryids = request.data['antigen_tantigen_ids']
+        if _queryids[-1] == ';':
+            _queryids = _queryids[:-1]
+        queryids = []
+        try:
+            for i in _queryids.split(';'):
+                queryids.append(int(i))
+        except ValueError:
+            res['idlist']=None
+            res['message']='Please confirm your input IDs are integers, valid, and separated by semicolon'
+            res['status']='failed'
+            return Response(res)
+
+        search_pids=[]
+        if datatable == 'antigen':
+            try:
+                for id in queryids:
+                    antigen_obj = antigen.objects.get(id=id)
+                    search_pids.append(antigen_obj.id)
+            except antigen.DoesNotExist:
+                res['idlist']=None
+                res['message']='The ID ' + str(id) + ' does not exist in the Table ' + datatable.upper() + '. Please check again.'
+                res['status']='failed'
+                return Response(res)
+        elif datatable == 'tantigen':
+            try:
+                for id in queryids:
+                    tantigen_obj = tantigen.objects.get(id=id)
+                    search_pids.append(tantigen_obj.id)
+            except tantigen.DoesNotExist:
+                res['idlist']=None
+                res['message']='The ID ' + str(id) + ' does not exist in the Table ' + datatable.upper() + '. Please check again.'
+                res['status']='failed'
+                return Response(res)
+        
+        res['idlist'] = search_pids
+        res['message'] = None
+        res['status'] = 'success'
+        return Response(res)

@@ -202,6 +202,7 @@ urlpatterns = [
 #     path('hosts/filter/', phage_hosts.views.phage_hostsfilterView.as_view()),
 
     path('analyze/linear_design/', mrna_task.views.lineardesignView.as_view()),
+    path('analyze/linear_design_inputcheck/', mrna_task.views.lineardesigninputcheckView.as_view()),
     # path('analyze/pipline/', task.views.piplineView.as_view()),
 #     path('analyze/clusterpipline/', task.views.clusterpiplineView.as_view()),
 #     path('analyze/inputcheck/', analysis.views.inputcheck.as_view()),
