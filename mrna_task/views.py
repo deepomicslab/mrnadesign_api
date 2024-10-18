@@ -12,7 +12,6 @@ from mrna_task.serializers import mrna_taskSerializer
 from antigen.models import antigen
 from tantigen.models import tantigen
 
-
 import time
 import os
 import shutil
@@ -65,7 +64,7 @@ class lineardesignView(APIView):
                     elif datatable == 'tantigen':
                         tantigen_obj = tantigen.objects.get(id=id)
                         file.write('>seq' + str(id) + '\n')
-                        file.write(tantigen_obj.sequence + '\n')
+                        file.write(tantigen_obj.antigen_sequence + '\n')
 
         with open(path, 'r') as file:
             # file format check
@@ -88,6 +87,7 @@ class lineardesignView(APIView):
                         'codonusage': codonusage,
                     },
                     status='Created',
+                    task_results=[],
                 )
 
                 # run task

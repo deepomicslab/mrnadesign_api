@@ -47,11 +47,10 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
 
     'antigen',
-    # 'tantigen_db',
-    # 'tantigen_rna_seq',
     'tantigen',
     'three_utr',
     'mrna_task',
+    'taskresult',
 
     
     # 'phage',

@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.postgres.fields import HStoreField
-
+from django.contrib.postgres.fields import ArrayField
 
 class mrna_task(models.Model):
     id = models.AutoField(primary_key=True) # task id
@@ -15,10 +15,14 @@ class mrna_task(models.Model):
     status = models.CharField(max_length=60)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    task_results = ArrayField( # lineardesign_taskresult.id / prediction_taskresult.id
+        models.IntegerField()
+    )
+
     class Meta:
         db_table = 'mrna_task'
         verbose_name = 'mrna_task'
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.user_id+'_taskid'+str(self.id)
+        return self.user_id+'_taskid_'+str(self.id)

@@ -51,6 +51,7 @@ from mrna_task.views import lineardesignView
 # import analysis.views
 # import task.views
 import mrna_task.views
+import taskresult.views
 
 router = routers.DefaultRouter()
 
@@ -212,6 +213,8 @@ urlpatterns = [
 #     path('tasks/detail/log/',task.views.viewtasklog),
     # path('tasks/list/', task.views.viewtask),
     path('tasks/list/', mrna_task.views.viewtask),
+    path('tasks/lineardesign_result/', taskresult.views.lineardesignresultView),
+    path('tasks/zip/', taskresult.views.getZipData),
 #     path('tasks/result/phage/', task.views.viewphage),
 #     path('tasks/result/phage/terminators/', task.views.viewphageterminators),
 #     path('tasks/result/phage/trnas/', task.views.viewphagetrnas),
