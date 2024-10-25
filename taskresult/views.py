@@ -7,13 +7,16 @@ from mrna_task.models import mrna_task
 from mrna_task.serializers import mrna_taskSerializer
 from taskresult.models import lineardesign_taskresult
 from taskresult.serializers import lineardesign_taskresultSerializer
+from mrnadesign_api import settings_local as local_settings
 
 import pandas as pd
 import json
-from io import BytesIO
-import zipfile
-from datetime import datetime
+import numpy as np
 import os
+import zipfile
+from io import BytesIO
+from datetime import datetime
+from Bio import SeqIO
 
 @api_view(['GET'])
 def lineardesignresultView(request):
@@ -62,3 +65,14 @@ def getZipData(request):
     response['Content-Disposition'] = 'attachment; filename="'+filename
     return response
 
+@api_view(['GET'])
+def sequencemarker(request):
+    # taskid = request.query_params.dict()['taskid']
+    # mrnaid = request.query_params.dict()['mrnaid']
+    res_path = local_settings.DEMO_ANALYSIS + 'demouser_prediction_full/prediction_results/SEQ000000/'
+    df = pd.read_csv(res_path + 'summary/results.tsv',sep='\t').replace({np.nan: None})
+    data = df.to_dict(orient='records')
+    with open(res_path + 'sequence.fasta', 'r') as fasfile:
+        for record in SeqIO.parse(fasfile, 'fasta'):
+                sequence = str(record.seq)
+    return Response({'result': data, 'sequence':sequence})

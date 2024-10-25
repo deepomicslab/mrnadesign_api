@@ -215,6 +215,7 @@ urlpatterns = [
     path('tasks/list/', mrna_task.views.viewtask),
     path('tasks/lineardesign_result/', taskresult.views.lineardesignresultView),
     path('tasks/zip/', taskresult.views.getZipData),
+    path('task/result/sequencemarker/', taskresult.views.sequencemarker),
 #     path('tasks/result/phage/', task.views.viewphage),
 #     path('tasks/result/phage/terminators/', task.views.viewphageterminators),
 #     path('tasks/result/phage/trnas/', task.views.viewphagetrnas),
