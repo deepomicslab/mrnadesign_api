@@ -40,6 +40,16 @@ def check_lineardesign_result(output_result_path):
     print('Linear Design Failed')
     return False
 
+def get_job_output(output_log_path):
+    path = output_log_path + 'lineardesign.log'
+    try:
+        with open(path, 'r') as f:
+            output = f.read()
+            if output == '':
+                output = 'no linear design log'
+            return output
+    except:
+        return 'no linear design log'
 
 # #    infodict = {'taskid': newtask.id, 'userpath': usertask, 'modulelist': modulelist,
 # #                 'analysis_type': request.data['analysistype'], 'userid': request.data['userid']}

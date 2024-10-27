@@ -217,8 +217,8 @@ urlpatterns = [
 #     path('analyze/inputcheck/', analysis.views.inputcheck.as_view()),
 
 
-#     path('tasks/detail/', task.views.viewtaskdetail),
-#     path('tasks/detail/log/',task.views.viewtasklog),
+    path('tasks/detail/', mrna_task.views.viewtaskdetail),
+    path('tasks/detail/log/',mrna_task.views.viewtasklog),
     # path('tasks/list/', task.views.viewtask),
     path('tasks/list/', mrna_task.views.viewtask),
     path('tasks/lineardesign_result/', taskresult.views.lineardesignresultView),

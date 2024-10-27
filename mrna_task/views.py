@@ -11,6 +11,8 @@ from mrna_task.models import mrna_task
 from mrna_task.serializers import mrna_taskSerializer
 from antigen.models import antigen
 from tantigen.models import tantigen
+from utils import tools, task, slurm_api
+
 
 import time
 import os
@@ -133,6 +135,28 @@ def viewtask(request):
     taskslist = mrna_task.objects.filter(user_id=userid)
     serializer = mrna_taskSerializer(taskslist, many=True)
     return Response({'results': serializer.data})
+
+@api_view(['GET'])
+def viewtaskdetail(request):
+    taskid = request.query_params.dict()['taskid']
+    taskslist = mrna_task.objects.filter(id=taskid)
+    serializer = mrna_taskSerializer(taskslist, many=True)
+    return Response({'results': serializer.data[0]})
+
+@api_view(['GET'])
+def viewtasklog(request):
+    taskid = request.query_params.dict()['taskid']
+    task_obj = mrna_task.objects.get(id=taskid)
+
+    sbatch_log = slurm_api.get_job_output(task_obj.output_log_path)
+    sbatch_error = slurm_api.get_job_error(task_obj.output_log_path)
+    if task_obj.analysis_type in ['Linear Design']:
+        task_log = task.get_job_output(task_obj.output_log_path)
+    return Response({
+        'sbatch_log': sbatch_log,
+        'sbatch_error': sbatch_error,
+        'task_log': task_log,
+    })
 
 class lineardesigninputcheckView(APIView):
     def post(self, request, *args, **kwargs):

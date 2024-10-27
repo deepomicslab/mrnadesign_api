@@ -7,26 +7,25 @@ import sys
 # statuslist = ['PENDING', 'RUNNING', 'SUSPENDED', 'COMPLETING', 'COMPLETED',
 #               'CANCELLED', 'FAILED', 'TIMEOUT', 'NODE_FAIL', 'PREEMPTED', 'BOOT_FAIL']
 
-
-def get_job_output(job_id):
-    path = local_settings.TASKLOG + \
-        'output/output_'+str(job_id)+'.output'
+def get_job_output(output_log_path):
+    path = output_log_path + 'sbatch.out'
     try:
         with open(path, 'r') as f:
             output = f.read()
+            if output == '': output = 'no sbatch log'
             return output
     except:
-        return ''
+        return 'no sbatch log'
 
-
-def get_job_error(job_id):
-    path = local_settings.TASKLOG+'error/error_'+str(job_id)+'.error'
+def get_job_error(output_log_path):
+    path = output_log_path + 'sbatch.err'
     try:
         with open(path, 'r') as f:
             output = f.read()
+            if output == '': output = 'no sbatch error'
             return output
     except:
-        return ''
+        return 'no sbatch error'
 
 
 def get_job_status(job_id):
