@@ -1,7 +1,10 @@
 from django.shortcuts import render
+from django.db import models
 from rest_framework import viewsets
 from rest_framework.views import APIView
+from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.decorators import api_view
 
 import json
 
@@ -39,3 +42,19 @@ class antigenViewSet(APIView):
         serializer = antigenSerializer(result_page, many=True)
         return paginator.get_paginated_response(serializer.data)
 
+@api_view(['GET'])
+def getsourceorganism(request):
+    sourceorganism_qs = antigen.objects.values('source_organism').annotate(total = models.Count('source_organism')).order_by('-total')
+    sourceorganism_qs = list(sourceorganism_qs)
+    return Response({'results': sourceorganism_qs})\
+
+@api_view(['GET'])
+def getstats(request):
+    num = len(antigen.objects.all())
+    num_source_organism = len(antigen.objects.distinct('source_organism'))
+    num_type = len(antigen.objects.distinct('antigen_type'))
+    return Response({
+        'num': num,
+        'num_source_organism': num_source_organism,
+        'num_type': num_type,
+    })

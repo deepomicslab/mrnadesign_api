@@ -52,6 +52,9 @@ from mrna_task.views import lineardesignView
 # import task.views
 import mrna_task.views
 import taskresult.views
+import antigen.views
+import tantigen.views
+import three_utr.views
 
 router = routers.DefaultRouter()
 
@@ -148,6 +151,11 @@ urlpatterns = [
     path('antigen/', antigenViewSet.as_view()),
     path('tantigen/', tantigenViewSet.as_view()),
     path('three_utr/', three_utrViewSet.as_view()),
+
+    path('overview/antigensourceorganism/', antigen.views.getsourceorganism),
+    path('overview/stats/antigen/', antigen.views.getstats),
+    path('overview/stats/tantigen/', tantigen.views.getstats),
+    path('overview/stats/threeutr/', three_utr.views.getstats),
 
     
 #     path('phage/', phageViewSet.as_view({'get': 'list'})),

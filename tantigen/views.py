@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.views import APIView
+from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.decorators import api_view
 
 import json
 
@@ -39,3 +41,13 @@ class tantigenViewSet(APIView):
         serializer = tantigenSerializer(result_page, many=True)
         return paginator.get_paginated_response(serializer.data)
 
+@api_view(['GET'])
+def getstats(request):
+    num = len(tantigen.objects.all())
+    num_antigen_name = len(tantigen.objects.distinct('antigen_name'))
+    num_gene_card = len(tantigen.objects.distinct('gene_card_id'))
+    return Response({
+        'num': num,
+        'num_antigen_name': num_antigen_name,
+        'num_gene_card': num_gene_card,
+    })

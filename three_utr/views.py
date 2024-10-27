@@ -1,7 +1,10 @@
 from django.shortcuts import render
+from django.db import models
 from rest_framework import viewsets
 from rest_framework.views import APIView
+from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.decorators import api_view
 
 import json
 
@@ -39,3 +42,17 @@ class three_utrViewSet(APIView):
         serializer = three_utrSerializer(result_page, many=True)
         return paginator.get_paginated_response(serializer.data)
 
+@api_view(['GET'])
+def getstats(request):
+    num = len(three_utr.objects.all())
+    num_gene_name = len(three_utr.objects.distinct('gene_name'))
+    num_transcript = len(three_utr.objects.distinct('ensembl_transcript_id'))
+    num_cluster = len(three_utr.objects.distinct('cluster'))
+    num_chromosome = len(three_utr.objects.distinct('chromosome'))
+    return Response({
+        'num': num,
+        'num_gene_name': num_gene_name,
+        'num_transcript': num_transcript,
+        'num_cluster': num_cluster,
+        'num_chromosome': num_chromosome,
+    })
