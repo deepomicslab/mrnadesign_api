@@ -2,6 +2,7 @@ from scripts import (
     import_antigen,
     import_tantigen,
     import_three_utr,
+    import_mrna_task,
 )
 from datetime import timedelta
 import datetime
@@ -20,11 +21,14 @@ def log(log_str):
     f.write(get_current_datetime() + log_str)
     f.close()
 
-import_antigen.add_data()
-log(" [completed] scripts.import_antigen\n")
+# import_antigen.add_data()
+# log(" [completed] scripts.import_antigen\n")
 
 # import_tantigen.add_data()
 # log(" [completed] scripts.import_tantigen\n")
 
 # import_three_utr.add_data()
 # log(" [completed] scripts.import_three_utr\n")
+
+import_mrna_task.add_data()
+log(" [completed] scripts.import_mrna_task\n")

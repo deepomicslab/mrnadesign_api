@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.db import models
+from django.http import FileResponse
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -8,6 +9,7 @@ from rest_framework.decorators import api_view
 
 import json
 
+from mrnadesign_api import settings_local as local_settings
 from antigen.models import antigen
 from antigen.serializers import antigenSerializer
 
@@ -46,7 +48,7 @@ class antigenViewSet(APIView):
 def getsourceorganism(request):
     sourceorganism_qs = antigen.objects.values('source_organism').annotate(total = models.Count('source_organism')).order_by('-total')
     sourceorganism_qs = list(sourceorganism_qs)
-    return Response({'results': sourceorganism_qs})\
+    return Response({'results': sourceorganism_qs})
 
 @api_view(['GET'])
 def getstats(request):
@@ -58,3 +60,13 @@ def getstats(request):
         'num_source_organism': num_source_organism,
         'num_type': num_type,
     })
+
+@api_view(['GET'])
+def downloadbypaath(request, path):
+    file_path = local_settings.MRNADESIGN_DATABASE + path
+    file = open(file_path, 'rb')
+    response = FileResponse(file)
+    filename = file.name.split('/')[-1]
+    response['Content-Disposition'] = "attachment; filename="+filename
+    response['Content-Type'] = 'text/plain'
+    return response

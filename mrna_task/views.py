@@ -37,6 +37,7 @@ class lineardesignView(APIView):
         is_demo_input = (request.data['rundemo'] == 'true')
 
         usertask = str(int(time.time()))+'_' + generate_id()
+        path = local_settings.USER_PATH + usertask + '/input/' + 'sequence.fasta'
         os.makedirs(local_settings.USER_PATH + usertask, exist_ok=False)
         os.makedirs(local_settings.USER_PATH +
                     usertask + '/input', exist_ok=False)
@@ -50,11 +51,9 @@ class lineardesignView(APIView):
             path = local_settings.USER_PATH + usertask + '/input/' + submitfile.name
             _path = default_storage.save(path, ContentFile(submitfile.read()))
         elif inputtype == 'paste':
-            path = local_settings.USER_PATH + usertask + '/input/' + 'sequence.fasta'
             with open(path, 'w') as file:
                 file.write(request.data['file'])
         elif inputtype == 'enter':
-            path = local_settings.USER_PATH + usertask + '/input/' + 'sequence.fasta'
             queryids = set(json.loads(request.data['queryids']))
             datatable = request.data['datatable']
             with open(path, 'w') as file:
@@ -67,6 +66,8 @@ class lineardesignView(APIView):
                         tantigen_obj = tantigen.objects.get(id=id)
                         file.write('>seq' + str(id) + '\n')
                         file.write(tantigen_obj.antigen_sequence + '\n')
+        elif inputtype == 'rundemo':
+            shutil.copy(local_settings.DEMO_ANALYSIS + 'demouser_lineardesign/input/sequence.fasta', path)
 
         with open(path, 'r') as file:
             # file format check
