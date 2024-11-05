@@ -5,8 +5,8 @@ from rest_framework.response import Response
 
 from mrna_task.models import mrna_task
 from mrna_task.serializers import mrna_taskSerializer
-from taskresult.models import lineardesign_taskresult
-from taskresult.serializers import lineardesign_taskresultSerializer
+from taskresult.models import lineardesign_taskresult, prediction_taskresult
+from taskresult.serializers import lineardesign_taskresultSerializer, prediction_taskresultSerializer
 from mrnadesign_api import settings_local as local_settings
 
 import pandas as pd
@@ -48,7 +48,7 @@ def predictionresultView(request): #############################################
     mrnatask_obj = mrna_task.objects.get(id=taskid)
 
     assert mrnatask_obj.analysis_type == 'Prediction'
-    queryset = lineardesign_taskresult.objects.filter(id__in = mrnatask_obj.task_results).order_by('id')
+    queryset = prediction_taskresult.objects.filter(id__in = mrnatask_obj.task_results).order_by('id')
 
     if 'sorter' in querydict and querydict['sorter'] != '':
         sorterjson = json.loads(querydict['sorter'])
@@ -61,7 +61,7 @@ def predictionresultView(request): #############################################
         else:  # 'descend
             queryset = queryset.order_by('-'+columnKey)
     
-    serializer = lineardesign_taskresultSerializer(queryset, many=True)
+    serializer = prediction_taskresultSerializer(queryset, many=True)
     return Response({'results': serializer.data})
 
 @api_view(['GET'])
@@ -89,8 +89,6 @@ def getZipData(request):
 
 @api_view(['GET'])
 def sequencemarker(request):
-    # taskid = request.query_params.dict()['taskid']
-    # mrnaid = request.query_params.dict()['mrnaid']
     res_path = local_settings.DEMO_ANALYSIS + 'demouser_prediction_full/prediction_results/SEQ000000/'
     df = pd.read_csv(res_path + 'summary/results.tsv',sep='\t').replace({np.nan: None})
     data = df.to_dict(orient='records')
@@ -98,3 +96,25 @@ def sequencemarker(request):
         for record in SeqIO.parse(fasfile, 'fasta'):
                 sequence = str(record.seq)
     return Response({'result': data, 'sequence':sequence})
+
+@api_view(['GET'])
+def viewproteinstructure(request):
+    querydict = request.query_params.dict()
+    taskid = querydict['taskid']
+    subtask_name = querydict['protein_subtask_name']
+    task_obj = mrna_task.objects.filter(id = taskid)[0]
+    fpath = task_obj.output_result_path + subtask_name + '/protein_structure.pdb'
+    url='https://mrnaapi.deepomics.org/tasks/files/'+fpath
+    return Response({'type': 'pdb', 'fileurl': url})
+
+@api_view(['GET'])
+def viewresultfile(request, path):
+    file = open('/'+path, 'rb') # 是一个绝对路径，home/platform/...., 在前面加上根目录的 “/” 
+    response = FileResponse(file)
+    filename = file.name.split('/')[-1]
+    response['Content-Disposition'] = "attachment; filename="+filename
+    response['Content-Type'] = 'text/plain'
+    response['Access-Control-Allow-Origin'] = 'https://www.ncbi.nlm.nih.gov' 
+    response["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
+    response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
+    return response
