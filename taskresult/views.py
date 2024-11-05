@@ -118,3 +118,17 @@ def viewresultfile(request, path):
     response["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
     response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
     return response
+
+@api_view(['GET'])
+def viewsecondarystructure(request):
+    querydict = request.query_params.dict()
+    taskid = querydict['taskid']
+    subtask_name = querydict['protein_subtask_name']
+    task_obj = mrna_task.objects.filter(id = taskid)[0]
+    fpath = task_obj.output_result_path + subtask_name + '/RNAfold.output'
+    with open(fpath, 'r') as fin:
+        L = fin.readlines()
+    return Response({
+        'subtask_name': L[0][1:-1], 
+        'sequence': L[1][1:-1],
+        'structure': L[2].split(' ')[0],}) # [:-1] is to remove the '\n'

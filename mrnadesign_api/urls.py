@@ -225,6 +225,7 @@ urlpatterns = [
     path('tasks/lineardesign_result/', taskresult.views.lineardesignresultView),
     path('tasks/prediction_result/', taskresult.views.predictionresultView), 
     path('tasks/proteinstructure/', taskresult.views.viewproteinstructure),
+    path('tasks/secondarystructure/', taskresult.views.viewsecondarystructure),
     path('tasks/files/<path:path>/', taskresult.views.viewresultfile),
     path('tasks/zip/', taskresult.views.getZipData),
     path('task/result/sequencemarker/', taskresult.views.sequencemarker),
