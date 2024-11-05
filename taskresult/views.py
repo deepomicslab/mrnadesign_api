@@ -89,10 +89,14 @@ def getZipData(request):
 
 @api_view(['GET'])
 def sequencemarker(request):
-    res_path = local_settings.DEMO_ANALYSIS + 'demouser_prediction_full/prediction_results/SEQ000000/'
-    df = pd.read_csv(res_path + 'summary/results.tsv',sep='\t').replace({np.nan: None})
+    querydict = request.query_params.dict()
+    taskid = querydict['taskid']
+    subtask_name = querydict['protein_subtask_name']
+    task_obj = mrna_task.objects.filter(id = taskid)[0]
+    fpath = task_obj.output_result_path + subtask_name + '/'
+    df = pd.read_csv(fpath+'summary/results.tsv',sep='\t').replace({np.nan: None})
     data = df.to_dict(orient='records')
-    with open(res_path + 'sequence.fasta', 'r') as fasfile:
+    with open(fpath + 'sequence.fasta', 'r') as fasfile:
         for record in SeqIO.parse(fasfile, 'fasta'):
                 sequence = str(record.seq)
     return Response({'result': data, 'sequence':sequence})
@@ -130,5 +134,5 @@ def viewsecondarystructure(request):
         L = fin.readlines()
     return Response({
         'subtask_name': L[0][1:-1], 
-        'sequence': L[1][1:-1],
+        'sequence': L[1][:-1],
         'structure': L[2].split(' ')[0],}) # [:-1] is to remove the '\n'
