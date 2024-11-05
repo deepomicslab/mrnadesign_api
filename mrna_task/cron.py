@@ -1,14 +1,18 @@
 from utils import task, slurm_api
 from mrna_task.models import mrna_task
-from taskresult.models import lineardesign_taskresult
+from taskresult.models import lineardesign_taskresult, prediction_taskresult
 import datetime
 from mrnadesign_api import settings_local as local_settings
 import os,json
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mrnadesign_api.settings")
 import django
 django.setup()
+import glob
 
-def create_task(L, task_obj):
+def create_lineardesign_task(task_obj):
+    with open(task_obj.output_result_path + 'result.txt', 'r') as fout:
+        L = fout.readlines()
+
     seq_name = []
     sequence = []
     structure = []
@@ -25,9 +29,10 @@ def create_task(L, task_obj):
             folding_free_energy.append(l.split(' ')[4])
             cai.append(l.split(' ')[8][:-1]) 
 
-    if len(seq_name) != len(sequence) or len(seq_name) != len(structure) \
-        or len(seq_name) != len(folding_free_energy) or len(seq_name) != len(cai):
-        task_obj.status = 'Failed'
+    # ===================================================================================
+    # if len(seq_name) != len(sequence) or len(seq_name) != len(structure) \
+    #     or len(seq_name) != len(folding_free_energy) or len(seq_name) != len(cai):
+    #     task_obj.status = 'Failed'
 
     task_obj.status = 'Success'
     for i in range(len(seq_name)):
@@ -41,6 +46,18 @@ def create_task(L, task_obj):
             cai = float(cai[i]),
         )
         task_obj.task_results.append(tr_obj.id)
+
+def create_prediction_task(task_obj):
+    task_obj.status = 'Success'
+    dir = [i.split('/')[-1] for i in glob.glob(task_obj.output_result_path + '*')]
+    for d in dir:
+        tr_obj = prediction_taskresult.objects.create(
+            mrna_task_analysis_type = task_obj.analysis_type,
+            task_id = task_obj.id,
+            task_name = d,
+        )
+        task_obj.task_results.append(tr_obj.id)
+
 
 # To manually run: python manage.py crontab run <tash_hash_id>
 def task_status_updata():
@@ -56,9 +73,10 @@ def task_status_updata():
         elif status == 'COMPLETED':
             if task_obj.analysis_type == 'Linear Design' \
                     and task.check_lineardesign_result(task_obj.output_result_path):
-                with open(task_obj.output_result_path + 'result.txt', 'r') as fout:
-                    L = fout.readlines()
-                create_task(L, task_obj)
+                create_lineardesign_task(task_obj)
+            elif task_obj.analysis_type == 'Prediction' \
+                    and task.check_prediction_result(task_obj.output_result_path):
+                create_prediction_task(task_obj)
         task_obj.save()
 
     f.write('exec update end  '+str(current_time)+"\n")

@@ -24,9 +24,31 @@ def lineardesignresultView(request):
     taskid = querydict['taskid']
     mrnatask_obj = mrna_task.objects.get(id=taskid)
 
-    if mrnatask_obj.analysis_type == 'Linear Design':
-        queryset = lineardesign_taskresult.objects.filter(id__in = mrnatask_obj.task_results).order_by('id')
-    # else mrnatask_obj.analysis_type == 'Prediction':
+    assert mrnatask_obj.analysis_type == 'Linear Design'
+    queryset = lineardesign_taskresult.objects.filter(id__in = mrnatask_obj.task_results).order_by('id')
+
+    if 'sorter' in querydict and querydict['sorter'] != '':
+        sorterjson = json.loads(querydict['sorter'])
+        order = sorterjson['order']
+        columnKey = sorterjson['columnKey']
+        if order == 'false':
+            queryset = queryset.order_by('id')
+        elif order == 'ascend':
+            queryset = queryset.order_by(columnKey)
+        else:  # 'descend
+            queryset = queryset.order_by('-'+columnKey)
+    
+    serializer = lineardesign_taskresultSerializer(queryset, many=True)
+    return Response({'results': serializer.data})
+
+@api_view(['GET'])
+def predictionresultView(request): #####################################################################
+    querydict = request.query_params.dict()
+    taskid = querydict['taskid']
+    mrnatask_obj = mrna_task.objects.get(id=taskid)
+
+    assert mrnatask_obj.analysis_type == 'Prediction'
+    queryset = lineardesign_taskresult.objects.filter(id__in = mrnatask_obj.task_results).order_by('id')
 
     if 'sorter' in querydict and querydict['sorter'] != '':
         sorterjson = json.loads(querydict['sorter'])

@@ -4,6 +4,7 @@ import json
 import subprocess
 import re
 import glob
+import os
 
 def run_lineardesign(sbatch_dict):
     user_input_path = sbatch_dict['user_input_path']
@@ -40,6 +41,11 @@ def check_lineardesign_result(output_result_path):
     print('Linear Design Failed')
     return False
 
+def check_prediction_result(output_result_path):
+    if os.path.exists(output_result_path):
+        return True
+    return False
+
 def get_job_output(output_log_path):
     path = output_log_path + 'lineardesign.log'
     try:
@@ -50,6 +56,30 @@ def get_job_output(output_log_path):
             return output
     except:
         return 'no linear design log'
+    
+def run_prediction(sbatch_dict):
+    task_dir = sbatch_dict['task_dir']
+    user_input_path = sbatch_dict['user_input_path']
+    output_log_path = sbatch_dict['output_log_path']
+
+    sbatch_command = (
+        'sbatch' +
+        ' --output=' + output_log_path + 'sbatch.out' +
+        ' --error=' + output_log_path + 'sbatch.err' +
+        ' ' + local_settings.SCRIPTS + 'run_prediction.sh' +
+        ' -a ' + task_dir +
+        ' -b ' + user_input_path['config'] + 
+        ' -c ' + output_log_path + 'prediction.log'
+    )
+    print('sbatch_command', sbatch_command)
+    sbatch_output = subprocess.check_output(sbatch_command, shell=True).decode("utf-8")  # Submitted batch job 1410435
+    job_id = re.search(r"Submitted batch job (\d+)", sbatch_output).group(1)  # 1410435
+    status = slurm_api.get_job_status(job_id)  # PENDING
+    taskdetail_dict = {
+        'job_id': job_id,
+        'status': status,
+    }
+    return taskdetail_dict
 
 # #    infodict = {'taskid': newtask.id, 'userpath': usertask, 'modulelist': modulelist,
 # #                 'analysis_type': request.data['analysistype'], 'userid': request.data['userid']}

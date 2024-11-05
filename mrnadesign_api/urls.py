@@ -212,6 +212,7 @@ urlpatterns = [
 
     path('analyze/linear_design/', mrna_task.views.lineardesignView.as_view()),
     path('analyze/linear_design_inputcheck/', mrna_task.views.lineardesigninputcheckView.as_view()),
+    path('analyze/prediction/', mrna_task.views.predictionView.as_view()),
     # path('analyze/pipline/', task.views.piplineView.as_view()),
 #     path('analyze/clusterpipline/', task.views.clusterpiplineView.as_view()),
 #     path('analyze/inputcheck/', analysis.views.inputcheck.as_view()),
@@ -222,6 +223,7 @@ urlpatterns = [
     # path('tasks/list/', task.views.viewtask),
     path('tasks/list/', mrna_task.views.viewtask),
     path('tasks/lineardesign_result/', taskresult.views.lineardesignresultView),
+    path('tasks/prediction_result/', taskresult.views.predictionresultView), 
     path('tasks/zip/', taskresult.views.getZipData),
     path('task/result/sequencemarker/', taskresult.views.sequencemarker),
 #     path('tasks/result/phage/', task.views.viewphage),

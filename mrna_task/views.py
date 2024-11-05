@@ -130,10 +130,113 @@ class lineardesignView(APIView):
                 }
         return Response(res)
 
+class predictionView(APIView):
+    def write_config(self, path, config_dict):
+        import configparser
+        file = open(path,"w")
+        parser = configparser.ConfigParser()
+
+        sections = config_dict.keys()
+        for section in sections:
+            parser.add_section(section)
+        for section in sections:
+            inner_dict = config_dict[section]
+            fields = inner_dict.keys()
+            for field in fields:
+                value = inner_dict[field]
+                parser.set(section, field, str(value))
+        parser.write(file)
+        file.close()
+
+    def post(self, request, *args, **kwargs):    
+        parameters = json.loads(request.data['parameters'])
+        analysistype = request.data['analysistype']
+        user_id = request.data['userid']
+        inputtype = request.data['inputtype']
+        is_demo_input = (request.data['rundemo'] == 'true')
+
+        usertask = str(int(time.time()))+'_' + generate_id()
+        task_dir = local_settings.USER_PATH + usertask + '/'
+        os.makedirs(task_dir, exist_ok=False)
+        os.makedirs(task_dir + 'sequences', exist_ok=False)
+        os.makedirs(task_dir + 'log', exist_ok=False)
+
+        if inputtype == 'upload':
+            # sequence
+            submitfile = request.FILES['submitfile']
+            seq_path = task_dir + 'sequences/' + submitfile.name
+            _seq_path = default_storage.save(seq_path, ContentFile(submitfile.read()))
+            # config
+            config_path = task_dir + 'task_prediction_config.ini'
+            self.write_config(path = config_path, config_dict = parameters)
+
+        # elif inputtype == 'paste':
+        #     with open(path, 'w') as file:
+        #         file.write(request.data['file'])
+        # elif inputtype == 'enter':
+        #     queryids = set(json.loads(request.data['queryids']))
+        #     datatable = request.data['datatable']
+        #     with open(path, 'w') as file:
+        #         for idx, id in enumerate(queryids):
+        #             if datatable == 'antigen':
+        #                 antigen_obj = antigen.objects.get(id=id)
+        #                 file.write('>seq' + str(id) + '\n')
+        #                 file.write(antigen_obj.sequence + '\n')
+        #             elif datatable == 'tantigen':
+        #                 tantigen_obj = tantigen.objects.get(id=id)
+        #                 file.write('>seq' + str(id) + '\n')
+        #                 file.write(tantigen_obj.antigen_sequence + '\n')
+        # elif inputtype == 'rundemo':
+        #     shutil.copy(local_settings.DEMO_ANALYSIS + 'demouser_lineardesign/input/sequence.fasta', path)
+
+        # create task object
+        newtask = mrna_task.objects.create(
+            user_id=user_id,
+            user_input_path={
+                'sequence': seq_path,
+                'config': config_path,
+            },
+            is_demo_input=is_demo_input,
+            output_result_path=local_settings.USER_PATH + usertask + '/prediction_results/',
+            output_log_path=local_settings.USER_PATH + usertask + '/log/',
+            analysis_type=analysistype,
+            parameters={},
+            status='Created',
+            task_results=[],
+        )
+
+        # run task
+        res = {
+            'task_id': newtask.id,
+            'user_id': newtask.user_id,
+            'analysis_type': newtask.analysis_type,
+        }
+        sbatch_dict = {
+            'task_dir': task_dir,
+            'user_input_path': newtask.user_input_path,
+            'output_log_path': newtask.output_log_path,
+        }
+        try:
+            taskdetail_dict = task.run_prediction(sbatch_dict)
+            res['status'] = 'Create Success'
+            res['message'] = 'Job create successfully'
+            newtask.job_id = taskdetail_dict['job_id']
+            newtask.status = taskdetail_dict['status']
+            newtask.status = 'Running'
+        except Exception as e:
+            res['status'] = 'Create Failed'
+            res['message'] = 'Job create failed'
+            newtask.status = 'Failed'
+            traceback.print_exc()
+
+        newtask.save()
+
+        return Response(res)
+
 @api_view(['GET'])
 def viewtask(request):
     userid = request.query_params.dict()['userid']
-    taskslist = mrna_task.objects.filter(user_id=userid)
+    taskslist = mrna_task.objects.filter(user_id=userid).order_by('-id')
     serializer = mrna_taskSerializer(taskslist, many=True)
     return Response({'results': serializer.data})
 
