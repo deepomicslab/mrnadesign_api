@@ -102,6 +102,83 @@ def sequencemarker(request):
     return Response({'result': data, 'sequence':sequence})
 
 @api_view(['GET'])
+def viewprimarystructure(request):
+    querydict = request.query_params.dict()
+    taskid = querydict['taskid']
+    subtask_name = querydict['protein_subtask_name']
+    task_obj = mrna_task.objects.filter(id = taskid)[0]
+    fpath = task_obj.output_result_path + subtask_name + '/'
+
+    with open(fpath + 'sequence.fasta', 'r') as fasfile:
+        for record in SeqIO.parse(fasfile, 'fasta'):
+                sequence = str(record.seq)
+
+    df = pd.read_csv(fpath+'summary/results.tsv',sep='\t').replace({np.nan: None})
+    print(fpath)
+    def _get_splitSeqData(df):
+        grouping_key = 'component_type'
+        result = {
+            category: sorted([
+                {col: row[col] for col in df.columns if col != grouping_key}
+                for index, row in group.iterrows()
+            ], key=lambda x: (x['start'], x['end']))
+            for category, group in df.groupby(grouping_key)
+        }
+        return result
+    def _get_render_info(splitSeqData):
+        ddf_list = {}
+        for type in list(splitSeqData.keys()):
+            ddf = pd.DataFrame()
+            color_info = [0] * len(sequence)
+            belongings_info = [set() for i in range(len(sequence))]
+            highlight_info = [[i + 1, i + 1] for i in range(len(sequence))]
+            
+            type_result = splitSeqData.get(type, [])
+            if type in ['main_regions', 'IRES', 'stem-loop_structure']:
+                continue
+            elif type == 'uORF':
+                color_count = 1
+                for entry_idx, entry in enumerate(type_result): # 第几段，段 entry
+                    start = entry['start'] # start is from 1, not 0
+                    end = entry['end']
+                    for _i in range(start, end + 1):
+                        i = _i - 1
+                        if _i >= start and _i < start + 3 and _i <= end:
+                            color_info[i] = color_count
+                        belongings_info[i].add(entry_idx)
+                        highlight_info[i][0] = min(highlight_info[i][0], start)
+                        highlight_info[i][1] = max(highlight_info[i][1], end)
+                    color_count += 1
+            elif type == 'restriction_sites':
+                color_count = 1
+                for entry_idx, entry in enumerate(type_result): # 第几段，段 entry
+                    start = entry['start'] # start is from 1, not 0
+                    end = entry['end']
+                    for _i in range(start, end + 1):
+                        i = _i - 1
+                        if _i == start:
+                            color_info[i] = color_count
+                        belongings_info[i].add(entry_idx)
+                        highlight_info[i][0] = min(highlight_info[i][0], start)
+                        highlight_info[i][1] = max(highlight_info[i][1], end)
+                    color_count += 1
+
+            ddf['node'] = [i for i in sequence] # ATCG 等
+            ddf['color'] = color_info # 0 没有颜色, > 0 不同颜色
+            ddf['belongings'] = belongings_info # 出现在哪些段
+            ddf['highlight_range'] = highlight_info # hightlight 范围
+
+            ddf_list[type] = ddf.T
+        return ddf_list
+    
+    split_seq_data = _get_splitSeqData(df)
+    render_info = _get_render_info(split_seq_data)
+    print(render_info.keys())
+
+
+    return Response({'splitSeqData': split_seq_data, 'render_info': render_info, 'sequence':sequence})
+
+@api_view(['GET'])
 def viewproteinstructure(request):
     querydict = request.query_params.dict()
     taskid = querydict['taskid']

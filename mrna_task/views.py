@@ -149,7 +149,6 @@ class predictionView(APIView):
         file.close()
 
     def post(self, request, *args, **kwargs):    
-        parameters = json.loads(request.data['parameters'])
         analysistype = request.data['analysistype']
         user_id = request.data['userid']
         inputtype = request.data['inputtype']
@@ -161,33 +160,39 @@ class predictionView(APIView):
         os.makedirs(task_dir + 'sequences', exist_ok=False)
         os.makedirs(task_dir + 'log', exist_ok=False)
 
-        if inputtype == 'upload':
-            # sequence
-            submitfile = request.FILES['submitfile']
-            seq_path = task_dir + 'sequences/' + submitfile.name
-            _seq_path = default_storage.save(seq_path, ContentFile(submitfile.read()))
-            # config
+        if inputtype == 'rundemo':
+            seq_path = task_dir + 'sequences/input_seq.tsv'
+            shutil.copy(local_settings.DEMO_ANALYSIS + 'demouser_prediction_task0001/sequences/input_seq.tsv', seq_path)
             config_path = task_dir + 'task_prediction_config.ini'
-            self.write_config(path = config_path, config_dict = parameters)
+            shutil.copy(local_settings.DEMO_ANALYSIS + 'demouser_prediction_task0001/task_prediction_config.ini', config_path)
+        else:
+            parameters = json.loads(request.data['parameters'])
+            if inputtype == 'upload':
+                # sequence
+                submitfile = request.FILES['submitfile']
+                seq_path = task_dir + 'sequences/' + submitfile.name
+                _seq_path = default_storage.save(seq_path, ContentFile(submitfile.read()))
+                # config
+                config_path = task_dir + 'task_prediction_config.ini'
+                self.write_config(path = config_path, config_dict = parameters)
 
-        # elif inputtype == 'paste':
-        #     with open(path, 'w') as file:
-        #         file.write(request.data['file'])
-        # elif inputtype == 'enter':
-        #     queryids = set(json.loads(request.data['queryids']))
-        #     datatable = request.data['datatable']
-        #     with open(path, 'w') as file:
-        #         for idx, id in enumerate(queryids):
-        #             if datatable == 'antigen':
-        #                 antigen_obj = antigen.objects.get(id=id)
-        #                 file.write('>seq' + str(id) + '\n')
-        #                 file.write(antigen_obj.sequence + '\n')
-        #             elif datatable == 'tantigen':
-        #                 tantigen_obj = tantigen.objects.get(id=id)
-        #                 file.write('>seq' + str(id) + '\n')
-        #                 file.write(tantigen_obj.antigen_sequence + '\n')
-        # elif inputtype == 'rundemo':
-        #     shutil.copy(local_settings.DEMO_ANALYSIS + 'demouser_lineardesign/input/sequence.fasta', path)
+            # elif inputtype == 'paste':
+            #     with open(path, 'w') as file:
+            #         file.write(request.data['file'])
+            # elif inputtype == 'enter':
+            #     queryids = set(json.loads(request.data['queryids']))
+            #     datatable = request.data['datatable']
+            #     with open(path, 'w') as file:
+            #         for idx, id in enumerate(queryids):
+            #             if datatable == 'antigen':
+            #                 antigen_obj = antigen.objects.get(id=id)
+            #                 file.write('>seq' + str(id) + '\n')
+            #                 file.write(antigen_obj.sequence + '\n')
+            #             elif datatable == 'tantigen':
+            #                 tantigen_obj = tantigen.objects.get(id=id)
+            #                 file.write('>seq' + str(id) + '\n')
+            #                 file.write(tantigen_obj.antigen_sequence + '\n')
+
 
         # create task object
         newtask = mrna_task.objects.create(
