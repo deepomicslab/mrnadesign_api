@@ -130,8 +130,8 @@ def viewprimarystructure(request):
         for type in list(splitSeqData.keys()):
             ddf = pd.DataFrame()
             color_info = [0] * len(sequence)
-            belongings_info = [set() for i in range(len(sequence))]
-            highlight_info = [[i + 1, i + 1] for i in range(len(sequence))]
+            belongings_info = [set() for _ in range(len(sequence))]
+            highlight_info = [[1, 0] for _ in range(len(sequence))]
             
             type_result = splitSeqData.get(type, [])
             if type in ['main_regions', 'IRES', 'stem-loop_structure']:
@@ -168,13 +168,28 @@ def viewprimarystructure(request):
             ddf['belongings'] = belongings_info # 出现在哪些段
             ddf['highlight_range'] = highlight_info # hightlight 范围
 
+            # Create a new column to track if a row can be grouped
+            ddf['can_group'] = (ddf['color'].shift() == ddf['color']) & (ddf['belongings'].shift() == ddf['belongings']) & (ddf['highlight_range'].shift() == ddf['highlight_range'])
+            ddf['group_id'] = (~ddf['can_group']).cumsum()
+
+            # Group by the unique group id and aggregate
+            ddf = ddf.groupby(['group_id']).agg({
+                'color': 'first',  # Keep the first color
+                'belongings': 'first',  # Keep the first belongings
+                'highlight_range': 'first',  # Keep the first highlight_range
+                'node': ''.join  # Concatenate node values
+            }).reset_index(drop=True)
+
+            ddf['belongings'] = [list(i) for i in ddf['belongings']]
+            ddf['highlight_range'] = [list(i) for i in ddf['highlight_range']]
+            ddf = ddf[['node', 'color', 'belongings', 'highlight_range']]
+
             ddf_list[type] = ddf.T
+
         return ddf_list
     
     split_seq_data = _get_splitSeqData(df)
     render_info = _get_render_info(split_seq_data)
-    print(render_info.keys())
-
 
     return Response({'splitSeqData': split_seq_data, 'render_info': render_info, 'sequence':sequence})
 
