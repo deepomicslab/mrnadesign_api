@@ -230,6 +230,7 @@ urlpatterns = [
     path('tasks/zip/', taskresult.views.getZipData),
     path('task/result/sequencemarker/', taskresult.views.sequencemarker),
     path('task/result/primarystructure/', taskresult.views.viewprimarystructure),
+    path('task/result/scoringheatmap/', taskresult.views.viewscoring),
 #     path('tasks/result/phage/', task.views.viewphage),
 #     path('tasks/result/phage/terminators/', task.views.viewphageterminators),
 #     path('tasks/result/phage/trnas/', task.views.viewphagetrnas),

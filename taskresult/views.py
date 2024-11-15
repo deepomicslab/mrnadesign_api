@@ -44,8 +44,8 @@ def lineardesignresultView(request):
 @api_view(['GET'])
 def predictionresultView(request): #####################################################################
     querydict = request.query_params.dict()
-    taskid = querydict['taskid']
-    mrnatask_obj = mrna_task.objects.get(id=taskid)
+    taskid = int(querydict['taskid'])
+    mrnatask_obj = mrna_task.objects.filter(id=taskid)[0]
 
     assert mrnatask_obj.analysis_type == 'Prediction'
     queryset = prediction_taskresult.objects.filter(id__in = mrnatask_obj.task_results).order_by('id')
@@ -114,7 +114,6 @@ def viewprimarystructure(request):
                 sequence = str(record.seq)
 
     df = pd.read_csv(fpath+'summary/results.tsv',sep='\t').replace({np.nan: None})
-    print(fpath)
     def _get_splitSeqData(df):
         grouping_key = 'component_type'
         result = {
@@ -192,6 +191,23 @@ def viewprimarystructure(request):
     render_info = _get_render_info(split_seq_data)
 
     return Response({'splitSeqData': split_seq_data, 'render_info': render_info, 'sequence':sequence})
+
+@api_view(['GET'])
+def viewscoring(request):
+    querydict = request.query_params.dict()
+    taskid = querydict['taskid']
+    task_obj = mrna_task.objects.filter(id = taskid)[0]
+    fpath = task_obj.output_result_path
+    scoring_df = pd.read_csv(fpath+'seq_score_results.tsv',sep='\t').replace({np.nan: None})
+    
+    # sorting
+    sorted_scoring_df = scoring_df
+    if 'sorter' in querydict.keys():
+        sorterjson = json.loads(querydict['sorter'])
+        order = sorterjson['order']
+        columnKey = sorterjson['columnKey']
+        sorted_scoring_df = sorted_scoring_df.sort_values(by=columnKey, ascending=order=='ascend')
+    return Response({'result': sorted_scoring_df})
 
 @api_view(['GET'])
 def viewproteinstructure(request):
