@@ -193,6 +193,140 @@ def viewprimarystructure(request):
     return Response({'splitSeqData': split_seq_data, 'render_info': render_info, 'sequence':sequence})
 
 @api_view(['GET'])
+def viewprimarystructuremainregion(request):
+    querydict = request.query_params.dict()
+    taskid = querydict['taskid']
+    subtask_name = querydict['protein_subtask_name']
+    task_obj = mrna_task.objects.filter(id = taskid)[0]
+    fpath = task_obj.output_result_path + subtask_name + '/'
+
+    df = pd.read_csv(fpath+'summary/results.tsv',sep='\t').replace({np.nan: None})
+    def _get_splitSeqData(df):
+        grouping_key = 'component_type'
+        result = {
+            category: sorted([
+                {col: row[col] for col in df.columns if col != grouping_key}
+                for index, row in group.iterrows()
+            ], key=lambda x: (x['start'], x['end']))
+            for category, group in df.groupby(grouping_key)
+        }
+        return result
+    
+    split_seq_data = _get_splitSeqData(df)
+
+    return Response({'splitSeqData': split_seq_data, })
+
+def util_primarystructure_type(fpath, component_type):
+    with open(fpath + 'sequence.fasta', 'r') as fasfile:
+        for record in SeqIO.parse(fasfile, 'fasta'):
+                sequence = str(record.seq)
+
+    df = pd.read_csv(fpath+'summary/results.tsv',sep='\t').replace({np.nan: None})
+    
+    # df = df.iloc[:20]
+    def _get_splitSeqData(df):
+        grouping_key = 'component_type'
+        result = {
+            category: sorted([
+                {col: row[col] for col in df.columns if col != grouping_key}
+                for index, row in group.iterrows()
+            ], key=lambda x: (x['start'], x['end']))
+            for category, group in df.groupby(grouping_key)
+        }
+        return result
+    def _get_render_info(splitSeqData, type):
+        ddf_list = {}
+        
+        ddf = pd.DataFrame()
+        color_info = [0] * len(sequence)
+        belongings_info = [set() for _ in range(len(sequence))]
+        highlight_info = [[1, 0] for _ in range(len(sequence))]
+        
+        type_result = splitSeqData.get(type, [])
+
+        color_count = 1
+        for entry_idx, entry in enumerate(type_result): # 第几段，段 entry
+            start = entry['start'] # start is from 1, not 0
+            end = entry['end']
+            for _i in range(start, end + 1):
+                i = _i - 1
+                if _i >= start and _i < start + 3 and _i <= end:
+                    color_info[i] = color_count
+                belongings_info[i].add(entry_idx)
+                highlight_info[i][0] = min(highlight_info[i][0], start)
+                highlight_info[i][1] = max(highlight_info[i][1], end)
+            color_count += 1
+
+        ddf['node'] = [i for i in sequence] # ATCG 等
+        ddf['color'] = color_info # 0 没有颜色, > 0 不同颜色
+        ddf['belongings'] = belongings_info # 出现在哪些段
+        ddf['highlight_range'] = highlight_info # hightlight 范围
+
+        # # Create a new column to track if a row can be grouped
+        # ddf['can_group'] = (ddf['color'].shift() == ddf['color']) & (ddf['belongings'].shift() == ddf['belongings']) & (ddf['highlight_range'].shift() == ddf['highlight_range'])
+        # ddf['group_id'] = (~ddf['can_group']).cumsum()
+
+        # # Group by the unique group id and aggregate
+        # ddf = ddf.groupby(['group_id']).agg({
+        #     'color': 'first',  # Keep the first color
+        #     'belongings': 'first',  # Keep the first belongings
+        #     'highlight_range': 'first',  # Keep the first highlight_range
+        #     'node': ''.join  # Concatenate node values
+        # }).reset_index(drop=True)
+
+        # ddf['belongings'] = [list(i) for i in ddf['belongings']]
+        # ddf['highlight_range'] = [list(i) for i in ddf['highlight_range']]
+        # ddf = ddf[['node', 'color', 'belongings', 'highlight_range']]
+
+        ddf_list[type] = ddf.T
+
+        return ddf_list
+    
+    split_seq_data = _get_splitSeqData(df)
+    render_info = _get_render_info(split_seq_data, type=component_type)
+
+    # # print(render_info['IRES'].T)
+    # print(split_seq_data)
+
+    # import pickle
+    # with open('/home/platform/project/mrnadesign_platform/mrnadesign_api/workspace/analysis_script/demo_user/demouser_prediction_task0001/prediction_results/SEQ000001/summary/split_seq_data.pickle', 'wb') as handle:
+    #     pickle.dump(split_seq_data, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    # with open('/home/platform/project/mrnadesign_platform/mrnadesign_api/workspace/analysis_script/demo_user/demouser_prediction_task0001/prediction_results/SEQ000001/summary/render_info.pickle', 'wb') as handle:
+    #     pickle.dump(render_info, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+    # import pickle
+    # with open('/home/platform/project/mrnadesign_platform/mrnadesign_api/workspace/analysis_script/demo_user/demouser_prediction_task0001/prediction_results/SEQ000001/summary/split_seq_data.pickle', 'rb') as handle:
+    #     split_seq_data = pickle.load(handle)
+    # with open('/home/platform/project/mrnadesign_platform/mrnadesign_api/workspace/analysis_script/demo_user/demouser_prediction_task0001/prediction_results/SEQ000001/summary/render_info.pickle', 'rb') as handle:
+    #     render_info = pickle.load(handle)
+
+
+    return split_seq_data, render_info
+    
+
+@api_view(['GET'])
+def viewprimarystructureuorf(request):
+    querydict = request.query_params.dict()
+    taskid = querydict['taskid']
+    subtask_name = querydict['protein_subtask_name']
+    task_obj = mrna_task.objects.filter(id = taskid)[0]
+    fpath = task_obj.output_result_path + subtask_name + '/'
+
+    split_seq_data, render_info = util_primarystructure_type(fpath=fpath, component_type='uORF')
+    return Response({'splitSeqData': split_seq_data, 'render_info': render_info})
+
+@api_view(['GET'])
+def viewprimarystructureres(request):
+    querydict = request.query_params.dict()
+    taskid = querydict['taskid']
+    subtask_name = querydict['protein_subtask_name']
+    task_obj = mrna_task.objects.filter(id = taskid)[0]
+    fpath = task_obj.output_result_path + subtask_name + '/'
+
+    split_seq_data, render_info = util_primarystructure_type(fpath=fpath, component_type='IRES')
+    return Response({'splitSeqData': split_seq_data, 'render_info': render_info})
+
+@api_view(['GET'])
 def viewscoring(request):
     querydict = request.query_params.dict()
     taskid = querydict['taskid']
