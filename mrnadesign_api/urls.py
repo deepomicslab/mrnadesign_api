@@ -229,7 +229,7 @@ urlpatterns = [
     path('tasks/files/<path:path>/', taskresult.views.viewresultfile),
     path('tasks/zip/', taskresult.views.getZipData),
     path('task/result/sequencemarker/', taskresult.views.sequencemarker),
-    path('task/result/primarystructure/', taskresult.views.viewprimarystructure),
+    # path('task/result/primarystructure/', taskresult.views.viewprimarystructure),
     path('task/result/primarystructure_mainregion/', taskresult.views.viewprimarystructuremainregion),
     path('task/result/primarystructure_uORF/', taskresult.views.viewprimarystructureuorf),
     path('task/result/primarystructure_res/', taskresult.views.viewprimarystructureres),
