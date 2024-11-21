@@ -13,7 +13,6 @@ from antigen.models import antigen
 from tantigen.models import tantigen
 from utils import tools, task, slurm_api
 
-
 import time
 import os
 import shutil
@@ -21,6 +20,7 @@ import random
 import json
 import traceback
 import string
+import pandas as pd
 
 def generate_id():
     id = "".join(random.choices(string.ascii_uppercase + string.digits, k=4))
@@ -159,9 +159,10 @@ class predictionView(APIView):
         os.makedirs(task_dir, exist_ok=False)
         os.makedirs(task_dir + 'sequences', exist_ok=False)
         os.makedirs(task_dir + 'log', exist_ok=False)
+        
+        seq_path = task_dir + 'sequences/input_seq.tsv'
 
         if inputtype == 'rundemo':
-            seq_path = task_dir + 'sequences/input_seq.tsv'
             shutil.copy(local_settings.DEMO_ANALYSIS + 'demouser_prediction_task0001/sequences/input_seq.tsv', seq_path)
             config_path = task_dir + 'task_prediction_config.ini'
             shutil.copy(local_settings.DEMO_ANALYSIS + 'demouser_prediction_task0001/task_prediction_config.ini', config_path)
@@ -170,15 +171,21 @@ class predictionView(APIView):
             if inputtype == 'upload':
                 # sequence
                 submitfile = request.FILES['submitfile']
-                seq_path = task_dir + 'sequences/' + submitfile.name
+                # seq_path = task_dir + 'sequences/' + submitfile.name
                 _seq_path = default_storage.save(seq_path, ContentFile(submitfile.read()))
                 # config
                 config_path = task_dir + 'task_prediction_config.ini'
                 self.write_config(path = config_path, config_dict = parameters)
-
-            # elif inputtype == 'paste':
-            #     with open(path, 'w') as file:
-            #         file.write(request.data['file'])
+            elif inputtype == 'paste':
+                # sequence
+                seq_dict_list = json.loads(request.data['seq'])
+                seq_data = []
+                for idx, entry in enumerate(seq_dict_list):
+                    seq_data.append([idx, entry['utr3'], entry['cds'], entry['utr5'], entry['name']])
+                pd.DataFrame(seq_data, columns=['seq_id', '5utr', 'cds', '3utr', 'seq_acc']).to_csv(seq_path, sep='\t', index=False)
+                # config
+                config_path = task_dir + 'task_prediction_config.ini'
+                self.write_config(path = config_path, config_dict = parameters)
             # elif inputtype == 'enter':
             #     queryids = set(json.loads(request.data['queryids']))
             #     datatable = request.data['datatable']
