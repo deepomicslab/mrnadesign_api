@@ -46,16 +46,27 @@ def check_prediction_result(output_result_path):
         return True
     return False
 
-def get_job_output(output_log_path):
-    path = output_log_path + 'lineardesign.log'
-    try:
-        with open(path, 'r') as f:
-            output = f.read()
-            if output == '':
-                output = 'no linear design log'
-            return output
-    except:
-        return 'no linear design log'
+def get_job_output(analysis_type, output_log_path):
+    if analysis_type == 'Linear Design':
+        path = output_log_path + 'lineardesign.log'
+        try:
+            with open(path, 'r') as f:
+                output = f.read()
+                if output == '':
+                    output = 'no linear design log'
+                return output
+        except:
+            return 'no linear design log'
+    elif analysis_type == 'Prediction':
+        path = output_log_path + 'prediction.log'
+        try:
+            with open(path, 'r') as f:
+                output = f.read()
+                if output == '':
+                    output = 'no prediction log'
+                return output
+        except:
+            return 'no prediction log'
     
 def run_prediction(sbatch_dict):
     task_dir = sbatch_dict['task_dir']

@@ -266,8 +266,8 @@ def viewtasklog(request):
 
     sbatch_log = slurm_api.get_job_output(task_obj.output_log_path)
     sbatch_error = slurm_api.get_job_error(task_obj.output_log_path)
-    if task_obj.analysis_type in ['Linear Design']:
-        task_log = task.get_job_output(task_obj.output_log_path)
+    if task_obj.analysis_type in ['Linear Design', 'Prediction']:
+        task_log = task.get_job_output(task_obj.analysis_type, task_obj.output_log_path)
     return Response({
         'sbatch_log': sbatch_log,
         'sbatch_error': sbatch_error,
