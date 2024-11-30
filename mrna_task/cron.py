@@ -50,6 +50,8 @@ def create_lineardesign_task(task_obj):
 def create_prediction_task(task_obj):
     task_obj.status = 'Success'
     dir = [i.split('/')[-1] for i in glob.glob(task_obj.output_result_path + '*')]
+    if 'seq_score_results.tsv' in dir:
+        dir.remove('seq_score_results.tsv')
     for d in dir:
         tr_obj = prediction_taskresult.objects.create(
             mrna_task_analysis_type = task_obj.analysis_type,
