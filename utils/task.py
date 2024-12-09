@@ -5,6 +5,7 @@ import subprocess
 import re
 import glob
 import os
+import pandas as pd
 
 def run_lineardesign(sbatch_dict):
     user_input_path = sbatch_dict['user_input_path']
@@ -46,6 +47,13 @@ def check_prediction_result(output_result_path):
         return True
     return False
 
+def check_safety_result(output_result_path):
+    if not os.path.exists(output_result_path + 'merged_file.csv'):
+        return False
+    if pd.read_csv(output_result_path + 'merged_file.csv').shape[0] <= 0:
+        return False
+    return True
+
 def get_job_output(analysis_type, output_log_path):
     if analysis_type == 'Linear Design':
         path = output_log_path + 'lineardesign.log'
@@ -81,6 +89,37 @@ def run_prediction(sbatch_dict):
         ' -a ' + task_dir +
         ' -b ' + user_input_path['config'] + 
         ' -c ' + output_log_path + 'prediction.log'
+    )
+    print('sbatch_command', sbatch_command)
+    sbatch_output = subprocess.check_output(sbatch_command, shell=True).decode("utf-8")  # Submitted batch job 1410435
+    job_id = re.search(r"Submitted batch job (\d+)", sbatch_output).group(1)  # 1410435
+    status = slurm_api.get_job_status(job_id)  # PENDING
+    taskdetail_dict = {
+        'job_id': job_id,
+        'status': status,
+    }
+    return taskdetail_dict
+
+def run_safety(sbatch_dict):
+    user_input_path = sbatch_dict['user_input_path']
+    output_result_path = sbatch_dict['output_result_path']
+    output_log_path = sbatch_dict['output_log_path']
+    output_intermediate_path = sbatch_dict['output_intermediate_path']
+    parameters = sbatch_dict['parameters']
+
+    sbatch_command = (
+        'sbatch' +
+        ' --output=' + output_log_path + 'sbatch.out' +
+        ' --error=' + output_log_path + 'sbatch.err' +
+        ' ' + local_settings.SCRIPTS + 'run_safety.sh' +
+        ' -a ' + user_input_path['fasta'] + 
+        ' -b ' + output_result_path + 
+        ' -c ' + output_log_path + 'safety.log' + 
+        ' -d ' + output_intermediate_path + 
+        ' -e ' + str(parameters['toxicity_threshold']) +
+        ' -f ' + parameters['toxicity_model'] +
+        ' -g ' + str(parameters['allergencity_threshold']) +
+        ' -h ' + parameters['allergencity_model']
     )
     print('sbatch_command', sbatch_command)
     sbatch_output = subprocess.check_output(sbatch_command, shell=True).decode("utf-8")  # Submitted batch job 1410435

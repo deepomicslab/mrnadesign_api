@@ -15,7 +15,7 @@ class mrna_task(models.Model):
     status = models.CharField(max_length=60)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    task_results = ArrayField( # lineardesign_taskresult.id / prediction_taskresult.id
+    task_results = ArrayField( # lineardesign_taskresult.id / prediction_taskresult.id / safety_taskresult.id
         models.IntegerField()
     )
 

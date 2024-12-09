@@ -8,7 +8,7 @@ django.setup()
 
 
 demo_user_map = {
-    # ============================== one linear design ============================== 
+    # ============================== one demo case of linear design ============================== 
     'Demo User Linear Design': {
         'task_id': -99,
         'job_id': '1443108',
@@ -28,7 +28,7 @@ demo_user_map = {
         'task_results': [-990, -991],
     },
 
-    # ============================== three prediction ============================== 
+    # ============================== three demo cases of prediction ============================== 
     'Demo User Prediction Task0001': {
         'task_id': -95,
         'job_id': '1446907',
@@ -76,6 +76,28 @@ demo_user_map = {
         'status': 'Success',
         'created_at': 'N/A',
         'task_results': [-999],
+    },
+
+    # ============================== one demo case of safety ============================== 
+    'Demo User Prediction Task0003': {
+        'task_id': -80,
+        'job_id': '1447000',
+        'user_input_path': {
+            'fasta': local_settings.DEMO_ANALYSIS + 'demouser_safety/input/sequence.fasta',
+        },
+        'is_demo_input': True,
+        'output_result_path': local_settings.DEMO_ANALYSIS + 'demouser_safety/output/result/',
+        'output_log_path': local_settings.DEMO_ANALYSIS + 'demouser_safety/output/log/',
+        'analysis_type': 'Safety',
+        'parameters': {
+            "toxicity_model": "1", 
+            "toxicity_threshold": "0.38", 
+            "allergencity_model": "1", 
+            "allergencity_threshold": "0.3",
+        }, 
+        'status': 'Success',
+        'created_at': 'N/A',
+        'task_results': [],
     },
 }
 
@@ -126,6 +148,9 @@ demo_user_task_map = {
         'task_id': -93,
         'task_name': 'SEQ000000',
     },
+
+    # ============================== safety ============================== 
+    # skip
 }
 
 
@@ -159,6 +184,8 @@ def add_data():
                     task_id=demo_user_task_map[task_result_id]['task_id'],
                     task_name=demo_user_task_map[task_result_id]['task_name'],
                 )
+            # elif demo_user_task_map[task_result_id]['mrna_task_analysis_type'] == 'Safety':
+                # pass
 
         mrna_task.objects.create(
             id=demo_user_map[userid]['task_id'],

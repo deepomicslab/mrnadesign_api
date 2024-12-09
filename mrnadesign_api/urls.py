@@ -39,7 +39,7 @@ from three_utr.views import three_utrViewSet
 # from datasets.views import datasetsViewSet
 # from analysis.views import analysisViewSet
 # from task.views import taskViewSet
-from mrna_task.views import lineardesignView
+# from mrna_task.views import lineardesignView
 # from analysis.views import analysisViewSet
 
 # import phage.views
@@ -213,6 +213,7 @@ urlpatterns = [
     path('analyze/linear_design/', mrna_task.views.lineardesignView.as_view()),
     path('analyze/linear_design_inputcheck/', mrna_task.views.lineardesigninputcheckView.as_view()),
     path('analyze/prediction/', mrna_task.views.predictionView.as_view()),
+    path('analyze/safety/', mrna_task.views.safetyView.as_view()),
     # path('analyze/pipline/', task.views.piplineView.as_view()),
 #     path('analyze/clusterpipline/', task.views.clusterpiplineView.as_view()),
 #     path('analyze/inputcheck/', analysis.views.inputcheck.as_view()),
@@ -222,6 +223,7 @@ urlpatterns = [
     path('tasks/detail/log/',mrna_task.views.viewtasklog),
     # path('tasks/list/', task.views.viewtask),
     path('tasks/list/', mrna_task.views.viewtask),
+    path('tasks/safety_result/', taskresult.views.safetyresultView),
     path('tasks/lineardesign_result/', taskresult.views.lineardesignresultView),
     path('tasks/prediction_result/', taskresult.views.predictionresultView), 
     path('tasks/proteinstructure/', taskresult.views.viewproteinstructure),

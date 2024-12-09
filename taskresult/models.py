@@ -32,3 +32,16 @@ class prediction_taskresult(models.Model):
 
     def __str__(self):
         return self.id
+    
+# class safety_taskresult(models.Model):
+#     mrna_task_analysis_type = models.CharField(max_length=60) # mrna_task.analysis_type
+#     task_id = models.IntegerField() # mrna_task.id
+#     task_name = models.CharField() # user customised name
+
+#     class Meta:
+#         db_table = 'safety_taskresult'
+#         verbose_name = 'safety_taskresult'
+#         verbose_name_plural = verbose_name
+
+#     def __str__(self):
+#         return self.id

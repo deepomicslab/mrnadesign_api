@@ -245,6 +245,112 @@ class predictionView(APIView):
 
         return Response(res)
 
+class safetyView(APIView):
+    def post(self, request, *args, **kwargs):
+        is_demo_input = (request.data['rundemo'] == 'true')
+        analysistype = request.data['analysistype']
+        user_id = request.data['userid']
+        inputtype = request.data['inputtype']
+        toxicity_model = request.data['toxicity_model']
+        toxicity_threshold = request.data['toxicity_threshold']
+        allergencity_model = request.data['allergencity_model']
+        allergencity_threshold = request.data['allergencity_threshold']
+        usertask = str(int(time.time()))+'_' + generate_id()
+        path = local_settings.USER_PATH + usertask + '/input/' + 'sequence.fasta'
+        os.makedirs(local_settings.USER_PATH + usertask, exist_ok=False)
+        os.makedirs(local_settings.USER_PATH +
+                    usertask + '/input', exist_ok=False)
+        os.makedirs(local_settings.USER_PATH + usertask +
+                    '/output/result', exist_ok=False)
+        os.makedirs(local_settings.USER_PATH + usertask +
+                    '/output/log', exist_ok=False)
+        os.makedirs(local_settings.USER_PATH + usertask +
+                    '/output/intermediate', exist_ok=False) # intermediate files
+
+        if inputtype == 'upload':
+            submitfile = request.FILES['submitfile']
+            # path = local_settings.USER_PATH + usertask + '/input/' + submitfile.name
+            _path = default_storage.save(path, ContentFile(submitfile.read()))
+            with open(path, 'r') as fin:
+                print(fin.readlines())
+        elif inputtype == 'paste':
+            with open(path, 'w') as file:
+                file.write(request.data['file'])
+        elif inputtype == 'rundemo':
+            shutil.copy(local_settings.DEMO_ANALYSIS + 'demouser_safety/input/sequence.fasta', path)
+        # from Bio import SeqIO
+        # for record in SeqIO.parse(path, 'fasta'):
+        #     print('=======', record.id, record.seq)
+
+        with open(path, 'r') as file:
+            # file format check
+            is_upload = tools.is_fasta(file)
+            if is_upload:
+                tools.uploadphagefastapreprocess(path)
+
+                # create task object
+                newtask = mrna_task.objects.create(
+                    user_id=user_id,
+                    user_input_path={
+                        'fasta': path,
+                    },
+                    is_demo_input=is_demo_input,
+                    output_result_path=local_settings.USER_PATH + usertask + '/output/result/',
+                    output_log_path=local_settings.USER_PATH + usertask + '/output/log/',
+                    # output_intermediate_path=local_settings.USER_PATH + usertask + '/output/intermediate/',
+                    analysis_type=analysistype,
+                    parameters={
+                        'toxicity_model': '1' if toxicity_model == 'ML Model' else '2', # 'HybridModel'
+                        'toxicity_threshold': toxicity_threshold,
+                        'allergencity_model': '1' if allergencity_model == 'AAC based RF' else '2', # 'HybridModel'
+                        'allergencity_threshold': allergencity_threshold,
+                    },
+                    status='Created',
+                    task_results=[],
+                )
+
+                # run task
+                res = {
+                    'task_id': newtask.id,
+                    'user_id': newtask.user_id,
+                    'analysis_type': newtask.analysis_type,
+                }
+                sbatch_dict = {
+                    'user_input_path': newtask.user_input_path,
+                    'output_result_path': newtask.output_result_path,
+                    'output_log_path': newtask.output_log_path,
+                    'output_intermediate_path': local_settings.USER_PATH + usertask + '/output/intermediate/',
+                    'parameters': {
+                        'toxicity_model': newtask.parameters['toxicity_model'],
+                        'toxicity_threshold': newtask.parameters['toxicity_threshold'],
+                        'allergencity_model': newtask.parameters['allergencity_model'],
+                        'allergencity_threshold': newtask.parameters['allergencity_threshold'],
+                    },}
+                print('-----------------sbatch_dict', sbatch_dict)
+                print('-----------------\n\n')
+                try:
+                    taskdetail_dict = task.run_safety(sbatch_dict)
+                    res['status'] = 'Create Success'
+                    res['message'] = 'Job create successfully'
+                    newtask.job_id = taskdetail_dict['job_id']
+                    newtask.status = taskdetail_dict['status']
+                    newtask.status = 'Running'
+                except Exception as e:
+                    res['status'] = 'Create Failed'
+                    res['message'] = 'Job create failed'
+                    newtask.status = 'Failed'
+                    traceback.print_exc()
+
+                newtask.save()
+
+            else:
+                print('================== failed')
+                res = {
+                    'status': 'Failed',
+                    'message': 'Pipline create failed: The file you uploaded is not a fasta file',
+                }
+        return Response(res)
+    
 @api_view(['GET'])
 def viewtask(request):
     userid = request.query_params.dict()['userid']

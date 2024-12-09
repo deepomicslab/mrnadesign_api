@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import FileResponse, HttpResponse
+from django.http import FileResponse, HttpResponse, JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -17,6 +17,33 @@ import zipfile
 from io import BytesIO
 from datetime import datetime
 from Bio import SeqIO
+
+@api_view(['GET'])
+def safetyresultView(request):
+    querydict = request.query_params.dict()
+    taskid = querydict['taskid']
+    mrnatask_obj = mrna_task.objects.get(id=taskid)
+
+    assert mrnatask_obj.analysis_type == 'Safety'
+    merged_df = pd.read_csv(mrnatask_obj.output_result_path + 'merged_file.csv', index_col=0)
+    merged_df.columns = ['id', 'sequence', 'toxicity_score', 'toxicity', 'allergenicity_score', 'allergenicity', 'antigenicity_score', 'antigenicity', 's3_url']
+
+    if 'sorter' in querydict and querydict['sorter'] != '':
+        sorterjson = json.loads(querydict['sorter'])
+        order = sorterjson['order']
+        columnKey = sorterjson['columnKey']
+        if order == 'false':
+            merged_df = merged_df.sort_values(by='id', ascending=True)
+        elif order == 'ascend':
+            merged_df = merged_df.sort_values(by=columnKey, ascending=True)
+        else: # 'descend
+            merged_df = merged_df.sort_values(by=columnKey, ascending=False)
+    if 'filter' in querydict and querydict['filter'] != '':
+        filterjson = json.loads(querydict['filter'])
+        for k, v in filterjson.items():
+            if v:
+                merged_df = merged_df[merged_df[k].isin(v)]
+    return Response({'results': merged_df.to_dict(orient='records')})
 
 @api_view(['GET'])
 def lineardesignresultView(request):
@@ -64,18 +91,23 @@ def predictionresultView(request): #############################################
     serializer = prediction_taskresultSerializer(queryset, many=True)
     return Response({'results': serializer.data})
 
+def get_all_files(directory):
+    from pathlib import Path
+    return [str(file) for file in Path(directory).rglob('*') if file.is_file()]
+
 @api_view(['GET'])
 def getZipData(request):
     querydict = request.query_params.dict()
     taskid = querydict['taskid']
     mrnatask_obj = mrna_task.objects.get(id=taskid)
+    fpath = mrnatask_obj.output_result_path
     filename = "AnalysisResult"
-    fpath = mrnatask_obj.output_result_path + 'result.txt'
-
+    
     s = BytesIO()
     zf = zipfile.ZipFile(s, "w")
-    # server里的path, zip folder里面的目标path
-    zf.write(fpath, 'result.txt')
+    assert mrnatask_obj.analysis_type in ['Linear Design', 'Prediction', 'Safety']
+    for i in get_all_files(fpath):
+        zf.write(i, i.replace(fpath, '')) # server里的path, zip folder里面的目标path
     zf.close()
 
     now = datetime.now()
