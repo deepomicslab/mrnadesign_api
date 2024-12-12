@@ -54,6 +54,11 @@ def check_safety_result(output_result_path):
         return False
     return True
 
+def check_sequencealign_result(output_result_path):
+    if not os.path.exists(output_result_path + 'result.json'):
+        return False
+    return True
+
 def get_job_output(analysis_type, output_log_path):
     if analysis_type == 'Linear Design':
         path = output_log_path + 'lineardesign.log'
@@ -75,6 +80,26 @@ def get_job_output(analysis_type, output_log_path):
                 return output
         except:
             return 'no prediction log'
+    elif analysis_type == 'Safety':
+        path = output_log_path + 'safety.log'
+        try:
+            with open(path, 'r') as f:
+                output = f.read()
+                if output == '':
+                    output = 'no safety log'
+                return output
+        except:
+            return 'no safety log'
+    elif analysis_type == 'Sequence Align':
+        path = output_log_path + 'sequencealign.log'
+        try:
+            with open(path, 'r') as f:
+                output = f.read()
+                if output == '':
+                    output = 'no sequence align log'
+                return output
+        except:
+            return 'no sequence align log'
     
 def run_prediction(sbatch_dict):
     task_dir = sbatch_dict['task_dir']
@@ -120,6 +145,36 @@ def run_safety(sbatch_dict):
         ' -f ' + parameters['toxicity_model'] +
         ' -g ' + str(parameters['allergencity_threshold']) +
         ' -h ' + parameters['allergencity_model']
+    )
+    print('sbatch_command', sbatch_command)
+    sbatch_output = subprocess.check_output(sbatch_command, shell=True).decode("utf-8")  # Submitted batch job 1410435
+    job_id = re.search(r"Submitted batch job (\d+)", sbatch_output).group(1)  # 1410435
+    status = slurm_api.get_job_status(job_id)  # PENDING
+    taskdetail_dict = {
+        'job_id': job_id,
+        'status': status,
+    }
+    return taskdetail_dict
+
+def run_sequence_align(sbatch_dict):
+    user_input_path = sbatch_dict['user_input_path']
+    output_result_path = sbatch_dict['output_result_path']
+    output_log_path = sbatch_dict['output_log_path']
+    output_intermediate_path = sbatch_dict['output_intermediate_path']
+    parameters = sbatch_dict['parameters']
+
+    sbatch_command = (
+        'sbatch' +
+        ' --output=' + output_log_path + 'sbatch.out' +
+        ' --error=' + output_log_path + 'sbatch.err' +
+        ' ' + local_settings.SCRIPTS + 'run_seq_align.sh' +
+        ' -a ' + user_input_path['fasta'] + 
+        ' -b ' + output_result_path + 
+        ' -c ' + output_log_path + 'sequencealign.log' + 
+        ' -d ' + output_intermediate_path + 
+        ' -e ' + str(parameters['window_size']) +
+        ' -f ' + parameters['step_size'] +
+        ' -g ' + str(parameters['evalue'])
     )
     print('sbatch_command', sbatch_command)
     sbatch_output = subprocess.check_output(sbatch_command, shell=True).decode("utf-8")  # Submitted batch job 1410435

@@ -46,6 +46,19 @@ def safetyresultView(request):
     return Response({'results': merged_df.to_dict(orient='records')})
 
 @api_view(['GET'])
+def sequencealignresultView(request):
+    querydict = request.query_params.dict()
+    taskid = querydict['taskid']
+    mrnatask_obj = mrna_task.objects.get(id=taskid)
+
+    assert mrnatask_obj.analysis_type == 'Sequence Align'
+    with open(mrnatask_obj.output_result_path + 'result.json', "r") as result_file:
+        context = json.load(result_file)
+    results = context['results']
+    # txt_files = context['txt_files']
+    return Response({'results': results})
+
+@api_view(['GET'])
 def lineardesignresultView(request):
     querydict = request.query_params.dict()
     taskid = querydict['taskid']
@@ -105,7 +118,7 @@ def getZipData(request):
     
     s = BytesIO()
     zf = zipfile.ZipFile(s, "w")
-    assert mrnatask_obj.analysis_type in ['Linear Design', 'Prediction', 'Safety']
+    assert mrnatask_obj.analysis_type in ['Linear Design', 'Prediction', 'Safety', 'Sequence Align']
     for i in get_all_files(fpath):
         zf.write(i, i.replace(fpath, '')) # server里的path, zip folder里面的目标path
     zf.close()

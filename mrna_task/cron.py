@@ -64,6 +64,10 @@ def create_safety_task(task_obj):
     task_obj.status = 'Success'
     # ======= do not need to create safety_taskresult class / object =======
 
+def create_sequencealign_task(task_obj):
+    task_obj.status = 'Success'
+    # ======= do not need to create safety_taskresult class / object =======
+
 
 # To manually run: python manage.py crontab run <tash_hash_id>
 def task_status_updata():
@@ -86,6 +90,9 @@ def task_status_updata():
             elif task_obj.analysis_type == 'Safety' \
                     and task.check_safety_result(task_obj.output_result_path):
                 create_safety_task(task_obj)
+            elif task_obj.analysis_type == 'Sequence Align' \
+                    and task.check_sequencealign_result(task_obj.output_result_path):
+                create_sequencealign_task(task_obj)
         task_obj.save()
 
     f.write('exec update end '+str(current_time)+"\n")

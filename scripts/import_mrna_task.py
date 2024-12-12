@@ -79,7 +79,7 @@ demo_user_map = {
     },
 
     # ============================== one demo case of safety ============================== 
-    'Demo User Prediction Task0003': {
+    'Demo User Safety': {
         'task_id': -80,
         'job_id': '1447000',
         'user_input_path': {
@@ -94,6 +94,27 @@ demo_user_map = {
             "toxicity_threshold": "0.38", 
             "allergencity_model": "1", 
             "allergencity_threshold": "0.3",
+        }, 
+        'status': 'Success',
+        'created_at': 'N/A',
+        'task_results': [],
+    },
+
+    # ============================== one demo case of sequence alignment ============================== 
+    'Demo User Sequence Alignment': {
+        'task_id': -70,
+        'job_id': '1227000',
+        'user_input_path': {
+            'fasta': local_settings.DEMO_ANALYSIS + 'demouser_sequencealignmnet/input/sequence.fasta',
+        },
+        'is_demo_input': True,
+        'output_result_path': local_settings.DEMO_ANALYSIS + 'demouser_sequencealignmnet/output/result/',
+        'output_log_path': local_settings.DEMO_ANALYSIS + 'demouser_sequencealignmnet/output/log/',
+        'analysis_type': 'Sequence Align',
+        'parameters': {
+            "window_size": "11",
+            "step_size": "5",
+            'evalue': '10' 
         }, 
         'status': 'Success',
         'created_at': 'N/A',
@@ -151,6 +172,8 @@ demo_user_task_map = {
 
     # ============================== safety ============================== 
     # skip
+    # ============================== sequence alignment ============================== 
+    # skip
 }
 
 
@@ -185,6 +208,8 @@ def add_data():
                     task_name=demo_user_task_map[task_result_id]['task_name'],
                 )
             # elif demo_user_task_map[task_result_id]['mrna_task_analysis_type'] == 'Safety':
+                # pass
+            # elif demo_user_task_map[task_result_id]['mrna_task_analysis_type'] == 'Sequence Align':
                 # pass
 
         mrna_task.objects.create(
