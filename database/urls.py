@@ -7,5 +7,5 @@ router = DefaultRouter()
 urlpatterns = [
     path('', include(router.urls)),
     re_path(r'^download_protein_cif/$', download_protein_cif, name='download_protein_cif'),
-
+    path('files/<path:path>/', downloadbypaath, name='downloadbypaath'),
 ]

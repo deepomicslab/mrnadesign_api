@@ -381,7 +381,7 @@ class sequencealignView(APIView):
             with open(path, 'w') as file:
                 file.write(request.data['file'])
         elif inputtype == 'rundemo':
-            shutil.copy(local_settings.DEMO_ANALYSIS + 'demouser_safety/input/sequence.fasta', path)
+            shutil.copy(local_settings.DEMO_ANALYSIS + 'demouser_sequencealignment/input/sequence.fasta', path)
 
         with open(path, 'r') as file:
             # file format check

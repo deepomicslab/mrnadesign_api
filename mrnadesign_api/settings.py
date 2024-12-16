@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'mrna_task',
     'taskresult',
     'database',
+    'analysis',
 
     
     # 'phage',

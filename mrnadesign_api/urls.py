@@ -149,6 +149,10 @@ router = routers.DefaultRouter()
 
 urlpatterns = [
     path('', include(router.urls)),
+
+    re_path('database/', include('database.urls')), # api/database/xxx
+    re_path('analysis/', include('analysis.urls')), # api/analysis/xxx
+    
     path('admin/', admin.site.urls),
     path('api/', include('rest_framework.urls')),
 
@@ -234,7 +238,7 @@ urlpatterns = [
     path('tasks/prediction_result/', taskresult.views.predictionresultView), 
     path('tasks/proteinstructure/', taskresult.views.viewproteinstructure),
     path('tasks/secondarystructure/', taskresult.views.viewsecondarystructure),
-    path('tasks/files/<path:path>/', taskresult.views.viewresultfile),
+    # path('tasks/files/<path:path>/', taskresult.views.viewresultfile),
     path('tasks/zip/', taskresult.views.getZipData),
     path('task/result/sequencemarker/', taskresult.views.sequencemarker),
     # path('task/result/primarystructure/', taskresult.views.viewprimarystructure),
@@ -282,8 +286,6 @@ urlpatterns = [
 #      #download a cluster fasta
 #     path('download/cluster/fasta/',phage_clusters.views.getfasta),
     # path('files/<path:path>/', phage.views.downloadbypaath),
-    path('files/<path:path>/', antigen.views.downloadbypaath),
+    # path('files/<path:path>/', antigen.views.downloadbypaath),
     # path('fasta/<path:path>/', phage.views.downloadbypaatfasta),
-
-    re_path('database/', include('database.urls')), # api/database/xxx
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

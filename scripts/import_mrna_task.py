@@ -105,11 +105,11 @@ demo_user_map = {
         'task_id': -70,
         'job_id': '1227000',
         'user_input_path': {
-            'fasta': local_settings.DEMO_ANALYSIS + 'demouser_sequencealignmnet/input/sequence.fasta',
+            'fasta': local_settings.DEMO_ANALYSIS + 'demouser_sequencealignment/input/sequence.fasta',
         },
         'is_demo_input': True,
-        'output_result_path': local_settings.DEMO_ANALYSIS + 'demouser_sequencealignmnet/output/result/',
-        'output_log_path': local_settings.DEMO_ANALYSIS + 'demouser_sequencealignmnet/output/log/',
+        'output_result_path': local_settings.DEMO_ANALYSIS + 'demouser_sequencealignment/output/result/',
+        'output_log_path': local_settings.DEMO_ANALYSIS + 'demouser_sequencealignment/output/log/',
         'analysis_type': 'Sequence Align',
         'parameters': {
             "window_size": "11",

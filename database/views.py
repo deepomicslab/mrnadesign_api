@@ -1,26 +1,9 @@
-from django.http import HttpResponse, StreamingHttpResponse, JsonResponse, FileResponse
-from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404
+from django.http import FileResponse
 from database.serializers import *
-from rest_framework import viewsets
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework.parsers import MultiPartParser, JSONParser
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.pagination import PageNumberPagination
-from datetime import datetime, timedelta
-from django.utils import timezone
-from django.db.models import Q
-from mrnadesign_api import settings
-import os
+from rest_framework.decorators import api_view
 from . import utils
 from io import BytesIO
-import ast
-from django.db.models import Count
-import json
-import pandas as pd
-import random
+from mrnadesign_api import settings_local as local_settings
 
 @api_view(["GET"])
 def download_protein_cif(request):
@@ -34,4 +17,14 @@ def download_protein_cif(request):
     response['Content-Disposition'] = 'attachment; filename="protein.cif"'
     response['Content-Type'] = 'text/plain'
 
+    return response
+
+@api_view(['GET'])
+def downloadbypaath(request, path):
+    file_path = local_settings.MRNADESIGN_DATABASE + path
+    file = open(file_path, 'rb')
+    response = FileResponse(file)
+    filename = file.name.split('/')[-1]
+    response['Content-Disposition'] = "attachment; filename="+filename
+    response['Content-Type'] = 'text/plain'
     return response

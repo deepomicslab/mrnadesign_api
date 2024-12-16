@@ -61,12 +61,12 @@ def getstats(request):
         'num_type': num_type,
     })
 
-@api_view(['GET'])
-def downloadbypaath(request, path):
-    file_path = local_settings.MRNADESIGN_DATABASE + path
-    file = open(file_path, 'rb')
-    response = FileResponse(file)
-    filename = file.name.split('/')[-1]
-    response['Content-Disposition'] = "attachment; filename="+filename
-    response['Content-Type'] = 'text/plain'
-    return response
+# @api_view(['GET'])
+# def downloadbypaath(request, path):
+#     file_path = local_settings.MRNADESIGN_DATABASE + path
+#     file = open(file_path, 'rb')
+#     response = FileResponse(file)
+#     filename = file.name.split('/')[-1]
+#     response['Content-Disposition'] = "attachment; filename="+filename
+#     response['Content-Type'] = 'text/plain'
+#     return response
