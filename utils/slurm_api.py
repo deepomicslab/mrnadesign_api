@@ -1,7 +1,7 @@
 import time
 import subprocess
 from slurmpy import Slurm
-from Phage_api import settings_local as local_settings
+# from Phage_api import settings_local as local_settings
 import re
 import sys
 # statuslist = ['PENDING', 'RUNNING', 'SUSPENDED', 'COMPLETING', 'COMPLETED',
