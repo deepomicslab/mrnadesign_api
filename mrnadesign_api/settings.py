@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'three_utr',
     'mrna_task',
     'taskresult',
+    'database',
 
     
     # 'phage',

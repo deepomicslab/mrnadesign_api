@@ -16,6 +16,8 @@ Including another URLconf
 # ['Genbank', 'RefSeq', 'DDBJ', 'EMBL', 'tpg', 'PhagesDB', 'GPD', 'GVD', 'MGV', 'TemPhD','CHVD','IGVD','IMG VR','GOV2','STV',]
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 from rest_framework import routers
 
 from antigen.views import antigenViewSet
@@ -55,6 +57,8 @@ import taskresult.views
 import antigen.views
 import tantigen.views
 import three_utr.views
+
+from django.urls import include, re_path
 
 router = routers.DefaultRouter()
 
@@ -280,4 +284,6 @@ urlpatterns = [
     # path('files/<path:path>/', phage.views.downloadbypaath),
     path('files/<path:path>/', antigen.views.downloadbypaath),
     # path('fasta/<path:path>/', phage.views.downloadbypaatfasta),
-]
+
+    re_path('database/', include('database.urls')), # api/database/xxx
+]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
