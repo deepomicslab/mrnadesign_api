@@ -24,6 +24,7 @@ from antigen.views import antigenViewSet
 # from tantigen_db.views import tantigen_dbViewSet
 from tantigen.views import tantigenViewSet
 from three_utr.views import three_utrViewSet
+from mirtarbase_db.views import mirtarbaseViewSet
 # from phage.views import phageViewSet, phage_NCBIViewSet, phage_PhagesDBViewSet, phage_GPDViewSet, phage_GVDViewSet, phage_MGVViewSet, phage_TemPhDViewSet, phage_CHVDViewSet, phage_IGVDViewSet, phage_IMG_VRViewSet, phage_GOV2ViewSet, phage_STVViewSet
 # from phage.views import phage_crisprViewSet
 
@@ -150,142 +151,147 @@ router = routers.DefaultRouter()
 urlpatterns = [
     path('', include(router.urls)),
 
-    re_path('database/', include('database.urls')), # api/database/xxx
-    re_path('analysis/', include('analysis.urls')), # api/analysis/xxx
-    
+    re_path('database/', include('database.urls')),  # api/database/xxx
+    re_path('analysis/', include('analysis.urls')),  # api/analysis/xxx
+
     path('admin/', admin.site.urls),
     path('api/', include('rest_framework.urls')),
 
     path('antigen/', antigenViewSet.as_view()),
     path('tantigen/', tantigenViewSet.as_view()),
     path('three_utr/', three_utrViewSet.as_view()),
+    path('mirtarbase/', mirtarbaseViewSet.as_view()),
 
     path('overview/antigensourceorganism/', antigen.views.getsourceorganism),
     path('overview/stats/antigen/', antigen.views.getstats),
     path('overview/stats/tantigen/', tantigen.views.getstats),
     path('overview/stats/threeutr/', three_utr.views.getstats),
 
-    
-#     path('phage/', phageViewSet.as_view({'get': 'list'})),
-#     path('crispr/', phage_crisprViewSet.as_view({'get': 'list'})),
-#     path('anticrispr/', phage_anticrisprViewSet.as_view({'get': 'list'})),
-#     path('trna/', phage_trnasViewSet.as_view({'get': 'list'})),
 
-#     path('terminators/',
-#          phage_protein.views.phage_terminatorsViewSet.as_view({'get': 'list'})),
+    #     path('phage/', phageViewSet.as_view({'get': 'list'})),
+    #     path('crispr/', phage_crisprViewSet.as_view({'get': 'list'})),
+    #     path('anticrispr/', phage_anticrisprViewSet.as_view({'get': 'list'})),
+    #     path('trna/', phage_trnasViewSet.as_view({'get': 'list'})),
 
-#     path('phage/detail', phage.views.phageView.as_view()),
-#     path('phage/cluster', phage.views.phage_clusterView.as_view()),
-#     path('phage/subcluster', phage.views.phage_subclusterView.as_view()),
-#     path('phage/filter/', phage.views.phage_filterView.as_view()),
-#     path('phage/search/', phage.views.phage_searchView.as_view()),
+    #     path('terminators/',
+    #          phage_protein.views.phage_terminatorsViewSet.as_view({'get': 'list'})),
 
-#     #base id download
-#     path('phage/fasta/', phage.views.getfasta),
-#     path('phage/gbk/', phage.views.getgbk),
-#     path('phage/gff/', phage.views.getgff),
-#     path('phage/meta/', phage.views.getphagemeta),
+    #     path('phage/detail', phage.views.phageView.as_view()),
+    #     path('phage/cluster', phage.views.phage_clusterView.as_view()),
+    #     path('phage/subcluster', phage.views.phage_subclusterView.as_view()),
+    #     path('phage/filter/', phage.views.phage_filterView.as_view()),
+    #     path('phage/search/', phage.views.phage_searchView.as_view()),
 
-
-#     path('phage/protein_metadata/', phage_protein.views.proteinmetadata),
+    #     #base id download
+    #     path('phage/fasta/', phage.views.getfasta),
+    #     path('phage/gbk/', phage.views.getgbk),
+    #     path('phage/gff/', phage.views.getgff),
+    #     path('phage/meta/', phage.views.getphagemeta),
 
 
-#     # get annotation data from a phage
-#     # get all the anticrisprs of a phage
-#     path('phage/anticrispr/', phage_protein.views.phage_anticrisprView.as_view()),
-#     # get all the trnas of a phage
-#     path('phage/trnas/', phage_trna.views.trnaView.as_view()),
-#     # get all the crisprs of a phage
-#     path('phage/crispr/', phage_protein.views.crisprView.as_view()),
-#     # get all the transprotein of a phage
-#     path('phage/transprotein/', phage_protein.views.transproteinView.as_view()),
-#     # get all the Transmembrane Protein of a phage
-#     path('phage/terminator/', phage_protein.views.terminatorView.as_view()),
-#     path('phage/arvf/', phage_protein.views.arvfView.as_view()),
-#     path('phage/protein/', phage_protein.views.phage_proteindetailView.as_view()),
+    #     path('phage/protein_metadata/', phage_protein.views.proteinmetadata),
 
 
-#     path('proteins', phage_protein.views.phage_proteinView.as_view()),
+    #     # get annotation data from a phage
+    #     # get all the anticrisprs of a phage
+    #     path('phage/anticrispr/', phage_protein.views.phage_anticrisprView.as_view()),
+    #     # get all the trnas of a phage
+    #     path('phage/trnas/', phage_trna.views.trnaView.as_view()),
+    #     # get all the crisprs of a phage
+    #     path('phage/crispr/', phage_protein.views.crisprView.as_view()),
+    #     # get all the transprotein of a phage
+    #     path('phage/transprotein/', phage_protein.views.transproteinView.as_view()),
+    #     # get all the Transmembrane Protein of a phage
+    #     path('phage/terminator/', phage_protein.views.terminatorView.as_view()),
+    #     path('phage/arvf/', phage_protein.views.arvfView.as_view()),
+    #     path('phage/protein/', phage_protein.views.phage_proteindetailView.as_view()),
 
-#     path('cluster/detail', phage_clusters.views.clusterView.as_view()),
-#     path('cluster/tree', phage_clusters.views.cluster_treeView.as_view()),
-#     path('cluster/heatmap', phage_clusters.views.cluster_heatmapView.as_view()),
-#     path('cluster/alignment', phage_clusters.views.cluster_alignmentView),
-#     path('subclusters', phage_subcluster.views.subclustersView.as_view()),
-#     path('subcluster/detail', phage_subcluster.views.subcluster_detialView.as_view()),
 
-#     path('hosts/node', phage_hosts.views.phage_hosts_nodeView.as_view()),
-#     path('hosts/view/', phage_hosts.views.phage_hostsView.as_view()),
-#     path('hosts/filter/', phage_hosts.views.phage_hostsfilterView.as_view()),
+    #     path('proteins', phage_protein.views.phage_proteinView.as_view()),
+
+    #     path('cluster/detail', phage_clusters.views.clusterView.as_view()),
+    #     path('cluster/tree', phage_clusters.views.cluster_treeView.as_view()),
+    #     path('cluster/heatmap', phage_clusters.views.cluster_heatmapView.as_view()),
+    #     path('cluster/alignment', phage_clusters.views.cluster_alignmentView),
+    #     path('subclusters', phage_subcluster.views.subclustersView.as_view()),
+    #     path('subcluster/detail', phage_subcluster.views.subcluster_detialView.as_view()),
+
+    #     path('hosts/node', phage_hosts.views.phage_hosts_nodeView.as_view()),
+    #     path('hosts/view/', phage_hosts.views.phage_hostsView.as_view()),
+    #     path('hosts/filter/', phage_hosts.views.phage_hostsfilterView.as_view()),
 
     path('analyze/linear_design/', mrna_task.views.lineardesignView.as_view()),
-    path('analyze/linear_design_inputcheck/', mrna_task.views.lineardesigninputcheckView.as_view()),
+    path('analyze/linear_design_inputcheck/',
+         mrna_task.views.lineardesigninputcheckView.as_view()),
     path('analyze/prediction/', mrna_task.views.predictionView.as_view()),
     path('analyze/safety/', mrna_task.views.safetyView.as_view()),
     path('analyze/sequence_align/', mrna_task.views.sequencealignView.as_view()),
     # path('analyze/pipline/', task.views.piplineView.as_view()),
-#     path('analyze/clusterpipline/', task.views.clusterpiplineView.as_view()),
-#     path('analyze/inputcheck/', analysis.views.inputcheck.as_view()),
+    #     path('analyze/clusterpipline/', task.views.clusterpiplineView.as_view()),
+    #     path('analyze/inputcheck/', analysis.views.inputcheck.as_view()),
 
 
     path('tasks/detail/', mrna_task.views.viewtaskdetail),
-    path('tasks/detail/log/',mrna_task.views.viewtasklog),
+    path('tasks/detail/log/', mrna_task.views.viewtasklog),
     # path('tasks/list/', task.views.viewtask),
     path('tasks/list/', mrna_task.views.viewtask),
     path('tasks/safety_result/', taskresult.views.safetyresultView),
     path('tasks/sequencealign_result/', taskresult.views.sequencealignresultView),
     path('tasks/lineardesign_result/', taskresult.views.lineardesignresultView),
-    path('tasks/prediction_result/', taskresult.views.predictionresultView), 
+    path('tasks/prediction_result/', taskresult.views.predictionresultView),
     path('tasks/proteinstructure/', taskresult.views.viewproteinstructure),
     path('tasks/secondarystructure/', taskresult.views.viewsecondarystructure),
     # path('tasks/files/<path:path>/', taskresult.views.viewresultfile),
     path('tasks/zip/', taskresult.views.getZipData),
     path('task/result/sequencemarker/', taskresult.views.sequencemarker),
     # path('task/result/primarystructure/', taskresult.views.viewprimarystructure),
-    path('task/result/primarystructure_mainregion/', taskresult.views.viewprimarystructuremainregion),
-    path('task/result/primarystructure_uORF/', taskresult.views.viewprimarystructureuorf),
-    path('task/result/primarystructure_res/', taskresult.views.viewprimarystructureres),
+    path('task/result/primarystructure_mainregion/',
+         taskresult.views.viewprimarystructuremainregion),
+    path('task/result/primarystructure_uORF/',
+         taskresult.views.viewprimarystructureuorf),
+    path('task/result/primarystructure_res/',
+         taskresult.views.viewprimarystructureres),
     path('task/result/scoringheatmap/', taskresult.views.viewscoring),
-#     path('tasks/result/phage/', task.views.viewphage),
-#     path('tasks/result/phage/terminators/', task.views.viewphageterminators),
-#     path('tasks/result/phage/trnas/', task.views.viewphagetrnas),
-#     path('tasks/result/phage/crisprs/', task.views.viewphagecrisprs),
-#     path('tasks/result/phage/arvgs/', task.views.viewphagearvgs),
-#     path('tasks/result/phage/transmembranes/', task.views.viewphagetransmembranes),
-#     path('tasks/result/phage/anticrisprs/', task.views.viewphageanticrisprs),
-
-    
-#     path('tasks/result/phage/detail/', task.views.viewphagedetail),
-#     path('tasks/result/proteins/', task.views.viewprotein),
-#     path('tasks/result/modules/detail/', task.views.viewmodulesdetail),
-#     path('tasks/result/modules/', task.views.viewmodules),
-
-#    #path('tasks/result/cluster/detail', task.views.viewclusterdetail),
-
-#     path('tasks/result/tree/', task.views.viewtree),
-#     path('tasks/result/phagefasta/', task.views.phagefasta),
-#     path('tasks/result/quality/', task.views.viewquality),
-#     path('tasks/result/download/<path:path>/', task.views.getoutputfile),
-#     path('tasks/visualize/heatmap/', task.views.viewheatmap),
+    #     path('tasks/result/phage/', task.views.viewphage),
+    #     path('tasks/result/phage/terminators/', task.views.viewphageterminators),
+    #     path('tasks/result/phage/trnas/', task.views.viewphagetrnas),
+    #     path('tasks/result/phage/crisprs/', task.views.viewphagecrisprs),
+    #     path('tasks/result/phage/arvgs/', task.views.viewphagearvgs),
+    #     path('tasks/result/phage/transmembranes/', task.views.viewphagetransmembranes),
+    #     path('tasks/result/phage/anticrisprs/', task.views.viewphageanticrisprs),
 
 
-#     path('download/phage/meta/', phage.views.downloadphagetmeta),
-#     path('download/protein/meta/', phage_protein.views.downloadproteinmetadata),
-#     path('download/phage/terminator/meta/',
-#          phage_protein.views.downloadterminatormetadata),
-#     path('download/phage/trna/meta/', phage_protein.views.downloadtrnametadata),
-#     path('download/phage/anticrispr/meta/',
-#          phage_protein.views.downloadanticrisprmetadata),
-#     path('download/phage/crispr/meta/',
-#          phage_protein.views.downloadcrisprmetadata),
-#     path('download/phage/transmembrane/meta/',
-#          phage_protein.views.downloadtransmembranemetadata),
-#     path('download/phage/fasta/', phage.views.download_phage_fasta),
-#     path('download/protein/fasta/',
-#          phage_protein.views.download_protein_fasta),
-#      #download a cluster fasta
-#     path('download/cluster/fasta/',phage_clusters.views.getfasta),
+    #     path('tasks/result/phage/detail/', task.views.viewphagedetail),
+    #     path('tasks/result/proteins/', task.views.viewprotein),
+    #     path('tasks/result/modules/detail/', task.views.viewmodulesdetail),
+    #     path('tasks/result/modules/', task.views.viewmodules),
+
+    #    #path('tasks/result/cluster/detail', task.views.viewclusterdetail),
+
+    #     path('tasks/result/tree/', task.views.viewtree),
+    #     path('tasks/result/phagefasta/', task.views.phagefasta),
+    #     path('tasks/result/quality/', task.views.viewquality),
+    #     path('tasks/result/download/<path:path>/', task.views.getoutputfile),
+    #     path('tasks/visualize/heatmap/', task.views.viewheatmap),
+
+
+    #     path('download/phage/meta/', phage.views.downloadphagetmeta),
+    #     path('download/protein/meta/', phage_protein.views.downloadproteinmetadata),
+    #     path('download/phage/terminator/meta/',
+    #          phage_protein.views.downloadterminatormetadata),
+    #     path('download/phage/trna/meta/', phage_protein.views.downloadtrnametadata),
+    #     path('download/phage/anticrispr/meta/',
+    #          phage_protein.views.downloadanticrisprmetadata),
+    #     path('download/phage/crispr/meta/',
+    #          phage_protein.views.downloadcrisprmetadata),
+    #     path('download/phage/transmembrane/meta/',
+    #          phage_protein.views.downloadtransmembranemetadata),
+    #     path('download/phage/fasta/', phage.views.download_phage_fasta),
+    #     path('download/protein/fasta/',
+    #          phage_protein.views.download_protein_fasta),
+    #      #download a cluster fasta
+    #     path('download/cluster/fasta/',phage_clusters.views.getfasta),
     # path('files/<path:path>/', phage.views.downloadbypaath),
     # path('files/<path:path>/', antigen.views.downloadbypaath),
     # path('fasta/<path:path>/', phage.views.downloadbypaatfasta),
-]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

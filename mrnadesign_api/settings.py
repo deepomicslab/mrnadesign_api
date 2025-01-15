@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'antigen',
     'tantigen',
     'three_utr',
+    'mirtarbase_db',
     'mrna_task',
     'taskresult',
     'database',
