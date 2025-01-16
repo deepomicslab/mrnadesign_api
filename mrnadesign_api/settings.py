@@ -50,12 +50,13 @@ INSTALLED_APPS = [
     'tantigen',
     'three_utr',
     'mirtarbase_db',
+    'gtrnadb',
     'mrna_task',
     'taskresult',
     'database',
     'analysis',
 
-    
+
     # 'phage',
     # 'phage_protein',
     # 'phage_clusters',
@@ -74,7 +75,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-    
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
