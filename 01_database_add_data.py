@@ -5,6 +5,8 @@ from scripts import (
     import_mrna_task,
     import_mirtarbase_db,
     import_gtrnadb,
+    import_tsnadb,
+    import_rebase_db,
 )
 from datetime import timedelta
 import datetime
@@ -35,9 +37,14 @@ def log(log_str):
 # import_mrna_task.add_data()
 # log(" [completed] scripts.import_mrna_task\n")
 
-
 # import_mirtarbase_db.add_data()
 # log(" [completed] scripts.import_mirtarbase_db\n")
 
 # import_gtrnadb.add_data()
 # log(" [completed] scripts.import_gtrnadb\n")
+
+# import_tsnadb.add_data()
+# log(" [completed] scripts.import_tsnadb\n")
+
+# import_rebase_db.add_data()
+# log(" [completed] scripts.import_rebase_db\n")

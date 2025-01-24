@@ -24,6 +24,8 @@ from tantigen.views import tantigenViewSet
 from three_utr.views import three_utrViewSet
 from mirtarbase_db.views import mirtarbaseViewSet
 from gtrnadb.views import gtrnadbViewSet, gtrnadbDetailViewSet, gtrnadbDetailCommonViewSet
+from tsnadb.views import tsnadb2ValidatedViewSet, tsnadb2NeoantigenViewSet
+from rebase_db.views import rebaseDataViewSet, rebaseLinkViewSet
 
 
 import mrna_task.views
@@ -57,6 +59,10 @@ urlpatterns = [
     path('gtrnadb/', gtrnadbViewSet.as_view()),
     path('gtrnadb/detail/', gtrnadbDetailViewSet.as_view()),
     path('gtrnadb/detail/common/', gtrnadbDetailCommonViewSet.as_view()),
+    path('tsnadb2/validated/', tsnadb2ValidatedViewSet.as_view()),
+    path('tsnadb2/neoantigen/', tsnadb2NeoantigenViewSet.as_view()),
+    path('rebase/data/', rebaseDataViewSet.as_view()),
+    path('rebase/link/', rebaseLinkViewSet.as_view()),
 
     path('overview/antigensourceorganism/', antigen.views.getsourceorganism),
     path('overview/stats/antigen/', antigen.views.getstats),

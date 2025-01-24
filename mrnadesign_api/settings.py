@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'three_utr',
     'mirtarbase_db',
     'gtrnadb',
+    'tsnadb',
+    'rebase_db',
     'mrna_task',
     'taskresult',
     'database',
