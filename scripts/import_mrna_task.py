@@ -8,24 +8,46 @@ django.setup()
 
 
 demo_user_map = {
-    # ============================== one demo case of linear design ============================== 
-    'Demo User Linear Design': {
+    # ============================== two demo cases of linear design =============================
+    'Demo User Linear Design - CDS plus 35utr': {
         'task_id': -99,
         'job_id': '1443108',
         'user_input_path': {
-            'fasta': local_settings.DEMO_ANALYSIS + 'demouser_lineardesign/input/sequence.fasta',
+            'fasta': local_settings.DEMO_ANALYSIS + 'demouser_lineardesign_cds_plus_35utr/input/sequence.fasta',
+            'utr3_path': local_settings.DEMO_ANALYSIS + 'demouser_lineardesign_cds_plus_35utr/input/utr3.fasta', 
+            'utr5_path': local_settings.DEMO_ANALYSIS + 'demouser_lineardesign_cds_plus_35utr/input/utr5.fasta',
         },
         'is_demo_input': True,
-        'output_result_path': local_settings.DEMO_ANALYSIS + 'demouser_lineardesign/output/result/',
-        'output_log_path': local_settings.DEMO_ANALYSIS + 'demouser_lineardesign/output/log/',
+        'output_result_path': local_settings.DEMO_ANALYSIS + 'demouser_lineardesign_cds_plus_35utr/output/result/',
+        'output_log_path': local_settings.DEMO_ANALYSIS + 'demouser_lineardesign_cds_plus_35utr/output/log/',
         'analysis_type': 'Linear Design',
         'parameters': {
             "lambda": "0", 
             "codonusage": "human",
+            "lineardesignanalysistype": "cds_plus_35utr",
         },
         'status': 'Success',
         'created_at': 'N/A',
-        'task_results': [-990, -991],
+        'task_results': [],
+    },
+    'Demo User Linear Design - CDS only': {
+        'task_id': -98,
+        'job_id': '1443109',
+        'user_input_path': {
+            'fasta': local_settings.DEMO_ANALYSIS + 'demouser_lineardesign_cds_only/input/sequence.fasta',
+        },
+        'is_demo_input': True,
+        'output_result_path': local_settings.DEMO_ANALYSIS + 'demouser_lineardesign_cds_only/output/result/',
+        'output_log_path': local_settings.DEMO_ANALYSIS + 'demouser_lineardesign_cds_only/output/log/',
+        'analysis_type': 'Linear Design',
+        'parameters': {
+            "lambda": "0", 
+            "codonusage": "human",
+            "lineardesignanalysistype": "cds_only",
+        },
+        'status': 'Success',
+        'created_at': 'N/A',
+        'task_results': [],
     },
 
     # ============================== three demo cases of prediction ============================== 
@@ -123,26 +145,6 @@ demo_user_map = {
 }
 
 demo_user_task_map = {
-    # ============================== linear design ==============================  
-    -990: {
-        'mrna_task_analysis_type': 'Linear Design',
-        'task_id': -99,
-        'seq_name': '>seq1',
-        'sequence': 'AUGCCAAACACUUUGGCAUGCCCG',
-        'structure': '((((((((...)))))))).....',
-        'folding_free_energy': -7.4,
-        'cai': 0.653,
-    },
-    -991: {
-        'mrna_task_analysis_type': 'Linear Design',
-        'task_id': -99,
-        'seq_name': '>seq2',
-        'sequence': 'AUGCUGGAUCAGGUCAACAAGCUGAAGUACCCUGAGGUUUCGUUGACCUGA',
-        'structure': '........(((((((((((((((..((....))..))))).))))))))))',
-        'folding_free_energy': -20.7,
-        'cai': 0.768,
-    },
-
     # ============================== prediction ============================== 
     -995: {
         'mrna_task_analysis_type': 'Prediction',
@@ -170,6 +172,8 @@ demo_user_task_map = {
         'task_name': 'SEQ000000',
     },
 
+    # ============================== linear design ============================== 
+    # skip
     # ============================== safety ============================== 
     # skip
     # ============================== sequence alignment ============================== 
@@ -183,21 +187,7 @@ def add_data():
             continue
 
         for task_result_id in demo_user_map[userid]['task_results']:
-            if demo_user_task_map[task_result_id]['mrna_task_analysis_type'] == 'Linear Design':
-                from taskresult.models import lineardesign_taskresult
-                if len(lineardesign_taskresult.objects.filter(id=task_result_id)) > 0:
-                    continue
-                lineardesign_taskresult.objects.create(
-                    id=task_result_id,
-                    mrna_task_analysis_type=demo_user_task_map[task_result_id]['mrna_task_analysis_type'],
-                    task_id=demo_user_task_map[task_result_id]['task_id'],
-                    seq_name=demo_user_task_map[task_result_id]['seq_name'],
-                    sequence=demo_user_task_map[task_result_id]['sequence'],
-                    structure=demo_user_task_map[task_result_id]['structure'],
-                    folding_free_energy=demo_user_task_map[task_result_id]['folding_free_energy'],
-                    cai=demo_user_task_map[task_result_id]['cai'],
-                )
-            elif demo_user_task_map[task_result_id]['mrna_task_analysis_type'] == 'Prediction':
+            if demo_user_task_map[task_result_id]['mrna_task_analysis_type'] == 'Prediction':
                 from taskresult.models import prediction_taskresult
                 if len(prediction_taskresult.objects.filter(id=task_result_id)) > 0:
                     continue
@@ -207,6 +197,8 @@ def add_data():
                     task_id=demo_user_task_map[task_result_id]['task_id'],
                     task_name=demo_user_task_map[task_result_id]['task_name'],
                 )
+            # elif demo_user_task_map[task_result_id]['mrna_task_analysis_type'] == 'Linear Design':
+                # pass
             # elif demo_user_task_map[task_result_id]['mrna_task_analysis_type'] == 'Safety':
                 # pass
             # elif demo_user_task_map[task_result_id]['mrna_task_analysis_type'] == 'Sequence Align':

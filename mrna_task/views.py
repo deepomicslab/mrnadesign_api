@@ -27,17 +27,19 @@ def generate_id():
     return id
 
 # Create your views here.
+
 class lineardesignView(APIView):
     def post(self, request, *args, **kwargs):
-        codonusage = request.data['codonusage']
-        lambda_ = request.data['lambda']
+        parameters = json.loads(request.data['parameters'])
+        codonusage = parameters['codonusage']
+        lambda_ = parameters['lambda']
         analysistype = request.data['analysistype']
         user_id = request.data['userid']
         inputtype = request.data['inputtype']
         is_demo_input = (request.data['rundemo'] == 'true')
+        lineardesignanalysistype = request.data['lineardesignanalysistype']
 
         usertask = str(int(time.time()))+'_' + generate_id()
-        path = local_settings.USER_PATH + usertask + '/input/' + 'sequence.fasta'
         os.makedirs(local_settings.USER_PATH + usertask, exist_ok=False)
         os.makedirs(local_settings.USER_PATH +
                     usertask + '/input', exist_ok=False)
@@ -46,46 +48,70 @@ class lineardesignView(APIView):
         os.makedirs(local_settings.USER_PATH + usertask +
                     '/output/log', exist_ok=False)
 
-        if inputtype == 'upload':
-            submitfile = request.FILES['submitfile']
-            path = local_settings.USER_PATH + usertask + '/input/' + submitfile.name
-            _path = default_storage.save(path, ContentFile(submitfile.read()))
-        elif inputtype == 'paste':
-            with open(path, 'w') as file:
-                file.write(request.data['file'])
-        elif inputtype == 'enter':
-            queryids = set(json.loads(request.data['queryids']))
-            datatable = request.data['datatable']
-            with open(path, 'w') as file:
-                for idx, id in enumerate(queryids):
-                    if datatable == 'antigen':
-                        antigen_obj = antigen.objects.get(id=id)
-                        file.write('>seq' + str(id) + '\n')
-                        file.write(antigen_obj.sequence + '\n')
-                    elif datatable == 'tantigen':
-                        tantigen_obj = tantigen.objects.get(id=id)
-                        file.write('>seq' + str(id) + '\n')
-                        file.write(tantigen_obj.antigen_sequence + '\n')
-        elif inputtype == 'rundemo':
-            shutil.copy(local_settings.DEMO_ANALYSIS + 'demouser_lineardesign/input/sequence.fasta', path)
+        utr3_path = local_settings.USER_PATH + usertask + '/input/' + 'utr3.fasta' 
+        cds_path = local_settings.USER_PATH + usertask + '/input/' + 'sequence.fasta' 
+        utr5_path = local_settings.USER_PATH + usertask + '/input/' + 'utr5.fasta' 
 
-        with open(path, 'r') as file:
+        if inputtype == 'upload':
+            if lineardesignanalysistype == 'cds_only':
+                submitfile1 = request.FILES['submitfile1']
+                _path = default_storage.save(cds_path, ContentFile(submitfile1.read()))
+            elif lineardesignanalysistype == 'cds_plus_35utr':
+                submitfile1 = request.FILES['submitfile1']
+                submitfile2 = request.FILES['submitfile2']
+                submitfile3 = request.FILES['submitfile3']
+                for f in [submitfile1, submitfile2, submitfile3]:
+                    if f.name == 'cds.fasta' or f.name == 'cds.fa': _path = default_storage.save(cds_path, ContentFile(f.read()))
+                    elif f.name == 'utr3.fasta' or f.name == 'utr3.fa': _path = default_storage.save(utr3_path, ContentFile(f.read()))
+                    elif f.name == 'utr5.fasta' or f.name == 'utr5.fa': _path = default_storage.save(utr5_path, ContentFile(f.read()))
+        
+        elif inputtype == 'paste':
+            seq_dict_list = json.loads(request.data['seq'])
+
+            cds_seq_data = ''
+            for idx, entry in enumerate(seq_dict_list):
+                cds_seq_data += '>' + entry['name'] + '\n' + entry['cds'] + '\n'
+            with open(cds_path, 'w') as file: file.write(cds_seq_data)
+
+            if lineardesignanalysistype == 'cds_plus_35utr':
+                utr3_seq_data = ''
+                utr5_seq_data = ''
+                for idx, entry in enumerate(seq_dict_list):
+                    utr3_seq_data += '>' + entry['name'] + '\n' + entry['utr3'] + '\n'
+                    utr5_seq_data += '>' + entry['name'] + '\n' + entry['utr5'] + '\n'
+                with open(utr3_path, 'w') as file: file.write(utr3_seq_data)
+                with open(utr5_path, 'w') as file: file.write(utr5_seq_data)
+
+        elif inputtype == 'rundemo':
+            if lineardesignanalysistype == 'cds_only':
+                shutil.copy(local_settings.DEMO_ANALYSIS + 'demouser_lineardesign_cds_only/input/sequence.fasta', cds_path)
+            elif lineardesignanalysistype == 'cds_plus_35utr':
+                shutil.copy(local_settings.DEMO_ANALYSIS + 'demouser_lineardesign_cds_plus_35utr/input/utr3.fasta', utr3_path)
+                shutil.copy(local_settings.DEMO_ANALYSIS + 'demouser_lineardesign_cds_plus_35utr/input/sequence.fasta', cds_path)
+                shutil.copy(local_settings.DEMO_ANALYSIS + 'demouser_lineardesign_cds_plus_35utr/input/utr5.fasta', utr5_path)
+
+        with open(cds_path, 'r') as file:
             # file format check
             is_upload = tools.is_fasta(file)
             if is_upload:
-                tools.uploadphagefastapreprocess(path)
+                tools.uploadphagefastapreprocess(cds_path)
 
                 # create task object
                 newtask = mrna_task.objects.create(
                     user_id=user_id,
                     user_input_path={
-                        'fasta': path,
+                        'utr3_path': utr3_path,
+                        'fasta': cds_path,
+                        'utr5_path': utr5_path,
                     },
                     is_demo_input=is_demo_input,
                     output_result_path=local_settings.USER_PATH + usertask + '/output/result/',
                     output_log_path=local_settings.USER_PATH + usertask + '/output/log/',
                     analysis_type=analysistype,
                     parameters={
+                        # task parameter
+                        'lineardesignanalysistype': lineardesignanalysistype,
+                        # script parameter
                         'lambda': lambda_,
                         'codonusage': codonusage,
                     },
@@ -102,6 +128,7 @@ class lineardesignView(APIView):
                 sbatch_dict = {
                     'user_input_path': newtask.user_input_path,
                     'parameters': {
+                        'lineardesignanalysistype': lineardesignanalysistype,
                         'lambda': lambda_,
                         'codonusage': codonusage,
                     },
@@ -129,6 +156,7 @@ class lineardesignView(APIView):
                     'message': 'Pipline create failed: The file you uploaded is not a fasta file',
                 }
         return Response(res)
+
 
 class predictionView(APIView):
     def write_config(self, path, config_dict):

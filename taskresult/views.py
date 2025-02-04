@@ -5,8 +5,8 @@ from rest_framework.response import Response
 
 from mrna_task.models import mrna_task
 from mrna_task.serializers import mrna_taskSerializer
-from taskresult.models import lineardesign_taskresult, prediction_taskresult
-from taskresult.serializers import lineardesign_taskresultSerializer, prediction_taskresultSerializer
+from taskresult.models import prediction_taskresult
+from taskresult.serializers import prediction_taskresultSerializer
 from mrnadesign_api import settings_local as local_settings
 
 import pandas as pd
@@ -58,6 +58,16 @@ def sequencealignresultView(request):
     # txt_files = context['txt_files']
     return Response({'results': results})
 
+def get_seq_dict(path):
+    res_dict = {}
+    with open(path, "r") as file:
+        lines = file.readlines()
+        for i in range(len(lines)):
+            if '>' in lines[i]:
+                res_dict[lines[i][:-1]] = [lines[i + 1][:-1], lines[i + 2].split(' ')[0]]
+                i += 2
+    return res_dict
+
 @api_view(['GET'])
 def lineardesignresultView(request):
     querydict = request.query_params.dict()
@@ -65,21 +75,55 @@ def lineardesignresultView(request):
     mrnatask_obj = mrna_task.objects.get(id=taskid)
 
     assert mrnatask_obj.analysis_type == 'Linear Design'
-    queryset = lineardesign_taskresult.objects.filter(id__in = mrnatask_obj.task_results).order_by('id')
+    lineardesignanalysistype = mrnatask_obj.parameters['lineardesignanalysistype']
+    
+    with open(mrnatask_obj.output_result_path + 'result.txt', 'r') as fout:
+        L = fout.readlines()
+
+    seq_name = []
+    sequence = []
+    structure = []
+    folding_free_energy = []
+    cai = []
+    for l in L:
+        if '>' in l:
+            seq_name.append(l[:-1]) # remove '\n'
+        elif 'mRNA sequence' in l:
+            sequence.append(l.split(' ')[-1][:-1])
+        elif 'structure' in l:
+            structure.append(l.split(' ')[-1][:-1])
+        elif 'folding free energy' in l and 'CAI' in l:
+            folding_free_energy.append(l.split(' ')[4])
+            cai.append(l.split(' ')[8][:-1]) 
+
+    merged_df = []
+    if lineardesignanalysistype == 'cds_plus_35utr':
+        utr3_dict = get_seq_dict(mrnatask_obj.output_result_path + '3utr_rnafold.output')
+        utr5_dict = get_seq_dict(mrnatask_obj.output_result_path + '5utr_rnafold.output')
+        for i in range(len(seq_name)):
+            merged_df.append([
+                seq_name[i], 
+                utr3_dict[seq_name[i]][0], utr3_dict[seq_name[i]][1], 
+                sequence[i], structure[i], 
+                utr5_dict[seq_name[i]][0], utr5_dict[seq_name[i]][1], 
+                float(folding_free_energy[i]), float(cai[i]),])
+        merged_df = pd.DataFrame(merged_df, columns=['seq_name', 'utr3_seq', 'utr3_structure', 'sequence', 'structure', 'utr5_seq', 'utr5_structure', 'folding_free_energy', 'cai'])
+    elif lineardesignanalysistype == 'cds_only':
+        for i in range(len(seq_name)):
+            merged_df.append([seq_name[i], sequence[i], structure[i], float(folding_free_energy[i]), float(cai[i]),])
+        merged_df = pd.DataFrame(merged_df, columns=['seq_name', 'sequence', 'structure', 'folding_free_energy', 'cai'])
 
     if 'sorter' in querydict and querydict['sorter'] != '':
         sorterjson = json.loads(querydict['sorter'])
         order = sorterjson['order']
         columnKey = sorterjson['columnKey']
         if order == 'false':
-            queryset = queryset.order_by('id')
+            merged_df = merged_df.sort_values(by='id', ascending=True)
         elif order == 'ascend':
-            queryset = queryset.order_by(columnKey)
-        else:  # 'descend
-            queryset = queryset.order_by('-'+columnKey)
-    
-    serializer = lineardesign_taskresultSerializer(queryset, many=True)
-    return Response({'results': serializer.data})
+            merged_df = merged_df.sort_values(by=columnKey, ascending=True)
+        else: # 'descend
+            merged_df = merged_df.sort_values(by=columnKey, ascending=False)
+    return Response({'results': merged_df.to_dict(orient='records'), 'lineardesignanalysistype': lineardesignanalysistype})
 
 @api_view(['GET'])
 def predictionresultView(request): #####################################################################
@@ -146,97 +190,6 @@ def sequencemarker(request):
                 sequence = str(record.seq)
     return Response({'result': data, 'sequence':sequence})
 
-# @api_view(['GET'])
-# def viewprimarystructure(request):
-#     querydict = request.query_params.dict()
-#     taskid = querydict['taskid']
-#     subtask_name = querydict['protein_subtask_name']
-#     task_obj = mrna_task.objects.filter(id = taskid)[0]
-#     fpath = task_obj.output_result_path + subtask_name + '/'
-
-#     with open(fpath + 'sequence.fasta', 'r') as fasfile:
-#         for record in SeqIO.parse(fasfile, 'fasta'):
-#                 sequence = str(record.seq)
-
-#     df = pd.read_csv(fpath+'summary/results.tsv',sep='\t').replace({np.nan: None})
-#     def _get_splitSeqData(df):
-#         grouping_key = 'component_type'
-#         result = {
-#             category: sorted([
-#                 {col: row[col] for col in df.columns if col != grouping_key}
-#                 for index, row in group.iterrows()
-#             ], key=lambda x: (x['start'], x['end']))
-#             for category, group in df.groupby(grouping_key)
-#         }
-#         return result
-#     def _get_render_info(splitSeqData):
-#         ddf_list = {}
-#         for type in list(splitSeqData.keys()):
-#             ddf = pd.DataFrame()
-#             color_info = [0] * len(sequence)
-#             belongings_info = [set() for _ in range(len(sequence))]
-#             highlight_info = [[1, 0] for _ in range(len(sequence))]
-            
-#             type_result = splitSeqData.get(type, [])
-#             if type in ['main_regions', 'IRES', 'stem-loop_structure']:
-#                 continue
-#             elif type == 'uORF':
-#                 color_count = 1
-#                 for entry_idx, entry in enumerate(type_result): # 第几段，段 entry
-#                     start = entry['start'] # start is from 1, not 0
-#                     end = entry['end']
-#                     for _i in range(start, end + 1):
-#                         i = _i - 1
-#                         if _i >= start and _i < start + 3 and _i <= end:
-#                             color_info[i] = color_count
-#                         belongings_info[i].add(entry_idx)
-#                         highlight_info[i][0] = min(highlight_info[i][0], start)
-#                         highlight_info[i][1] = max(highlight_info[i][1], end)
-#                     color_count += 1
-#             elif type == 'restriction_sites':
-#                 color_count = 1
-#                 for entry_idx, entry in enumerate(type_result): # 第几段，段 entry
-#                     start = entry['start'] # start is from 1, not 0
-#                     end = entry['end']
-#                     for _i in range(start, end + 1):
-#                         i = _i - 1
-#                         if _i == start:
-#                             color_info[i] = color_count
-#                         belongings_info[i].add(entry_idx)
-#                         highlight_info[i][0] = min(highlight_info[i][0], start)
-#                         highlight_info[i][1] = max(highlight_info[i][1], end)
-#                     color_count += 1
-
-#             ddf['node'] = [i for i in sequence] # ATCG 等
-#             ddf['color'] = color_info # 0 没有颜色, > 0 不同颜色
-#             ddf['belongings'] = belongings_info # 出现在哪些段
-#             ddf['highlight_range'] = highlight_info # hightlight 范围
-
-#             # Create a new column to track if a row can be grouped
-#             ddf['can_group'] = (ddf['color'].shift() == ddf['color']) & (ddf['belongings'].shift() == ddf['belongings']) & (ddf['highlight_range'].shift() == ddf['highlight_range'])
-#             ddf['group_id'] = (~ddf['can_group']).cumsum()
-
-#             # Group by the unique group id and aggregate
-#             ddf = ddf.groupby(['group_id']).agg({
-#                 'color': 'first',  # Keep the first color
-#                 'belongings': 'first',  # Keep the first belongings
-#                 'highlight_range': 'first',  # Keep the first highlight_range
-#                 'node': ''.join  # Concatenate node values
-#             }).reset_index(drop=True)
-
-#             ddf['belongings'] = [list(i) for i in ddf['belongings']]
-#             ddf['highlight_range'] = [list(i) for i in ddf['highlight_range']]
-#             ddf = ddf[['node', 'color', 'belongings', 'highlight_range']]
-
-#             ddf_list[type] = ddf.T
-
-#         return ddf_list
-    
-#     split_seq_data = _get_splitSeqData(df)
-#     render_info = _get_render_info(split_seq_data)
-
-#     return Response({'splitSeqData': split_seq_data, 'render_info': render_info, 'sequence':sequence})
-
 @api_view(['GET'])
 def viewprimarystructuremainregion(request):
     querydict = request.query_params.dict()
@@ -268,7 +221,6 @@ def util_primarystructure_type(fpath, component_type, offset):
 
     df = pd.read_csv(fpath+'summary/results.tsv',sep='\t').replace({np.nan: None})
     
-    # df = df.iloc[:20]
     def _get_splitSeqData(df):
         grouping_key = 'component_type'
         result = {
@@ -306,22 +258,6 @@ def util_primarystructure_type(fpath, component_type, offset):
         ddf['color'] = color_info # 0 没有颜色, > 0 不同颜色
         ddf['belongings'] = belongings_info # 出现在哪些段
         ddf['highlight_range'] = highlight_info # hightlight 范围
-
-        # # Create a new column to track if a row can be grouped
-        # ddf['can_group'] = (ddf['color'].shift() == ddf['color']) & (ddf['belongings'].shift() == ddf['belongings']) & (ddf['highlight_range'].shift() == ddf['highlight_range'])
-        # ddf['group_id'] = (~ddf['can_group']).cumsum()
-
-        # # Group by the unique group id and aggregate
-        # ddf = ddf.groupby(['group_id']).agg({
-        #     'color': 'first',  # Keep the first color
-        #     'belongings': 'first',  # Keep the first belongings
-        #     'highlight_range': 'first',  # Keep the first highlight_range
-        #     'node': ''.join  # Concatenate node values
-        # }).reset_index(drop=True)
-
-        # ddf['belongings'] = [list(i) for i in ddf['belongings']]
-        # ddf['highlight_range'] = [list(i) for i in ddf['highlight_range']]
-        # ddf = ddf[['node', 'color', 'belongings', 'highlight_range']]
 
         ddf_list[type] = ddf.T
 
@@ -379,18 +315,6 @@ def viewproteinstructure(request):
     fpath = task_obj.output_result_path + subtask_name + '/protein_structure.pdb'
     url='https://mrnaapi.deepomics.org/analysis/files/'+fpath+'/'
     return Response({'type': 'pdb', 'fileurl': url})
-
-# @api_view(['GET'])
-# def viewresultfile(request, path):
-#     file = open('/'+path, 'rb') # 是一个绝对路径，home/platform/...., 在前面加上根目录的 “/” 
-#     response = FileResponse(file)
-#     filename = file.name.split('/')[-1]
-#     response['Content-Disposition'] = "attachment; filename="+filename
-#     response['Content-Type'] = 'text/plain'
-#     response['Access-Control-Allow-Origin'] = 'https://www.ncbi.nlm.nih.gov' 
-#     response["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
-#     response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
-#     return response
 
 @api_view(['GET'])
 def viewsecondarystructure(request):
