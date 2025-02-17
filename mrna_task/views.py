@@ -533,7 +533,7 @@ def strSimilarityView(request):
     protein_table_dict = {
         'antigen': ['sequence'],
         'tantigen': ['antigen_sequence'],
-        # 'tsnadb_neoantigen': ['peptide'],
+        'tsnadb_neoantigen': ['peptide'],
         'tsnadb_validated': ['mutant_peptide'],
     }
     # rna_table_dict = {
