@@ -5,8 +5,6 @@ from rest_framework.response import Response
 
 from mrna_task.models import mrna_task
 from mrna_task.serializers import mrna_taskSerializer
-from taskresult.models import prediction_taskresult
-from taskresult.serializers import prediction_taskresultSerializer
 from mrnadesign_api import settings_local as local_settings
 
 import pandas as pd
@@ -17,6 +15,7 @@ import zipfile
 from io import BytesIO
 from datetime import datetime
 from Bio import SeqIO
+import glob
 
 @api_view(['GET'])
 def safetyresultView(request):
@@ -132,21 +131,22 @@ def predictionresultView(request): #############################################
     mrnatask_obj = mrna_task.objects.filter(id=taskid)[0]
 
     assert mrnatask_obj.analysis_type == 'Prediction'
-    queryset = prediction_taskresult.objects.filter(id__in = mrnatask_obj.task_results).order_by('id')
+    subpaths = glob.glob(mrnatask_obj.output_result_path + '*')
+    df = []
+    for p in subpaths:
+        if 'tsv' in p: continue
+        df.append(p.split('/')[-1])
+    merged_df = pd.DataFrame(df, columns=['task_name'])
 
     if 'sorter' in querydict and querydict['sorter'] != '':
         sorterjson = json.loads(querydict['sorter'])
         order = sorterjson['order']
         columnKey = sorterjson['columnKey']
-        if order == 'false':
-            queryset = queryset.order_by('id')
-        elif order == 'ascend':
-            queryset = queryset.order_by(columnKey)
-        else:  # 'descend
-            queryset = queryset.order_by('-'+columnKey)
-    
-    serializer = prediction_taskresultSerializer(queryset, many=True)
-    return Response({'results': serializer.data})
+        if order == 'ascend':
+            merged_df = merged_df.sort_values(by=columnKey, ascending=True)
+        else: # 'descend
+            merged_df = merged_df.sort_values(by=columnKey, ascending=False)
+    return Response({'results': merged_df.to_dict(orient='records')})
 
 def get_all_files(directory):
     from pathlib import Path

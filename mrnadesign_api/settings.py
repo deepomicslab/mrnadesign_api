@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'taskresult',
     'database',
     'analysis',
+    'protein_score',
 
 
     # 'phage',

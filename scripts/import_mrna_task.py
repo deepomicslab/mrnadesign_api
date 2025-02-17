@@ -28,7 +28,6 @@ demo_user_map = {
         },
         'status': 'Success',
         'created_at': 'N/A',
-        'task_results': [],
     },
     'Demo User Linear Design - CDS only': {
         'task_id': -98,
@@ -47,7 +46,6 @@ demo_user_map = {
         },
         'status': 'Success',
         'created_at': 'N/A',
-        'task_results': [],
     },
 
     # ============================== three demo cases of prediction ============================== 
@@ -65,7 +63,6 @@ demo_user_map = {
         'parameters': {}, # in the config file
         'status': 'Success',
         'created_at': 'N/A',
-        'task_results': [-995, -996],
     },
     'Demo User Prediction Task0002': {
         'task_id': -94,
@@ -81,7 +78,6 @@ demo_user_map = {
         'parameters': {}, # in the config file
         'status': 'Success',
         'created_at': 'N/A',
-        'task_results': [-997, -998],
     },
     'Demo User Prediction Task0003': {
         'task_id': -93,
@@ -97,7 +93,6 @@ demo_user_map = {
         'parameters': {}, # in the config file
         'status': 'Success',
         'created_at': 'N/A',
-        'task_results': [-999],
     },
 
     # ============================== one demo case of safety ============================== 
@@ -119,7 +114,6 @@ demo_user_map = {
         }, 
         'status': 'Success',
         'created_at': 'N/A',
-        'task_results': [],
     },
 
     # ============================== one demo case of sequence alignment ============================== 
@@ -140,69 +134,13 @@ demo_user_map = {
         }, 
         'status': 'Success',
         'created_at': 'N/A',
-        'task_results': [],
     },
 }
-
-demo_user_task_map = {
-    # ============================== prediction ============================== 
-    -995: {
-        'mrna_task_analysis_type': 'Prediction',
-        'task_id': -95,
-        'task_name': 'SEQ000000',
-    },
-    -996: {
-        'mrna_task_analysis_type': 'Prediction',
-        'task_id': -95,
-        'task_name': 'SEQ000001',
-    },
-    -997: {
-        'mrna_task_analysis_type': 'Prediction',
-        'task_id': -94,
-        'task_name': 'SEQ000000',
-    },
-    -998: {
-        'mrna_task_analysis_type': 'Prediction',
-        'task_id': -94,
-        'task_name': 'SEQ000001',
-    },
-    -999: {
-        'mrna_task_analysis_type': 'Prediction',
-        'task_id': -93,
-        'task_name': 'SEQ000000',
-    },
-
-    # ============================== linear design ============================== 
-    # skip
-    # ============================== safety ============================== 
-    # skip
-    # ============================== sequence alignment ============================== 
-    # skip
-}
-
 
 def add_data():
     for userid in list(demo_user_map.keys()):
         if len(mrna_task.objects.filter(id=demo_user_map[userid]['task_id'])) > 0:
             continue
-
-        for task_result_id in demo_user_map[userid]['task_results']:
-            if demo_user_task_map[task_result_id]['mrna_task_analysis_type'] == 'Prediction':
-                from taskresult.models import prediction_taskresult
-                if len(prediction_taskresult.objects.filter(id=task_result_id)) > 0:
-                    continue
-                prediction_taskresult.objects.create(
-                    id=task_result_id,
-                    mrna_task_analysis_type=demo_user_task_map[task_result_id]['mrna_task_analysis_type'],
-                    task_id=demo_user_task_map[task_result_id]['task_id'],
-                    task_name=demo_user_task_map[task_result_id]['task_name'],
-                )
-            # elif demo_user_task_map[task_result_id]['mrna_task_analysis_type'] == 'Linear Design':
-                # pass
-            # elif demo_user_task_map[task_result_id]['mrna_task_analysis_type'] == 'Safety':
-                # pass
-            # elif demo_user_task_map[task_result_id]['mrna_task_analysis_type'] == 'Sequence Align':
-                # pass
 
         mrna_task.objects.create(
             id=demo_user_map[userid]['task_id'],
@@ -216,7 +154,6 @@ def add_data():
             parameters=demo_user_map[userid]['parameters'],
             status=demo_user_map[userid]['status'],
             created_at = demo_user_map[userid]['created_at'],
-            task_results = demo_user_map[userid]['task_results'],
         )
     
 if __name__ == "__main__":

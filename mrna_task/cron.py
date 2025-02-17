@@ -1,26 +1,11 @@
 from utils import task, slurm_api
 from mrna_task.models import mrna_task
-from taskresult.models import prediction_taskresult
 import datetime
 from mrnadesign_api import settings_local as local_settings
 import os,json
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mrnadesign_api.settings")
 import django
 django.setup()
-import glob
-
-def create_prediction_task(task_obj):
-    task_obj.status = 'Success'
-    dir = [i.split('/')[-1] for i in glob.glob(task_obj.output_result_path + '*')]
-    if 'seq_score_results.tsv' in dir:
-        dir.remove('seq_score_results.tsv')
-    for d in dir:
-        tr_obj = prediction_taskresult.objects.create(
-            mrna_task_analysis_type = task_obj.analysis_type,
-            task_id = task_obj.id,
-            task_name = d,
-        )
-        task_obj.task_results.append(tr_obj.id)
 
 # To manually run: python manage.py crontab run <tash_hash_id>
 def task_status_updata():
@@ -42,7 +27,7 @@ def task_status_updata():
                     task_obj.status = 'Success'
             elif task_obj.analysis_type == 'Prediction' \
                     and task.check_prediction_result(task_obj.output_result_path):
-                create_prediction_task(task_obj)
+                task_obj.status = 'Success'
             elif task_obj.analysis_type == 'Safety' \
                     and task.check_safety_result(task_obj.output_result_path):
                 task_obj.status = 'Success'

@@ -138,6 +138,9 @@ def run_prediction(sbatch_dict):
     task_dir = sbatch_dict['task_dir']
     user_input_path = sbatch_dict['user_input_path']
     output_log_path = sbatch_dict['output_log_path']
+    task_id = sbatch_dict['task_id']
+
+    subtask_names = list(pd.read_csv(user_input_path['sequence'], '\t')['seq_acc'])
 
     sbatch_command = (
         'sbatch' +
@@ -146,7 +149,10 @@ def run_prediction(sbatch_dict):
         ' ' + local_settings.SCRIPTS + 'run_prediction.sh' +
         ' -a ' + task_dir +
         ' -b ' + user_input_path['config'] + 
-        ' -c ' + output_log_path + 'prediction.log'
+        ' -c ' + output_log_path + 'prediction.log' + 
+
+        ' -d ' + str(task_id) + 
+        ' -e ' + '\"' + '|'.join(subtask_names) + '\"'
     )
     print('sbatch_command', sbatch_command)
     sbatch_output = subprocess.check_output(sbatch_command, shell=True).decode("utf-8")  # Submitted batch job 1410435

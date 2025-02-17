@@ -75,6 +75,8 @@ urlpatterns = [
     path('analyze/prediction/', mrna_task.views.predictionView.as_view()),
     path('analyze/safety/', mrna_task.views.safetyView.as_view()),
     path('analyze/sequence_align/', mrna_task.views.sequencealignView.as_view()),
+    path('analyze/str_similarity/', mrna_task.views.strSimilarityView),
+    path('analyze/get_str_similarity/', mrna_task.views.getStrSimilarityView),
 
     path('tasks/detail/', mrna_task.views.viewtaskdetail),
     path('tasks/detail/log/', mrna_task.views.viewtasklog),

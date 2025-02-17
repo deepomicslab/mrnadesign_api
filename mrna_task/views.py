@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
+from django.db.models import F, Value, TextField, CharField
+from django.db.models.functions import Replace
+from django.contrib.postgres.search import TrigramSimilarity
+
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
@@ -11,6 +15,11 @@ from mrna_task.models import mrna_task
 from mrna_task.serializers import mrna_taskSerializer
 from antigen.models import antigen
 from tantigen.models import tantigen
+from three_utr.models import three_utr
+from tsnadb.models import tsnadb_neoantigen, tsnadb_validated
+from mirtarbase_db.models import mirtarbase_db
+from rebase_db.models import rebase_data, rebase_enzyme_link
+from protein_score.models import protein_score
 from utils import tools, task, slurm_api
 
 import time
@@ -21,6 +30,8 @@ import json
 import traceback
 import string
 import pandas as pd
+import numpy as np
+import time
 
 def generate_id():
     id = "".join(random.choices(string.ascii_uppercase + string.digits, k=4))
@@ -214,20 +225,6 @@ class predictionView(APIView):
                 # config
                 config_path = task_dir + 'task_prediction_config.ini'
                 self.write_config(path = config_path, config_dict = parameters)
-            # elif inputtype == 'enter':
-            #     queryids = set(json.loads(request.data['queryids']))
-            #     datatable = request.data['datatable']
-            #     with open(path, 'w') as file:
-            #         for idx, id in enumerate(queryids):
-            #             if datatable == 'antigen':
-            #                 antigen_obj = antigen.objects.get(id=id)
-            #                 file.write('>seq' + str(id) + '\n')
-            #                 file.write(antigen_obj.sequence + '\n')
-            #             elif datatable == 'tantigen':
-            #                 tantigen_obj = tantigen.objects.get(id=id)
-            #                 file.write('>seq' + str(id) + '\n')
-            #                 file.write(tantigen_obj.antigen_sequence + '\n')
-
 
         # create task object
         newtask = mrna_task.objects.create(
@@ -242,7 +239,7 @@ class predictionView(APIView):
             analysis_type=analysistype,
             parameters={},
             status='Created',
-            task_results=[],
+            subtasks=[],
         )
 
         # run task
@@ -255,6 +252,8 @@ class predictionView(APIView):
             'task_dir': task_dir,
             'user_input_path': newtask.user_input_path,
             'output_log_path': newtask.output_log_path,
+
+            'task_id': newtask.id,
         }
         try:
             taskdetail_dict = task.run_prediction(sbatch_dict)
@@ -476,6 +475,108 @@ class sequencealignView(APIView):
                 }
         return Response(res)
     
+def apply_similarity(table_dict, to_compare):
+    all_objects = []
+
+    for table in table_dict.keys():
+        try:
+            model_class = globals()[table]
+        except KeyError:
+            print(f"Model {table} not found in globals()")
+            continue
+
+        for field in table_dict[table]:
+            qs = model_class.objects.values('id', field).annotate(
+                seq=Replace(F(field), Value('\n'), Value(''), output_field=TextField()),
+                src_id=F('id'),
+                src_table=Value(table, output_field=CharField()),
+                src_field=Value(field, output_field=CharField()),
+                similarity=TrigramSimilarity('seq', to_compare)
+            ).values('src_id', 'src_table', 'src_field', 'seq', 'similarity').order_by('-similarity').iterator(chunk_size=1000)
+
+            all_objects.extend({
+                'src_id': obj['src_id'],
+                'src_table': obj['src_table'],
+                'src_field': obj['src_field'],
+                'seq': obj['seq'],
+                'similarity': obj['similarity'],
+            } for idx, obj in enumerate(qs) if idx < 100)
+
+    # sorted_objects = sorted(all_objects, key=lambda obj: obj['similarity'], reverse=True)[:10]
+    sorted_objects = all_objects[:10]
+
+    import random
+    L = list(range(len(sorted_objects)))
+    random.shuffle(L)
+    for i in L:
+        temp_obj = protein_score.objects.get(id = i + 1)
+        sorted_objects[i]['overall_gc'] = temp_obj.overall_gc
+        sorted_objects[i]['codon_usage_efficiency_index'] = temp_obj.codon_usage_efficiency_index
+        sorted_objects[i]['tis'] = temp_obj.tis
+        sorted_objects[i]['rna_interference'] = temp_obj.rna_interference
+        sorted_objects[i]['rna_structure'] = temp_obj.rna_structure
+        sorted_objects[i]['ires_number'] = temp_obj.ires_number
+        sorted_objects[i]['degscore'] = temp_obj.degscore
+    return sorted_objects  
+
+@api_view(['GET'])
+def strSimilarityView(request):   
+    querydict = request.query_params.dict()
+    subtask_name = querydict['score_subtask_name']
+    taskid = querydict['taskid']
+    task_obj = mrna_task.objects.filter(id = taskid)[0]
+    fpath = task_obj.output_result_path + subtask_name + '/cds_protein.fasta'
+    with open(fpath, 'r') as f: _this_protein = f.readlines()[1:]
+    this_protein = ''
+    for i in _this_protein: this_protein += i.replace('\n', '')
+
+    protein_table_dict = {
+        'antigen': ['sequence'],
+        'tantigen': ['antigen_sequence'],
+        # 'tsnadb_neoantigen': ['peptide'],
+        'tsnadb_validated': ['mutant_peptide'],
+    }
+    # rna_table_dict = {
+    #     'tantigen': ['seq_5', 'cds', 'seq_3'],
+    #     'three_utr': ['pattern'],
+    #     'mirtarbase_db': ['target_site'],
+    #     'rebase_data': ['recognition_site'],
+    # }    
+
+    results = apply_similarity(protein_table_dict, this_protein)
+    
+    merged_df = pd.DataFrame(results)
+    merged_df.to_csv(task_obj.output_result_path + subtask_name + '/recommendation.csv')
+
+    return Response({'results': merged_df.to_dict(orient='records')})
+
+@api_view(['GET'])
+def getStrSimilarityView(request):   
+    querydict = request.query_params.dict()
+    subtask_name = querydict['score_subtask_name']
+    taskid = querydict['taskid']
+    task_obj = mrna_task.objects.filter(id = taskid)[0]
+    fpath = task_obj.output_result_path + subtask_name + '/recommendation.csv'
+    merged_df = pd.read_csv(fpath)
+
+    if 'sorter' in querydict and querydict['sorter'] != '':
+        sorterjson = json.loads(querydict['sorter'])
+        order = sorterjson['order']
+        columnKey = sorterjson['columnKey']
+        if order == 'false':
+            merged_df = merged_df.sort_values(by='id', ascending=True)
+        elif order == 'ascend':
+            merged_df = merged_df.sort_values(by=columnKey, ascending=True)
+        else: # 'descend
+            merged_df = merged_df.sort_values(by=columnKey, ascending=False)
+    if 'filter' in querydict and querydict['filter'] != '':
+        filterjson = json.loads(querydict['filter'])
+        for k, v in filterjson.items():
+            if v:
+                merged_df = merged_df[merged_df[k].isin(v)]
+
+    return Response({'results': merged_df.to_dict(orient='records')})
+
 @api_view(['GET'])
 def viewtask(request):
     userid = request.query_params.dict()['userid']

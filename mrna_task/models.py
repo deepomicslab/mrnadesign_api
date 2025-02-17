@@ -15,9 +15,7 @@ class mrna_task(models.Model):
     status = models.CharField(max_length=60)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    task_results = ArrayField( # prediction_taskresult.id 
-        models.IntegerField()
-    )
+    subtasks = ArrayField(models.IntegerField(), blank=True, null=True) # for prediction task, save the protein_score task ids
 
     class Meta:
         db_table = 'mrna_task'
