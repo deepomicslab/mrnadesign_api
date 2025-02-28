@@ -10,7 +10,7 @@ def add_data():
     import pandas as pd
     
     arr = []
-    with open(local_settings.MRNADESIGN_DATABASE + 'utrdb2_utr3/Pediculus_humanus.PhumU2.54.utrs', 'r') as file:
+    with open(local_settings.MRNADESIGN_DATABASE + 'utrdb2/Pediculus_humanus.PhumU2.54.utrs', 'r') as file:
         L = file.readlines()
     for l in L:
         if l.startswith('#'):
