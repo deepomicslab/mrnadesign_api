@@ -475,6 +475,96 @@ class sequencealignView(APIView):
                 }
         return Response(res)
     
+class antigenscreeningView(APIView):
+    def post(self, request, *args, **kwargs):
+        is_demo_input = (request.data['rundemo'] == 'true')
+        analysistype = request.data['analysistype']
+        user_id = request.data['userid']
+        inputtype = request.data['inputtype']
+        peptide_len_range = [int(i) for i in request.data['peptide_len_range'].split(',')]
+        
+        usertask = str(int(time.time())) + '_' + generate_id()
+        path = local_settings.USER_PATH + usertask + '/input/' + 'sequence.fasta'
+        os.makedirs(local_settings.USER_PATH + usertask, exist_ok=False)
+        os.makedirs(local_settings.USER_PATH +
+                    usertask + '/input', exist_ok=False)
+        os.makedirs(local_settings.USER_PATH + usertask +
+                    '/output/result', exist_ok=False)
+        os.makedirs(local_settings.USER_PATH + usertask +
+                    '/output/log', exist_ok=False)
+
+        if inputtype == 'upload':
+            submitfile = request.FILES['submitfile']
+            _path = default_storage.save(path, ContentFile(submitfile.read()))
+            with open(path, 'r') as fin:
+                print(fin.readlines())
+        elif inputtype == 'paste':
+            with open(path, 'w') as file:
+                file.write(request.data['file'])
+        elif inputtype == 'rundemo':
+            shutil.copy(local_settings.DEMO_ANALYSIS + 'demouser_sequencealignment/input/sequence.fasta', path)
+
+        with open(path, 'r') as file:
+            # file format check
+            is_upload = tools.is_fasta(file)
+            if is_upload:
+                tools.uploadphagefastapreprocess(path)
+
+                # create task object
+                newtask = mrna_task.objects.create(
+                    user_id=user_id,
+                    user_input_path={
+                        'fasta': path,
+                    },
+                    is_demo_input=is_demo_input,
+                    output_result_path=local_settings.USER_PATH + usertask + '/output/result/',
+                    output_log_path=local_settings.USER_PATH + usertask + '/output/log/',
+                    analysis_type=analysistype,
+                    parameters={
+                        'peptide_len_min': peptide_len_range[0],
+                        'peptide_len_max': peptide_len_range[1],
+                    },
+                    status='Created',
+                    subtasks=[],
+                )
+
+                # run task
+                res = {
+                    'task_id': newtask.id,
+                    'user_id': newtask.user_id,
+                    'analysis_type': newtask.analysis_type,
+                }
+                sbatch_dict = {
+                    'user_input_path': newtask.user_input_path,
+                    'output_result_path': newtask.output_result_path,
+                    'output_log_path': newtask.output_log_path,
+                    'parameters': {
+                        'peptide_len_min': peptide_len_range[0],
+                        'peptide_len_max': peptide_len_range[1],
+                    },}
+                try:
+                    taskdetail_dict = task.run_antigen_screening(sbatch_dict)
+                    res['status'] = 'Create Success'
+                    res['message'] = 'Job create successfully'
+                    newtask.job_id = taskdetail_dict['job_id']
+                    newtask.status = taskdetail_dict['status']
+                    newtask.status = 'Running'
+                except Exception as e:
+                    res['status'] = 'Create Failed'
+                    res['message'] = 'Job create failed'
+                    newtask.status = 'Failed'
+                    traceback.print_exc()
+
+                newtask.save()
+
+            else:
+                print('================== failed')
+                res = {
+                    'status': 'Failed',
+                    'message': 'Pipline create failed: The file you uploaded is not a fasta file',
+                }
+        return Response(res)
+    
 def apply_similarity(table_dict, to_compare):
     all_objects = []
 
@@ -598,7 +688,7 @@ def viewtasklog(request):
 
     sbatch_log = slurm_api.get_job_output(task_obj.output_log_path)
     sbatch_error = slurm_api.get_job_error(task_obj.output_log_path)
-    if task_obj.analysis_type in ['Linear Design', 'Prediction', 'Safety', 'Sequence Align']:
+    if task_obj.analysis_type in ['Linear Design', 'Prediction', 'Safety', 'Sequence Align', 'Antigen Screening']:
         task_log = task.get_job_output(task_obj.analysis_type, task_obj.output_log_path)
     return Response({
         'sbatch_log': sbatch_log,

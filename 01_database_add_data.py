@@ -34,8 +34,8 @@ def log(log_str):
 # import_three_utr.add_data()
 # log(" [completed] scripts.import_three_utr\n")
 
-# import_mrna_task.add_data()
-# log(" [completed] scripts.import_mrna_task\n")
+import_mrna_task.add_data()
+log(" [completed] scripts.import_mrna_task\n")
 
 # import_mirtarbase_db.add_data()
 # log(" [completed] scripts.import_mirtarbase_db\n")

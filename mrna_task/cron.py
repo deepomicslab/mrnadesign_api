@@ -34,6 +34,9 @@ def task_status_updata():
             elif task_obj.analysis_type == 'Sequence Align' \
                     and task.check_sequencealign_result(task_obj.output_result_path):
                 task_obj.status = 'Success'
+            elif task_obj.analysis_type == 'Antigen Screening' \
+                    and task.check_antigenscreening_result(task_obj.output_result_path):
+                task_obj.status = 'Success'
         task_obj.save()
 
     f.write('exec update end '+str(current_time)+"\n")

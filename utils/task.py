@@ -50,6 +50,11 @@ def check_sequencealign_result(output_result_path):
         return False
     return True
 
+def check_antigenscreening_result(output_result_path):
+    if not os.path.exists(output_result_path + 'result.csv'): 
+        return False
+    return True
+
 def get_job_output(analysis_type, output_log_path):
     if analysis_type == 'Linear Design':
         path = output_log_path + 'lineardesign.log'
@@ -91,6 +96,16 @@ def get_job_output(analysis_type, output_log_path):
                 return output
         except:
             return 'no sequence align log'
+    elif analysis_type == 'Antigen Screening':
+        path = output_log_path + 'antigenscreening.log'
+        try:            
+            with open(path, 'r') as f:
+                output = f.read()
+                if output == '':
+                    output = 'no antigen screening log'
+                return output
+        except:
+            return 'no antigen screening log'
     
 def run_lineardesign(sbatch_dict):
     user_input_path = sbatch_dict['user_input_path']
@@ -214,6 +229,33 @@ def run_sequence_align(sbatch_dict):
         ' -e ' + str(parameters['window_size']) +
         ' -f ' + parameters['step_size'] +
         ' -g ' + str(parameters['evalue'])
+    )
+    print('sbatch_command', sbatch_command)
+    sbatch_output = subprocess.check_output(sbatch_command, shell=True).decode("utf-8")  # Submitted batch job 1410435
+    job_id = re.search(r"Submitted batch job (\d+)", sbatch_output).group(1)  # 1410435
+    status = slurm_api.get_job_status(job_id)  # PENDING
+    taskdetail_dict = {
+        'job_id': job_id,
+        'status': status,
+    }
+    return taskdetail_dict
+
+def run_antigen_screening(sbatch_dict):
+    user_input_path = sbatch_dict['user_input_path']
+    output_result_path = sbatch_dict['output_result_path']
+    output_log_path = sbatch_dict['output_log_path']
+    parameters = sbatch_dict['parameters']
+
+    sbatch_command = (
+        'sbatch' +
+        ' --output=' + output_log_path + 'sbatch.out' +
+        ' --error=' + output_log_path + 'sbatch.err' +
+        ' ' + local_settings.SCRIPTS + 'run_antigen_screening.sh' +
+        ' -a ' + user_input_path['fasta'] + 
+        ' -b ' + output_result_path + 
+        ' -c ' + output_log_path + 'antigenscreening.log' + 
+        ' -d ' + str(parameters['peptide_len_min']) +
+        ' -e ' + str(parameters['peptide_len_max'])
     )
     print('sbatch_command', sbatch_command)
     sbatch_output = subprocess.check_output(sbatch_command, shell=True).decode("utf-8")  # Submitted batch job 1410435

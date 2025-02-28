@@ -57,6 +57,32 @@ def sequencealignresultView(request):
     # txt_files = context['txt_files']
     return Response({'results': results})
 
+def read_fasta(file_path):
+    sequences = []
+    for record in SeqIO.parse(file_path, "fasta"):
+        sequences.append({
+            "header": record.id,
+            "sequence": str(record.seq).replace('\n', '')
+        })
+    return sequences[0] 
+
+@api_view(['GET'])
+def antigenscreeningresultView(request):
+    querydict = request.query_params.dict()
+    taskid = querydict['taskid']
+    mrnatask_obj = mrna_task.objects.get(id=taskid)
+
+    assert mrnatask_obj.analysis_type == 'Antigen Screening'
+    df = pd.read_csv(mrnatask_obj.output_result_path + 'result.csv', index_col=0)
+    print(read_fasta(mrnatask_obj.user_input_path['fasta'])['sequence'])
+
+    info = {
+        'input_fasta': read_fasta(mrnatask_obj.user_input_path['fasta'])['sequence'], # only allow input one protein seq in the fasta,
+        'peptide_len_min': mrnatask_obj.parameters['peptide_len_min'],
+        'peptide_len_max': mrnatask_obj.parameters['peptide_len_max'],
+    }
+    return Response({'info': info, 'results': df.to_dict(orient='records')})
+
 def get_seq_dict(path):
     res_dict = {}
     with open(path, "r") as file:
@@ -162,7 +188,7 @@ def getZipData(request):
     
     s = BytesIO()
     zf = zipfile.ZipFile(s, "w")
-    assert mrnatask_obj.analysis_type in ['Linear Design', 'Prediction', 'Safety', 'Sequence Align']
+    assert mrnatask_obj.analysis_type in ['Linear Design', 'Prediction', 'Safety', 'Sequence Align', 'Antigen Screening']
     for i in get_all_files(fpath):
         zf.write(i, i.replace(fpath, '')) # server里的path, zip folder里面的目标path
     zf.close()

@@ -135,6 +135,25 @@ demo_user_map = {
         'status': 'Success',
         'created_at': 'N/A',
     },
+
+    # ============================== one demo case of antigen screening ============================== 
+    'Demo User Antigen Screening': {
+        'task_id': -60,
+        'job_id': '1327000',
+        'user_input_path': {
+            'fasta': local_settings.DEMO_ANALYSIS + 'demouser_antigenscreening/input/sequence.fasta',
+        },
+        'is_demo_input': True,
+        'output_result_path': local_settings.DEMO_ANALYSIS + 'demouser_antigenscreening/output/result/',
+        'output_log_path': local_settings.DEMO_ANALYSIS + 'demouser_antigenscreening/output/log/',
+        'analysis_type': 'Antigen Screening',
+        'parameters': {
+            "peptide_len_min": "8",
+            "peptide_len_max": "14",
+        }, 
+        'status': 'Success',
+        'created_at': 'N/A',
+    },
 }
 
 def add_data():
