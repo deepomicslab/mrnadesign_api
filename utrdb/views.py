@@ -25,7 +25,14 @@ class utrdbViewSet(APIView):
 
     def get(self, request):
         querydict = request.query_params.dict()
+        
         queryset = self.queryset
+
+        param_dict = json.loads(querydict['parameters'])
+        if len(param_dict) > 0:
+            k = param_dict[0]['key']
+            v = param_dict[0]['value']
+            queryset = queryset.filter(**{k: v})
         
         if 'sorter' in querydict and querydict['sorter'] != '':
             sorterjson = json.loads(querydict['sorter'])
@@ -50,3 +57,4 @@ class utrdbViewSet(APIView):
         result_page = paginator.paginate_queryset(self.queryset, request)
         serializer = utrdbSerializer(result_page, many=True)
         return paginator.get_paginated_response(serializer.data)
+    
