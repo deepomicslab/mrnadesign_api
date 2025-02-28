@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'gtrnadb',
     'tsnadb',
     'rebase_db',
+    'utrdb',
     'mrna_task',
     'taskresult',
     'database',

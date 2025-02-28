@@ -26,6 +26,7 @@ from mirtarbase_db.views import mirtarbaseViewSet
 from gtrnadb.views import gtrnadbViewSet, gtrnadbDetailViewSet, gtrnadbDetailCommonViewSet
 from tsnadb.views import tsnadb2ValidatedViewSet, tsnadb2NeoantigenViewSet
 from rebase_db.views import rebaseDataViewSet, rebaseLinkViewSet
+from utrdb.views import utrdbViewSet
 
 
 import mrna_task.views
@@ -33,6 +34,7 @@ import taskresult.views
 import antigen.views
 import tantigen.views
 import three_utr.views
+import utrdb.views
 
 from django.urls import include, re_path
 
@@ -63,6 +65,7 @@ urlpatterns = [
     path('tsnadb2/neoantigen/', tsnadb2NeoantigenViewSet.as_view()),
     path('rebase/data/', rebaseDataViewSet.as_view()),
     path('rebase/link/', rebaseLinkViewSet.as_view()),
+    path('utrdb/', utrdbViewSet.as_view()),
 
     path('overview/antigensourceorganism/', antigen.views.getsourceorganism),
     path('overview/stats/antigen/', antigen.views.getstats),
