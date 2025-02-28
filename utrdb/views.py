@@ -39,11 +39,11 @@ class utrdbViewSet(APIView):
             order = sorterjson['order']
             columnKey = sorterjson['columnKey']
             if order == 'false':
-                queryset = self.queryset.order_by('id')
+                queryset = queryset.order_by('id')
             elif order == 'ascend':
-                queryset = self.queryset.order_by(columnKey)
+                queryset = queryset.order_by(columnKey)
             else:  # 'descend
-                queryset = self.queryset.order_by('-'+columnKey)
+                queryset = queryset.order_by('-'+columnKey)
 
         if 'filter' in querydict and querydict['filter'] != '':
             filter = json.loads(querydict['filter'])
@@ -54,7 +54,7 @@ class utrdbViewSet(APIView):
             queryset = queryset.filter(q_expression)
 
         paginator = self.pagination_class()
-        result_page = paginator.paginate_queryset(self.queryset, request)
+        result_page = paginator.paginate_queryset(queryset, request)
         serializer = utrdbSerializer(result_page, many=True)
         return paginator.get_paginated_response(serializer.data)
     
