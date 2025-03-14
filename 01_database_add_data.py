@@ -9,6 +9,11 @@ from scripts import (
     import_rebase_db,
     import_utrdb,
 )
+from scripts.import_isoform import (
+    import_meta_data_to_database,
+    import_reference_annotation_to_database,
+)
+
 from datetime import timedelta
 import datetime
 
@@ -52,3 +57,9 @@ def log(log_str):
 
 # import_utrdb.add_data()
 # log(" [completed] scripts.import_utrdb\n")
+
+# import_meta_data_to_database.add_data()
+# log(" [completed] scripts.import_isoform.import_meta_data_to_database\n")
+
+# import_reference_annotation_to_database.add_data()
+# log(" [completed] scripts.import_isoform.import_reference_annotation_to_database\n")

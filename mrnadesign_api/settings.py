@@ -60,6 +60,11 @@ INSTALLED_APPS = [
     'analysis',
     'protein_score',
 
+    'isoform_datasets',
+    'isoform_samples',
+    'isoform_sequences',
+    'isoform_expression',
+
 
     # 'phage',
     # 'phage_protein',

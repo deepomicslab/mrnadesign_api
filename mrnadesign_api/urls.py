@@ -27,7 +27,16 @@ from gtrnadb.views import gtrnadbViewSet, gtrnadbDetailViewSet, gtrnadbDetailCom
 from tsnadb.views import tsnadb2ValidatedViewSet, tsnadb2NeoantigenViewSet
 from rebase_db.views import rebaseDataViewSet, rebaseLinkViewSet
 from utrdb.views import utrdbViewSet
-
+from isoform_datasets.views import isoformdbDatasetsViewSet
+from isoform_samples.views import isoformdbSamplesViewSet, isoformdbSamplesDetailViewSet
+from isoform_sequences.views import (
+    isoformdbIsoformsViewSet, 
+    isoformdbIsoformsSequencesViewSet, 
+    isoformdbIsoformsDetailViewSet, 
+    isoformdbGenesViewSet, 
+    FileTrackView
+)
+from isoform_expression.views import GeneExpressionCsvView, isoformdbExpressionSearchViewSet
 
 import mrna_task.views
 import taskresult.views
@@ -66,6 +75,17 @@ urlpatterns = [
     path('rebase/data/', rebaseDataViewSet.as_view()),
     path('rebase/link/', rebaseLinkViewSet.as_view()),
     path('utrdb/', utrdbViewSet.as_view()),
+    path('isoformdb/datasets/', isoformdbDatasetsViewSet.as_view({'get': 'list'})),
+    path('isoformdb/samples/', isoformdbSamplesViewSet.as_view()),
+    path('isoformdb/samples/detail/', isoformdbSamplesDetailViewSet.as_view()),
+    path('isoformdb/isoforms/', isoformdbIsoformsViewSet.as_view()),
+    path('isoformdb/isoforms/sequences/', isoformdbIsoformsSequencesViewSet.as_view()),
+    path('isoformdb/isoforms/detail/', isoformdbIsoformsDetailViewSet.as_view()),
+    path('isoformdb/expression/search/', isoformdbExpressionSearchViewSet.as_view()),
+    path('isoform/expression/gene_expression_csv/', GeneExpressionCsvView.as_view()),
+    path('isoformdb/genes/', isoformdbGenesViewSet.as_view()),
+    path('isoformdb/jbrowser/<path:file_path>', FileTrackView.as_view()),
+
 
     path('overview/antigensourceorganism/', antigen.views.getsourceorganism),
     path('overview/stats/antigen/', antigen.views.getstats),
