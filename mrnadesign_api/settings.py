@@ -63,7 +63,6 @@ INSTALLED_APPS = [
     'isoform_datasets',
     'isoform_samples',
     'isoform_sequences',
-    'isoform_expression',
 
 
     # 'phage',

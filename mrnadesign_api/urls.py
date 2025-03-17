@@ -36,7 +36,6 @@ from isoform_sequences.views import (
     isoformdbGenesViewSet, 
     FileTrackView
 )
-from isoform_expression.views import GeneExpressionCsvView, isoformdbExpressionSearchViewSet
 
 import mrna_task.views
 import taskresult.views
@@ -81,8 +80,6 @@ urlpatterns = [
     path('isoformdb/isoforms/', isoformdbIsoformsViewSet.as_view()),
     path('isoformdb/isoforms/sequences/', isoformdbIsoformsSequencesViewSet.as_view()),
     path('isoformdb/isoforms/detail/', isoformdbIsoformsDetailViewSet.as_view()),
-    path('isoformdb/expression/search/', isoformdbExpressionSearchViewSet.as_view()),
-    path('isoform/expression/gene_expression_csv/', GeneExpressionCsvView.as_view()),
     path('isoformdb/genes/', isoformdbGenesViewSet.as_view()),
     path('isoformdb/jbrowser/<path:file_path>', FileTrackView.as_view()),
 
