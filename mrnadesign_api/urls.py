@@ -43,6 +43,7 @@ import antigen.views
 import tantigen.views
 import three_utr.views
 import utrdb.views
+import codon.views
 
 from django.urls import include, re_path
 
@@ -82,6 +83,9 @@ urlpatterns = [
     path('isoformdb/isoforms/detail/', isoformdbIsoformsDetailViewSet.as_view()),
     path('isoformdb/genes/', isoformdbGenesViewSet.as_view()),
     path('isoformdb/jbrowser/<path:file_path>', FileTrackView.as_view()),
+    path('codon_pair/fraction/', codon.views.codonpairViewSet.as_view()),
+    path('codon_pair/fraction/heatmap/', codon.views.codonpairHeatmapViewSet),
+    path('codon_pair/fraction/download/', codon.views.codonpairDownloadViewSet),
 
 
     path('overview/antigensourceorganism/', antigen.views.getsourceorganism),

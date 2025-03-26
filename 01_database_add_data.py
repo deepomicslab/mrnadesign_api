@@ -8,6 +8,7 @@ from scripts import (
     import_tsnadb,
     import_rebase_db,
     import_utrdb,
+    import_codon,
 )
 from scripts.import_isoform import (
     import_meta_data_to_database,
@@ -63,3 +64,6 @@ def log(log_str):
 
 # import_reference_annotation_to_database.add_data()
 # log(" [completed] scripts.import_isoform.import_reference_annotation_to_database\n")
+
+# import_codon.add_data()
+# log(" [completed] scripts.import_codon\n")
