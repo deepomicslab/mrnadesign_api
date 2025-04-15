@@ -98,7 +98,7 @@ def post_isoform(request_data):
 
 def add_data():
 
-    gtf_file = '/home/platform/project/mrnadesign_platform/mrnadesign_api/workspace/isoform_ys/projects_data/reference/annotated_transcripts/merged/hg38.gencode.RefSeq.gtf'
+    gtf_file = '/home/platform/project/mrnadesign_platform/mrnadesign_api/workspace/mrnadesign_database/isoform_db/reference/annotated_transcripts/merged/hg38.gencode.RefSeq.gtf'
 
     transcripts, genes = parse_gtf(gtf_file)
 

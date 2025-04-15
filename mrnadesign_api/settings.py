@@ -65,18 +65,6 @@ INSTALLED_APPS = [
     'codon',
 
 
-    # 'phage',
-    # 'phage_protein',
-    # 'phage_clusters',
-    # 'phage_lifestyle',
-    # 'phage_subcluster',
-    # 'phage_hosts',
-    # 'phage_trna',
-    # 'datasets',
-    # 'analysis',
-    # 'task',
-
-
     'django_extensions',
     'corsheaders',
 ]

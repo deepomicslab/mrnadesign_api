@@ -101,10 +101,13 @@ urlpatterns = [
     path('analyze/get_str_similarity/', mrna_task.views.getStrSimilarityView),path('analyze/safety/', mrna_task.views.safetyView.as_view()),
     path('analyze/sequence_align/', mrna_task.views.sequencealignView.as_view()),
     path('analyze/antigen_screening/', mrna_task.views.antigenscreeningView.as_view()),
+    path('analyze/tsa/', mrna_task.views.tsaView.as_view()),
+    path('analyze/tsa/hla_types', mrna_task.views.tsaHLATypesView),
 
     path('tasks/detail/', mrna_task.views.viewtaskdetail),
     path('tasks/detail/log/', mrna_task.views.viewtasklog),
     path('tasks/list/', mrna_task.views.viewtask),
+    path('tasks/tsa_result/', taskresult.views.tsaresultView),
     path('tasks/safety_result/', taskresult.views.safetyresultView),
     path('tasks/sequencealign_result/', taskresult.views.sequencealignresultView),
     path('tasks/antigenscreening_result/', taskresult.views.antigenscreeningresultView),

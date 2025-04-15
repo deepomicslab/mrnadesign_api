@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import FileResponse, HttpResponse, JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.pagination import PageNumberPagination
+
 
 from mrna_task.models import mrna_task
 from mrna_task.serializers import mrna_taskSerializer
@@ -16,6 +18,59 @@ from io import BytesIO
 from datetime import datetime
 from Bio import SeqIO
 import glob
+
+class LargeResultsSetPagination(PageNumberPagination):
+    page_size = 30
+    page_size_query_param = 'pagesize'
+    max_page_size = 10000
+
+def convert_to_mutation_type(num):
+    types = ['control', 'rna-edit', 'indel', 'snp', 'GENE-FUSION', 'rmats', 'spe']
+    return types[int(num)]
+
+@api_view(['GET'])
+def tsaresultView(request):
+    querydict = request.query_params.dict()
+    taskid = querydict['taskid']
+    mrnatask_obj = mrna_task.objects.get(id=taskid)
+    mutation_type = querydict['mutation_type'] if 'mutation_type' in querydict else convert_to_mutation_type(mrnatask_obj.parameters['mutation_type'][0])
+
+    assert mrnatask_obj.analysis_type == 'TSA'
+
+    f = mutation_type + '/' + mrnatask_obj.parameters['sample'] + '.control.jf.csv'
+    if mutation_type == 'rmats': 
+        f = 'rmats-' + mrnatask_obj.parameters['rmats_as_type'] + '/' + mrnatask_obj.parameters['sample'] + '.control.jf.csv'
+    elif mutation_type == 'control':
+        f = mrnatask_obj.parameters['sample'] + '.control.fasta.csv'
+
+    merged_df = pd.read_csv(mrnatask_obj.output_result_path + 'annotation/' + f, sep='\t')
+    merged_df.columns = [i.replace(' ', '_') for i in merged_df.columns]
+    merged_df.fillna('', inplace=True)
+    merged_df = merged_df.astype(str)
+
+    if 'sorter' in querydict and querydict['sorter'] != '':
+        sorterjson = json.loads(querydict['sorter'])
+        order = sorterjson['order']
+        columnKey = sorterjson['columnKey']
+        if order == 'false':
+            merged_df = merged_df.sort_values(by='id', ascending=True)
+        elif order == 'ascend':
+            merged_df = merged_df.sort_values(by=columnKey, ascending=True)
+        else: # 'descend
+            merged_df = merged_df.sort_values(by=columnKey, ascending=False)
+    if 'filter' in querydict and querydict['filter'] != '':
+        filterjson = json.loads(querydict['filter'])
+        for k, v in filterjson.items():
+            if v:
+                merged_df = merged_df[merged_df[k].isin(v)]
+                
+    data = merged_df.to_dict(orient='records')
+    paginator = LargeResultsSetPagination()
+    result_page = paginator.paginate_queryset(data, request)
+    response = paginator.get_paginated_response(result_page)
+    response.data['mutation_types'] = [convert_to_mutation_type(i) for i in mrnatask_obj.parameters['mutation_type']]
+
+    return response
 
 @api_view(['GET'])
 def safetyresultView(request):
@@ -42,7 +97,7 @@ def safetyresultView(request):
         for k, v in filterjson.items():
             if v:
                 merged_df = merged_df[merged_df[k].isin(v)]
-    return Response({'results': merged_df.to_dict(orient='records')})
+    return Response({'results': merged_df.to_dict(orient='records'), 'mutation_types': mrnatask_obj.parameters['mutation_type']})
 
 @api_view(['GET'])
 def sequencealignresultView(request):
@@ -74,7 +129,6 @@ def antigenscreeningresultView(request):
 
     assert mrnatask_obj.analysis_type == 'Antigen Screening'
     df = pd.read_csv(mrnatask_obj.output_result_path + 'result.csv', index_col=0)
-    print(read_fasta(mrnatask_obj.user_input_path['fasta'])['sequence'])
 
     info = {
         'input_fasta': read_fasta(mrnatask_obj.user_input_path['fasta'])['sequence'], # only allow input one protein seq in the fasta,
@@ -188,7 +242,7 @@ def getZipData(request):
     
     s = BytesIO()
     zf = zipfile.ZipFile(s, "w")
-    assert mrnatask_obj.analysis_type in ['Linear Design', 'Prediction', 'Safety', 'Sequence Align', 'Antigen Screening']
+    assert mrnatask_obj.analysis_type in ['Linear Design', 'Prediction', 'Safety', 'Sequence Align', 'Antigen Screening', 'TSA']
     for i in get_all_files(fpath):
         zf.write(i, i.replace(fpath, '')) # server里的path, zip folder里面的目标path
     zf.close()

@@ -154,6 +154,27 @@ demo_user_map = {
         'status': 'Success',
         'created_at': 'N/A',
     },
+
+    # ============================== one demo case of tsa ============================================ 
+    'Demo User TSA': {
+        'task_id': -50,
+        'job_id': '1227001',
+        'user_input_path': {
+            "hlaI": "/home/platform/project/mrnadesign_platform/mrnadesign_api/workspace/analysis_script/user/1744705311_XFZC/input/hlaI.txt"
+        },
+        'is_demo_input': True,
+        'output_result_path': local_settings.DEMO_ANALYSIS + 'demouser_tsa_HGSC3/output/result/',
+        'output_log_path': local_settings.DEMO_ANALYSIS + 'demouser_tsa_HGSC3/output/log/',
+        'analysis_type': 'TSA',
+        'parameters': {
+            "sample": "HGSC3", 
+            "spe_lcount": "6", 
+            "mutation_type": "0123456", 
+            "rmats_as_type": "A3S"
+        }, 
+        'status': 'Success',
+        'created_at': 'N/A',
+    },
 }
 
 def add_data():

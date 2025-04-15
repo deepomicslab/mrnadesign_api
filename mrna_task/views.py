@@ -564,6 +564,108 @@ class antigenscreeningView(APIView):
                     'message': 'Pipline create failed: The file you uploaded is not a fasta file',
                 }
         return Response(res)
+
+class tsaView(APIView):
+    def convert_to_num(self, mutation_type):
+        s = ''
+        if 'control' in mutation_type:
+            s += '0'
+        if 'rna_edit' in mutation_type:
+            s += '1'
+        if 'indel' in mutation_type:
+            s += '2'
+        if 'snp' in mutation_type:
+            s += '3'
+        if 'fusion' in mutation_type:
+            s += '4'
+        if 'rmats' in mutation_type:
+            s += '5'
+        if 'spe' in mutation_type:
+            s += '6'
+        return s
+
+    def post(self, request, *args, **kwargs):
+        is_demo_input = (request.data['rundemo'] == 'true')
+        analysistype = request.data['analysistype']
+        user_id = request.data['userid']
+        inputtype = request.data['inputtype']
+        para = json.loads(request.data['parameters'])
+        sample = para['sample']
+        mutation_type = para['mutation_type']
+        mutation_type_num_list = self.convert_to_num(mutation_type)
+        hla_type = para['hla_type']
+        rmats_as_type = para['rmats_as_type'] if 'rmats' in mutation_type else 'null'
+        spe_lcount = para['spe_lcount'] if 'spe' in mutation_type else 'null'
+        
+        usertask = str(int(time.time())) + '_' + generate_id()
+        input_folder = local_settings.USER_PATH + usertask + '/input/'
+        # os.makedirs(local_settings.USER_PATH + usertask, exist_ok=False)
+        os.makedirs(local_settings.USER_PATH + usertask + '/input', exist_ok=False)
+        os.makedirs(local_settings.USER_PATH + usertask + '/output/result/capaMHC', exist_ok=False)
+        os.makedirs(local_settings.USER_PATH + usertask + '/output/result/annotation', exist_ok=False)
+        os.makedirs(local_settings.USER_PATH + usertask + '/output/log', exist_ok=False)
+        with open(input_folder + 'hlaI.txt', 'w') as f:
+            for t in hla_type:
+                f.write(t + '\n')
+
+        # create task object
+        newtask = mrna_task.objects.create(
+            user_id=user_id,
+            user_input_path={
+                'hlaI': input_folder + 'hlaI.txt', 
+            },
+            is_demo_input=is_demo_input,
+            output_result_path=local_settings.USER_PATH + usertask + '/output/result/',
+            output_log_path=local_settings.USER_PATH + usertask + '/output/log/',
+            analysis_type=analysistype,
+            parameters={
+                'sample': sample,
+                'mutation_type': mutation_type_num_list,
+                'rmats_as_type': rmats_as_type,
+                'spe_lcount': spe_lcount
+            },
+            status='Created',
+            subtasks=[],
+        )
+
+        # run task
+        res = {
+            'task_id': newtask.id,
+            'user_id': newtask.user_id,
+            'analysis_type': newtask.analysis_type,
+        }
+        sbatch_dict = {
+            'is_demo_input': is_demo_input,
+            'user_input_path': newtask.user_input_path,
+            'output_result_path': newtask.output_result_path,
+            'output_log_path': newtask.output_log_path,
+            'parameters': newtask.parameters,
+        }
+        try:
+            taskdetail_dict = task.run_tsa(sbatch_dict)
+            res['status'] = 'Create Success'
+            res['message'] = 'Job create successfully'
+            newtask.job_id = taskdetail_dict['job_id']
+            newtask.status = taskdetail_dict['status']
+            newtask.status = 'Running'
+        except Exception as e:
+            res['status'] = 'Create Failed'
+            res['message'] = 'Job create failed'
+            newtask.status = 'Failed'
+            traceback.print_exc()
+
+        newtask.save()
+
+        return Response(res)
+    
+@api_view(['GET'])
+def tsaHLATypesView(request):
+    sample = request.query_params.dict()['sample']
+    with open(local_settings.MRNADESIGN_DATABASE + 'TSApipe/TSApipe_reference/HLA/' + sample + '.hlaI.txt', 'r') as f:
+        lines = f.readlines()
+    types = [i.replace('\t', '').replace('\n', '') for i in lines]
+    return Response({'hla_types': types})
+
     
 def apply_similarity(table_dict, to_compare):
     all_objects = []
@@ -688,7 +790,7 @@ def viewtasklog(request):
 
     sbatch_log = slurm_api.get_job_output(task_obj.output_log_path)
     sbatch_error = slurm_api.get_job_error(task_obj.output_log_path)
-    if task_obj.analysis_type in ['Linear Design', 'Prediction', 'Safety', 'Sequence Align', 'Antigen Screening']:
+    if task_obj.analysis_type in ['Linear Design', 'Prediction', 'Safety', 'Sequence Align', 'Antigen Screening', 'TSA']:
         task_log = task.get_job_output(task_obj.analysis_type, task_obj.output_log_path)
     return Response({
         'sbatch_log': sbatch_log,

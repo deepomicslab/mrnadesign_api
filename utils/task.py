@@ -55,6 +55,15 @@ def check_antigenscreening_result(output_result_path):
         return False
     return True
 
+def check_tsa_result(output_log_path):
+    if not os.path.exists(output_log_path + 'sbatch.out'): 
+        return False
+    with open(output_log_path + 'sbatch.out') as f:
+        L = f.read()
+    if 'All done.' in L: 
+        return True
+    return False
+
 def get_job_output(analysis_type, output_log_path):
     if analysis_type == 'Linear Design':
         path = output_log_path + 'lineardesign.log'
@@ -106,6 +115,16 @@ def get_job_output(analysis_type, output_log_path):
                 return output
         except:
             return 'no antigen screening log'
+    elif analysis_type == 'TSA':
+        path = output_log_path + 'tsa.log'
+        try:            
+            with open(path, 'r') as f:
+                output = f.read()
+                if output == '':
+                    output = 'no tsa log'
+                return output
+        except:
+            return 'no tsa log'
     
 def run_lineardesign(sbatch_dict):
     user_input_path = sbatch_dict['user_input_path']
@@ -267,6 +286,56 @@ def run_antigen_screening(sbatch_dict):
     }
     return taskdetail_dict
 
+def run_tsa(sbatch_dict):
+    is_demo_input = sbatch_dict['is_demo_input']
+    user_input_path = sbatch_dict['user_input_path']
+    output_result_path = sbatch_dict['output_result_path']
+    output_log_path = sbatch_dict['output_log_path']
+    parameters = sbatch_dict['parameters']
+
+    if is_demo_input:
+        sbatch_command = (
+            'sbatch' +
+            ' --output=' + output_log_path + 'sbatch.out' +
+            ' --error=' + output_log_path + 'sbatch.err' +
+            ' ' + local_settings.SCRIPTS + 'run_tsa_demo.sh' +
+            # ' -a ' + user_input_path[''] +
+            ' -b ' + output_result_path +
+            ' -c ' + output_log_path + 'tsa.log' +
+            ' -d ' + str(parameters['sample']) +
+            ' -e ' + str(parameters['mutation_type']) +
+            ' -f ' + user_input_path['hlaI'] +
+            ' -g ' + str(parameters['rmats_as_type']) +
+            ' -h ' + str(parameters['spe_lcount']) 
+        )
+    else:
+        sbatch_command = (
+            'sbatch' + 
+            ' --output=' + output_log_path + 'sbatch.out' +
+            ' --error=' + output_log_path + 'sbatch.err' +
+            ' ' + local_settings.SCRIPTS + 'run_tsa_user.sh' +
+            ' -a ' + user_input_path['folder'] +
+            ' -b ' + output_result_path +
+            ' -c ' + output_log_path + 'tsa.log' +
+            ' -d ' + str(parameters['sample']) +
+            ' -e ' + str(parameters['mutation_type']) +
+            ' -f ' + user_input_path['hlaI'] +
+            ' -g ' + str(parameters['rmats_as_type']) +
+            ' -h ' + str(parameters['spe_lcount']) 
+        )
+
+    print('sbatch_command', sbatch_command)
+    sbatch_output = subprocess.check_output(sbatch_command, shell=True).decode("utf-8")  # Submitted batch job 1410435
+    job_id = re.search(r"Submitted batch job (\d+)", sbatch_output).group(1)  # 1410435
+    status = slurm_api.get_job_status(job_id)  # PENDING
+    taskdetail_dict = {
+        'job_id': job_id,
+        'status': status,
+    }
+    return taskdetail_dict
+
+
+# 'parameters': {'sample': 'HGSC3', 'mutation_type': ['control', 'rna_edit', 'indel', 'snp', 'fusion', 'rmats', 'spe'], 'rmats_as_type': 'A3S', 'spe_lcount': '6'}}
 # first run task and update task status
 def update_task_que(taskdetail_dict, module, status, job_id):
     for task in taskdetail_dict["task_que"]:
