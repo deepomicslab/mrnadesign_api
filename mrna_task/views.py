@@ -584,7 +584,7 @@ class tsaView(APIView):
             s += '6'
         return s
 
-    def post(self, request, *args, **kwargs):
+    def post_demo(self, request, *args, **kwargs):
         is_demo_input = (request.data['rundemo'] == 'true')
         analysistype = request.data['analysistype']
         user_id = request.data['userid']
@@ -599,7 +599,6 @@ class tsaView(APIView):
         
         usertask = str(int(time.time())) + '_' + generate_id()
         input_folder = local_settings.USER_PATH + usertask + '/input/'
-        # os.makedirs(local_settings.USER_PATH + usertask, exist_ok=False)
         os.makedirs(local_settings.USER_PATH + usertask + '/input', exist_ok=False)
         os.makedirs(local_settings.USER_PATH + usertask + '/output/result/capaMHC', exist_ok=False)
         os.makedirs(local_settings.USER_PATH + usertask + '/output/result/annotation', exist_ok=False)
@@ -657,6 +656,16 @@ class tsaView(APIView):
         newtask.save()
 
         return Response(res)
+    
+    def post_upload(self, request, *args, **kwargs):
+        return Response({'status': 'Failed', 'message': 'This mode is currently not available'})
+    
+    def post(self, request, *args, **kwargs):
+        print(request.data)
+        if request.data['rundemo'] == 'true' and request.data['inputtype'] == 'demo':
+            return self.post_demo(request, *args, **kwargs)
+        else:
+            return self.post_upload(request, *args, **kwargs)
     
 @api_view(['GET'])
 def tsaHLATypesView(request):
