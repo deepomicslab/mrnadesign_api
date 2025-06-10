@@ -4,6 +4,9 @@ __pycache__
 .vscode/
 mrnadesign_api/settings_local.py
 workspace
+workspace_disk3
+workspace_data1
+workspace_data6
 *.sql
 *.csv
 /user_task
