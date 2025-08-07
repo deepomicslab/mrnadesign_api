@@ -7,10 +7,11 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mrnadesign_api.settings")
 import django
 django.setup()
 
-# To manually run: python manage.py crontab run <tash_hash_id>
+# To manually run: python manage.py crontab run <hash_id>
+# crontab -l: to check hash_id
 def task_status_updata():
     current_time = datetime.datetime.now()
-    f = open(local_settings.TASKLOG + 'my_cronjob.log', 'a')
+    f = open(local_settings.TASKLOG / 'my_cronjob.log', 'a')
     f.write('exec update start '+str(current_time)+"\n")
     tasklist = mrna_task.objects.filter(status='Running')
 
@@ -39,6 +40,9 @@ def task_status_updata():
                 task_obj.status = 'Success'
             elif task_obj.analysis_type == 'TSA' \
                     and task.check_tsa_result(task_obj.output_log_path):
+                task_obj.status = 'Success'
+            if task_obj.analysis_type == 'TCRanno' \
+                    and task.check_tcranno_result(task_obj.output_result_path):
                 task_obj.status = 'Success'
         task_obj.save()
 

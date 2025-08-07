@@ -1,0 +1,5162 @@
+{
+    "AAFKRSCLK": [
+        "T-Ag",
+        "MCPyV"
+    ],
+    "AAGIGILTV": [
+        "MLANA",
+        "Homo sapiens"
+    ],
+    "AARAVFLAL": [
+        "BAGE",
+        "Homo sapiens"
+    ],
+    "ACDPHSGHFV": [
+        "orf",
+        "Homo sapiens"
+    ],
+    "ADAGFIKQY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "AEAELAKNVSL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "AEGSRGGSQA": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "AEIPKEEVKPF": [
+        "ORF1ab,ORF3a",
+        "SARS-CoV2"
+    ],
+    "AEIRASANL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "AEIRASANLA": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "AEIRASANLAATK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "AELAKNVSLDNVL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "AELEGIQY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "AEMEFCPCC": [
+        "Zinc finger protein 568",
+        "Homo sapiens"
+    ],
+    "AENSVAYSN": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "AENSVAYSNN": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "AEVQIDRLI": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "AEVQIDRLIT": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "AFLLFLVLI": [
+        "ORF7b",
+        "SARS-CoV2"
+    ],
+    "AFPFTIYSL": [
+        "ORF10",
+        "SARS-CoV2"
+    ],
+    "AGAAAYYVGY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "AGCLIGAEHVNNSYECDIPIGAGICASYQTQTNSPRRARSVAS": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "AIAMACLVGL": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "AIAMACLVGLM": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "AIGIGAYLV": [
+        "Acetyl-CoA carboxylase 2",
+        "Homo sapiens"
+    ],
+    "AIILASFSA": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "AIILASFSAST": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "AIMDKNIIL": [
+        "Non-structural protein 1",
+        "Influenza"
+    ],
+    "AIMTRCLAV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "AIPTNFTISV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "ALALLLLDR": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "ALASFLPLL": [
+        "5-hydroxytryptamine receptor 6",
+        "Homo sapiens"
+    ],
+    "ALDPHSGHFV": [
+        "CDK4",
+        "Homo sapiens"
+    ],
+    "ALDPLSETK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "ALGIGAVPI": [
+        "Full-length cDNA clone CS0DI011YN22 of Placenta of Homo sapiens (human)",
+        "Homo sapiens"
+    ],
+    "ALGIGILTV": [
+        "MLANA",
+        "Homo sapiens"
+    ],
+    "ALGIGIYSL": [
+        "phosphatidylinositol-4,5-bisphosphate 3-kinase catalytic subunit",
+        "Homo sapiens"
+    ],
+    "ALGIGVYPV": [
+        "Membrane-associated phosphatidylinositol transfer protein 1",
+        "Homo sapiens"
+    ],
+    "ALIHHNTHL": [
+        "Receptor tyrosine-protein kinase erbB-2 precursor",
+        "Homo sapiens"
+    ],
+    "ALLADKFPV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "ALLETLSLLL": [
+        "translational activator GCN1",
+        "Homo sapiens"
+    ],
+    "ALNTLVKQL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "ALNTPKDHI": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "ALRANSAVK": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "ALRGMGVNAV": [
+        "polyprotein",
+        "HCV"
+    ],
+    "ALRKVPTDNYITTY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "ALSKGVHFV": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "ALSPVIPHI": [
+        "MLL2",
+        "Homo sapiens"
+    ],
+    "ALSPVIPLI": [
+        "ALR",
+        "Homo sapiens"
+    ],
+    "ALSYTPVEV": [
+        "Protein Njmu-R1",
+        "Homo sapiens"
+    ],
+    "ALTPVVVTL": [
+        "CDK4",
+        "Homo sapiens"
+    ],
+    "ALVGAIPSI": [
+        "Sodium channel protein type 3 subunit alpha",
+        "Homo sapiens"
+    ],
+    "ALWEIQQVV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "ALWGFFPVL": [
+        "chromosome 15 open reading frame 24",
+        "Homo sapiens"
+    ],
+    "ALWGPDPAAA": [
+        "INS",
+        "Homo sapiens"
+    ],
+    "ALYGFVPVL": [
+        "GANAB",
+        "Homo sapiens"
+    ],
+    "ALYGSVPVL": [
+        "Neutral alpha-glucosidase AB",
+        "Homo sapiens"
+    ],
+    "AMAGSPVFL": [
+        "Solute carrier family 16 (Monocarboxylic acid transporters), member 1",
+        "Homo sapiens"
+    ],
+    "AMAVLYLAL": [
+        "FAM58A-1",
+        "Homo sapiens"
+    ],
+    "AMFWSVPTV": [
+        "TKT",
+        "Homo sapiens"
+    ],
+    "APAHISTI": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "APARLERRHSA": [
+        "KIF16B",
+        "Homo sapiens"
+    ],
+    "APGQTGKIA": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "APHGVVFL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "APHGVVFLHV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "APHGVVFLHVTYV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "APKEIIFL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "APKEIIFLEGETL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "APQPAPENAY": [
+        "BZLF1",
+        "EBV"
+    ],
+    "APRGPHGGAASGL": [
+        "NY-ESO-1",
+        "Homo sapiens"
+    ],
+    "APSASAFFGM": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "AQALNTLVK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "AQALNTLVKQL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "AQFAPSASA": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "AQFAPSASAFFGMSR": [
+        "N protein",
+        "Severe acute respiratory syndrome-related coronavirus"
+    ],
+    "AQVDVVNFNL": [
+        "ORF10",
+        "SARS-CoV2"
+    ],
+    "ARMILMTHF": [
+        "NS5B",
+        "HCV"
+    ],
+    "ARNLVPMVATVQGQN": [
+        "pp65",
+        "CMV"
+    ],
+    "ARSVASQSIIAYTMSLGAENSVAYSNNSIAIPTNFTISVTTEI": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "ASAFFGMSR": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "ASANLAATK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "ASFNYLKSPNFSK": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "ASKIITLKK": [
+        "ORF1ab,ORF3a",
+        "SARS-CoV2"
+    ],
+    "ASNENAETM": [
+        "Nucleocapsid protein",
+        "Influenza"
+    ],
+    "ASNENMDAM": [
+        "Nucleocapsid protein",
+        "Influenza"
+    ],
+    "ASNENMDTM": [
+        "Nucleocapsid protein",
+        "Influenza"
+    ],
+    "ASNENMEAM": [
+        "Nucleocapsid protein",
+        "Influenza"
+    ],
+    "ASNENMETM": [
+        "Nucleocapsid protein",
+        "Influenza"
+    ],
+    "ASQRVAGDSGFAAY": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "ASQSIIAYTM": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "ATDALMTGY": [
+        "NS3",
+        "HCV"
+    ],
+    "ATEGALNTPK": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "ATEGALNTPKDHI": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "ATIPIQASLPFGWLIVGVALLAVFQSASKIITLKKRWQ": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "ATSRTLSYY": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "ATSRTLSYYK": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "ATVVIGTSK": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "AVFDRKSDAK": [
+        "EBNA4",
+        "EBV"
+    ],
+    "AVGSHVYSV": [
+        "Phosphoglucomutase-like protein 5",
+        "Homo sapiens"
+    ],
+    "AVGSYVYSV": [
+        "PGM5",
+        "Homo sapiens"
+    ],
+    "AVILRGHLR": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "AVLQSGFRK": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "AVYDGREHTV": [
+        "MAGEA4",
+        "Homo sapiens"
+    ],
+    "AYAQKIFKI": [
+        "IE1",
+        "CMV"
+    ],
+    "AYILFTRFFYV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "AYKTFPPTEPK": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "AYSNNSIAIPTNF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "AYSNNSIAIPTNFTISV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "CALDPLSETK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "CCIEVINNT": [
+        "Kinesin-like protein KIF23",
+        "Homo sapiens"
+    ],
+    "CCLCLTVFL": [
+        "p60",
+        "Friend murine leukemia virus (Friend murine leukemia virus F-MuLV)"
+    ],
+    "CELYHYQECV": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "CFLLILPNC": [
+        "Protein FAM122C",
+        "Homo sapiens"
+    ],
+    "CFTNVYADSF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "CFVECAPVC": [
+        "keratinocyte proline-rich protein",
+        "Homo sapiens"
+    ],
+    "CHIPVEPNT": [
+        "F-box only protein 40",
+        "Homo sapiens"
+    ],
+    "CINGVCWTV": [
+        "NS3",
+        "HCV"
+    ],
+    "CLGGLLTMV": [
+        "LMP2A",
+        "EBV"
+    ],
+    "CLLGTYTQDV": [
+        "KanJ",
+        "Streptomyces Kanamyceticus"
+    ],
+    "CLLWSFQTSA": [
+        "TYR",
+        "Homo sapiens"
+    ],
+    "CLNEYHLFL": [
+        "NDC1",
+        "Homo sapiens"
+    ],
+    "CMTSCCSCLK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "CNDPFLGVY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "CNDPFLGVYY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "CPDGVKHVY": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "CPSQEPMSIYVY": [
+        "pp65",
+        "CMV"
+    ],
+    "CRVLCCYVL": [
+        "IE1",
+        "CMV"
+    ],
+    "CTELKLNDY": [
+        "Nucleocapsid protein",
+        "Influenza"
+    ],
+    "CTELKLSDY": [
+        "Nucleocapsid protein",
+        "Influenza"
+    ],
+    "CTFEYVSQPF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "CTFEYVSQPFLM": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "CTLKSFTVEK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "CVETMCNEY": [
+        "IE1",
+        "CMV"
+    ],
+    "CVNGSCFTV": [
+        "Neuraminidase",
+        "Influenza"
+    ],
+    "CYTWNQMNL": [
+        "WT1",
+        "Homo sapiens"
+    ],
+    "DATYQRTRALVR": [
+        "Nucleocapsid protein",
+        "Influenza"
+    ],
+    "DEEDAIAAY": [
+        "IE1",
+        "CMV"
+    ],
+    "DFLEYHDVR": [
+        "ORF8",
+        "SARS-CoV2"
+    ],
+    "DGVKHVYQL": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "DGVYFASTEK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "DIAGIGLKTV": [
+        "CAND2 protein",
+        "Homo sapiens"
+    ],
+    "DIYKGVYQFKSV": [
+        "glycoprotein",
+        "Lymphocytic choriomeningitis virus"
+    ],
+    "DLFMRIFTI": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "DLGDISGINASVVNIQKEIDRLNEVAKNLNESLIDLQELGKYE": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "DLPIGINITR": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "DLPIGINITRFQTL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "DLSPRWYFYYLGTGPEAGLPYGANKDGIIWVATEGALN": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "DQVHFQPLPPAVVKLSDALI": [
+        "Phosphate-binding protein pstS 1 precursor",
+        "Mycobacterium tuberculosis"
+    ],
+    "DRFYKTLRA": [
+        "Gag",
+        "HIV"
+    ],
+    "DSFKEELDKY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "DSGFAAYSR": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "DTDFVNEFYAY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "EAAGIGILTV": [
+        "MLANA",
+        "Homo sapiens"
+    ],
+    "EALPFFLFF": [
+        "AFMID protein",
+        "Homo sapiens"
+    ],
+    "EDFLEYHDVR": [
+        "ORF8",
+        "SARS-CoV2"
+    ],
+    "EDVPSGKLFMHVTLG": [
+        "pp65",
+        "CMV"
+    ],
+    "EEAAGIGIL": [
+        "MART1",
+        "Homo sapiens"
+    ],
+    "EEEFEPSTQYEY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "EEHVQIHTI": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "EELKKLLEQW": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "EELKKLLEQWNLVIGFLF": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "EENLLDFVRF": [
+        "EBNA6",
+        "EBV"
+    ],
+    "EEYLKAWTF": [
+        "MLANA",
+        "Homo sapiens"
+    ],
+    "EEYLQAFTY": [
+        "ABCD3",
+        "Homo sapiens"
+    ],
+    "EFFWDANDIY": [
+        "pp65",
+        "CMV"
+    ],
+    "EFTVSGNIL": [
+        "NY-ESO-1",
+        "Homo sapiens"
+    ],
+    "EHEGSGPEL": [
+        "ZFYVE27",
+        "Homo sapiens"
+    ],
+    "EILDITPCSF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "EIQEFCPNT": [
+        "Rho-related GTP-binding protein RhoE",
+        "Homo sapiens"
+    ],
+    "EIYKRWII": [
+        "Gag",
+        "HIV"
+    ],
+    "ELAAIGILTV": [
+        "MLANA",
+        "Homo sapiens"
+    ],
+    "ELAGIGALTV": [
+        "MLANA",
+        "Homo sapiens"
+    ],
+    "ELAGIGILTV": [
+        "MLANA",
+        "Homo sapiens"
+    ],
+    "ELAGIGLTV": [
+        "MLANA",
+        "Homo sapiens"
+    ],
+    "ELGKYEQYIKWPWYIWLGFIAGLIAIVMVTIMLCCMTSCCSCL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "ELIRQGTDY": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "ELKRKMIYM": [
+        "IE1",
+        "CMV"
+    ],
+    "ELLVRINRL": [
+        "CASP8",
+        "Homo sapiens"
+    ],
+    "ELRRKMMYM": [
+        "IE1",
+        "CMV"
+    ],
+    "ELYSPIFLI": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "EMLFSHGLVK": [
+        "SKIV2L",
+        "Homo sapiens"
+    ],
+    "EMMLFDWKV": [
+        "synthetic",
+        "synthetic"
+    ],
+    "EPLPQGQLTAY": [
+        "BZLF1",
+        "EBV"
+    ],
+    "ERYLKDQQL": [
+        "Envelope glycoprotein gp160 precursor",
+        "HIV"
+    ],
+    "ESDPIVAQY": [
+        "Titin",
+        "Homo sapiens"
+    ],
+    "ESEERPPTPY": [
+        "LMP-2A",
+        "EBV"
+    ],
+    "ESITGSLGPLL": [
+        "gp100",
+        "Homo sapiens"
+    ],
+    "EVDPIGHLY": [
+        "MAGEA3",
+        "Homo sapiens"
+    ],
+    "EYILSLEEL": [
+        "Glypican-3",
+        "Homo sapiens"
+    ],
+    "EYVSQPFLM": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FADDLNQLTGY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "FAFACPDGVKHVY": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "FAFACPDGVKHVYQL": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "FAPGNYPAL": [
+        "nucleoprotein",
+        "Murine respirovirus (murine parainfluenza virus 1)"
+    ],
+    "FASTEKSNIIRGWIFGTTLDSKTQSLLIVNNATNVVIKVCEFQ": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FAYANRNRF": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FCNDPFLGVY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FCNDPFLGVYY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FDVMVMPNL": [
+        "Isocitrate dehydrogenase",
+        "Homo sapiens"
+    ],
+    "FEDLRLLSF": [
+        "Nucleocapsid protein",
+        "Influenza"
+    ],
+    "FEDLRVLSF": [
+        "Nucleocapsid protein",
+        "Influenza"
+    ],
+    "FEDLRVSSF": [
+        "Nucleocapsid protein",
+        "Influenza"
+    ],
+    "FERDISTEI": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FERDISTEIY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FEYVSQPFL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FFSNVTWFH": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FGDVGSTLF": [
+        "NUP98",
+        "Homo sapiens"
+    ],
+    "FGEVFNATRF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FGEVFNATRFASVY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FIAGLIAIV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FIASFRLFA": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FIDQYYSSI": [
+        "Nitric oxide synthase, brain",
+        "Homo sapiens"
+    ],
+    "FIDSYICQV": [
+        "SMCY",
+        "Homo sapiens"
+    ],
+    "FITGISILL": [
+        "Interleukin-17 receptor A",
+        "Homo sapiens"
+    ],
+    "FKVSIWNLDY": [
+        "ORF6",
+        "SARS-CoV2"
+    ],
+    "FLAFLLFLV": [
+        "ORF7b",
+        "SARS-CoV2"
+    ],
+    "FLASKIGRLV": [
+        "PLA2G6",
+        "Homo sapiens"
+    ],
+    "FLCLFLLPSL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "FLCLFLLPSLATV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "FLCMKALLL": [
+        "android receptor ligand-binding domain",
+        "Homo sapiens"
+    ],
+    "FLDEFMEAV": [
+        "NADP-dependent malic enzyme",
+        "Homo sapiens"
+    ],
+    "FLFMYLVTV": [
+        "Olfactory receptor 1G1",
+        "Homo sapiens"
+    ],
+    "FLFTFFASI": [
+        "olfactory receptor 9Q2",
+        "Homo sapiens"
+    ],
+    "FLGIYTVTV": [
+        "olfactory receptor 8D4",
+        "Homo sapiens"
+    ],
+    "FLGIYTVTVV": [
+        "olfactory receptor 8D4",
+        "Homo sapiens"
+    ],
+    "FLGKIWPSHK": [
+        "Gag",
+        "HIV"
+    ],
+    "FLGRYMSAL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "FLIASVTWL": [
+        "E3 ubiquitin-protein ligase MARCH11",
+        "Homo sapiens"
+    ],
+    "FLKEKGGL": [
+        "Nef",
+        "HIV"
+    ],
+    "FLKEMGGL": [
+        "Nef",
+        "HIV"
+    ],
+    "FLKEQGGL": [
+        "Nef",
+        "HIV"
+    ],
+    "FLKETGGL": [
+        "Nef",
+        "HIV"
+    ],
+    "FLKGIGWIPI": [
+        "Nebulin",
+        "Homo sapiens"
+    ],
+    "FLLNKEMYL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "FLLPSLATV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "FLMASISSS": [
+        "Sarcospan",
+        "Homo sapiens"
+    ],
+    "FLNDLLSVM": [
+        "Dedicator of cytokinesis protein 7",
+        "Homo sapiens"
+    ],
+    "FLNGSCGSV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "FLNRFTTTL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "FLNVFFPLL": [
+        "olfactory receptor 2T1",
+        "Homo sapiens"
+    ],
+    "FLPDLNANA": [
+        "Potassium voltage-gated channel subfamily C member 3",
+        "Homo sapiens"
+    ],
+    "FLPFFSNVT": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FLPFFSNVTWFHAI": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FLPRVFSAV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "FLPSDFFPSV": [
+        "precore/core protein",
+        "HBV"
+    ],
+    "FLQSINFVR": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "FLQSINFVRI": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "FLRGRAYGL": [
+        "EBNA3A",
+        "EBV"
+    ],
+    "FLTVFSPFM": [
+        "GPI ethanolamine phosphate transferase 1",
+        "Homo sapiens"
+    ],
+    "FLTYLDVSV": [
+        "WD repeat-containing protein 46",
+        "Homo sapiens"
+    ],
+    "FLWLLWPVT": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FLWLLWPVTL": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FLWLLWPVTLACFVLAAV": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FLWSVFMLI": [
+        "islet-specific glucose-6-phosphatase-related protein",
+        "Homo sapiens"
+    ],
+    "FLYALALLL": [
+        "LMP2A",
+        "EBV"
+    ],
+    "FLYIIKLIFL": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FLYIIKLVFL": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FLYLYALVYF": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "FLYNLLTRV": [
+        "SEC24A",
+        "Homo sapiens"
+    ],
+    "FLYNPLTRV": [
+        "Protein transport protein Sec24A",
+        "Homo sapiens"
+    ],
+    "FMGVTYEM": [
+        "synthetic",
+        "synthetic"
+    ],
+    "FMIGYASAL": [
+        "transient receptor potential cation channel subfamily V member 4 isoform X1",
+        "Homo sapiens"
+    ],
+    "FMLLTQARL": [
+        "BTB/POZ domain-containing protein 1",
+        "Homo sapiens"
+    ],
+    "FMLYLVTLM": [
+        "olfactory receptor 14C36",
+        "Homo sapiens"
+    ],
+    "FMNKFIYEI": [
+        "Alpha-fetoprotein precursor",
+        "Homo sapiens"
+    ],
+    "FMSAYSGVL": [
+        "taste receptor type 1 member 2 precursor",
+        "Homo sapiens"
+    ],
+    "FMYSDFHFI": [
+        "Polymerase acidic protein",
+        "Influenza"
+    ],
+    "FNATRFASVY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FNGIGVTQNVLYENQKLIANQFNSAIGKIQDSLSSTASALGKL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FPNITNLCPF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FPPTSFGPL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "FPQGEAREL": [
+        "Pol",
+        "HIV"
+    ],
+    "FPQSAPHGV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FPQSAPHGVVF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FPRGQGVPI": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "FPRPWLHGL": [
+        "Vpr",
+        "HIV"
+    ],
+    "FPTKDVAL": [
+        "pp65",
+        "CMV"
+    ],
+    "FQAQHIAMA": [
+        "FAM58A-2",
+        "Homo sapiens"
+    ],
+    "FQDAYNAAGGHNAVF": [
+        "Antigen 85-B",
+        "Mycobacterium tuberculosis"
+    ],
+    "FQDAYNGAGGHNAVF": [
+        "Antigen 85-B precursor",
+        "Mycobacterium avium"
+    ],
+    "FQDYIKSYL": [
+        "Tyrosinase",
+        "Homo sapiens"
+    ],
+    "FQPQNGQFI": [
+        "nucleoprotein",
+        "Lymphocytic choriomeningitis virus"
+    ],
+    "FQPTNGVGY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FRCPRRFCF": [
+        "UL28",
+        "CMV"
+    ],
+    "FRNEGIHL": [
+        "KARS",
+        "Homo sapiens"
+    ],
+    "FRYMNSQGL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "FSFPLDFLV": [
+        "Probable G-protein coupled receptor 174",
+        "Homo sapiens"
+    ],
+    "FSKQLQQSM": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "FSTQFAFACPDGVKHVYQLRARSVSPKLFIRQEEV": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "FTEQPIDLVPNQPY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "FTISVTTEIL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FTNVYADSF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FTNVYADSFV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FTYASALWEI": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "FVCNLLLLFV": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "FVCNLLLLFVTVYSHLLLV": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "FVDGVPFVV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "FVFKNIDGY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "FVGEFFTDV": [
+        "glypican 3",
+        "Homo sapiens"
+    ],
+    "FVRATATIPI": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "FVVPYMIYLL": [
+        "PDS5A",
+        "Homo sapiens"
+    ],
+    "FVYVFTTHL": [
+        "B-cell CLL/lymphoma 9-like protein",
+        "Homo sapiens"
+    ],
+    "FYGKTILWF": [
+        "ARMT1",
+        "Homo sapiens"
+    ],
+    "FYLCFLAFL": [
+        "ORF7b",
+        "SARS-CoV2"
+    ],
+    "FYLCFLAFLL": [
+        "ORF7b",
+        "SARS-CoV2"
+    ],
+    "GAAAYYVGY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "GADGVGKSAL": [
+        "KRAS",
+        "Homo sapiens"
+    ],
+    "GAEHVNNSY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "GAVECCPNC": [
+        "DnaJ homolog subfamily A member 1",
+        "Homo sapiens"
+    ],
+    "GCQEICPAC": [
+        "Multiple epidermal growth factor-like domains protein 6",
+        "Homo sapiens"
+    ],
+    "GDAALALLLL": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "GDAALALLLLDRLNQL": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "GDCEEEEFEPSTQY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "GDCEEEEFEPSTQYEY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "GEEDGAGGHSL": [
+        "RECQL5",
+        "Homo sapiens"
+    ],
+    "GEIPVAYRKVLL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "GEIYKRWII": [
+        "Gag",
+        "HIV"
+    ],
+    "GEVFNATRF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "GFIKQYGDCLGDIAARDLICAQKFNGLTVLPPLLTDEMIAQYT": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "GIGIGSGQL": [
+        "Epsin-3",
+        "Homo sapiens"
+    ],
+    "GILEFVFTL": [
+        "matrix protein 1",
+        "Influenza"
+    ],
+    "GILGFVFTL": [
+        "M",
+        "Influenza"
+    ],
+    "GILGLVFTL": [
+        "matrix protein 1",
+        "Influenza"
+    ],
+    "GIWGFVFTL": [
+        "matrix protein 1",
+        "Influenza"
+    ],
+    "GLCTLVAML": [
+        "BMLF1",
+        "EBV"
+    ],
+    "GLEAPFLYLY": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "GLEAPFLYLYALVYFLQSINFVRIIMR": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "GLGIGALVL": [
+        "Cytochrome c oxidase assembly factor 3 homolog, mitochondrial",
+        "Homo sapiens"
+    ],
+    "GLGIGIASM": [
+        "Proton myo-inositol cotransporter",
+        "Homo sapiens"
+    ],
+    "GLLDEDFYA": [
+        "UGGT2",
+        "Homo sapiens"
+    ],
+    "GLLHHAPSL": [
+        "MULTISPECIES: glutamine synthetase 1",
+        "Mycobacterium tuberculosis"
+    ],
+    "GLMAIAWFI": [
+        "Dolichyldiphosphatase 1",
+        "Homo sapiens"
+    ],
+    "GLNKIVRMY": [
+        "Gag",
+        "HIV"
+    ],
+    "GLSPNLNRFL": [
+        "Alpha-fetoprotein precursor",
+        "Homo sapiens"
+    ],
+    "GLYDGMEHL": [
+        "Melanoma-associated antigen 10",
+        "Homo sapiens"
+    ],
+    "GMDYHNGHL": [
+        "synthetic",
+        "synthetic"
+    ],
+    "GMEVTPSGTWL": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "GMEVTPSGTWLTY": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "GMGPLLATV": [
+        "T-box transcription factor TBX3",
+        "Homo sapiens"
+    ],
+    "GMSRIGMEV": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "GMSRIGMEVTPSGTW": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "GNYTVSCLPF": [
+        "ORF8",
+        "SARS-CoV2"
+    ],
+    "GNYTVSCLPFTI": [
+        "ORF8",
+        "SARS-CoV2"
+    ],
+    "GPEPLPQGQLTAY": [
+        "BZLF1",
+        "EBV"
+    ],
+    "GPGHKARVL": [
+        "Gag",
+        "HIV"
+    ],
+    "GPGMKARVL": [
+        "Gag",
+        "HIV"
+    ],
+    "GPKKSTNLV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "GQTGKIADY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "GRLQSLQTY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "GSFCTQLNR": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "GSLSPELRPIF": [
+        "hypothetical protein CORT_0A05310",
+        "Candida orthopsilosis Co 90-125"
+    ],
+    "GTGPEAGLPY": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "GTHWFVTQR": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "GTITSGWTF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "GTITVEELK": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "GTSGSPIIDK": [
+        "NS3",
+        "DENV2"
+    ],
+    "GTSGSPIINR": [
+        "NS3",
+        "DENV3/4"
+    ],
+    "GTSGSPIVDR": [
+        "polyprotein",
+        "DENV2"
+    ],
+    "GTSGSPIVNR": [
+        "NS3",
+        "DENV1"
+    ],
+    "GTTLPKGFY": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "GVAMPNLYK": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "GVEHVTFFIY": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "GVPINTNSSPDDQIGYYRRATRRIRGGDGKMKDLSPRW": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "GVVFLHVTY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "GVYDGREHTV": [
+        "MAGEX2",
+        "Homo sapiens"
+    ],
+    "GVYDYLVST": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "GVYFASTEK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "GVYYHKNNK": [
+        "membrane glycoprotein,surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "GYINVFAFPF": [
+        "ORF10",
+        "SARS-CoV2"
+    ],
+    "GYQPYRVVVL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "GYQPYRVVVLSF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "HGIRNASFI": [
+        "pM45",
+        "Murid betaherpesvirus 1 (Murine cytomegalovirus)"
+    ],
+    "HHLWAYRDLQTRKDIRNAAWHKHGW": [
+        "GBAS",
+        "Homo sapiens"
+    ],
+    "HIAKSPFEV": [
+        "Filamin A",
+        "Homo sapiens"
+    ],
+    "HIGIGLLSL": [
+        "proteasome (prosome, macropain) activator subunit 4",
+        "Homo sapiens"
+    ],
+    "HIMPDTAEI": [
+        "NEB",
+        "Homo sapiens"
+    ],
+    "HLMSFPQSA": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "HLRIAGHHL": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "HLRIAGHHLGR": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "HLVDFQVTI": [
+        "ORF6",
+        "SARS-CoV2"
+    ],
+    "HMTEVVRHC": [
+        "TP53",
+        "Homo sapiens"
+    ],
+    "HPGSVNEFDF": [
+        "dense granule antigen protein 6",
+        "Toxoplasma gondii"
+    ],
+    "HPKVSSEVHI": [
+        "Vif",
+        "HIV"
+    ],
+    "HPLADNKFAL": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "HPVAEADYFEY": [
+        "EBNA1",
+        "EBV"
+    ],
+    "HPVGDADYFEY": [
+        "EBNA1",
+        "EBV"
+    ],
+    "HPVGEADYFEY": [
+        "EBNA",
+        "EBV"
+    ],
+    "HPVGQADYFEY": [
+        "EBNA1",
+        "EBV"
+    ],
+    "HQLGGVVEV": [
+        "Patched domain-containing protein 4",
+        "Homo sapiens"
+    ],
+    "HQNPVTGLLL": [
+        "PHKA1",
+        "Homo sapiens"
+    ],
+    "HRRGSRSYV": [
+        "gp100",
+        "Homo sapiens"
+    ],
+    "HSKKKCDEI": [
+        "polyprotein",
+        "HCV"
+    ],
+    "HSKKKCDEL": [
+        "NS3",
+        "HCV"
+    ],
+    "HSKRKCDEL": [
+        "polyprotein",
+        "HCV"
+    ],
+    "HSRKKCDEL": [
+        "NS3",
+        "HCV"
+    ],
+    "HTDFSSEIIGY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "HTQGYFPDW": [
+        "Nef",
+        "HIV"
+    ],
+    "HTTDPSFLGRY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "HVTFFIYNK": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "HVTYVPAQEK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "HVTYVPAQEKNF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "IAGLGLLTV": [
+        "transmembrane protein 74B isoform 1",
+        "Homo sapiens"
+    ],
+    "IAMACLVGLM": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "IAMAVLYLA": [
+        "FAM58A-3",
+        "Homo sapiens"
+    ],
+    "IASNENMETMESSTLE": [
+        "Nucleocapsid protein",
+        "Influenza"
+    ],
+    "IDFYLCFLAF": [
+        "ORF7b",
+        "SARS-CoV2"
+    ],
+    "IDLLLQRGPQYSEHPTFTSQYRI": [
+        "pp65",
+        "CMV"
+    ],
+    "IELSLIDFYL": [
+        "ORF7b",
+        "SARS-CoV2"
+    ],
+    "IGAEHVNNSY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "IGAGICASY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "IIKDYGKQM": [
+        "Pol",
+        "HIV"
+    ],
+    "IIKNLSKSL": [
+        "ORF6",
+        "SARS-CoV2"
+    ],
+    "IIKNLSKSLTENKY": [
+        "ORF6",
+        "SARS-CoV2"
+    ],
+    "IILVAVPHV": [
+        "EXOC8",
+        "Homo sapiens"
+    ],
+    "IITTDNTFV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "IKAVYNFATCG": [
+        "glycoprotein",
+        "Lymphocytic choriomeningitis virus"
+    ],
+    "ILAKFLHWL": [
+        "TERT",
+        "Homo sapiens"
+    ],
+    "ILASFSAST": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "ILCETCLIV": [
+        "PHLPP1",
+        "Homo sapiens"
+    ],
+    "ILEGIGILAV": [
+        "Anoctamin-3",
+        "Homo sapiens"
+    ],
+    "ILEGIGILSV": [
+        "anoctamin-4 isoform 1",
+        "Homo sapiens"
+    ],
+    "ILGGQVVHTV": [
+        "Solute carrier family 15 member 2",
+        "Homo sapiens"
+    ],
+    "ILGLPTQTV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "ILGTVSWNL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "ILHCANFNV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "ILIVMVPFL": [
+        "olfactory receptor, partial",
+        "Homo sapiens"
+    ],
+    "ILKEPVHGV": [
+        "Pol",
+        "HIV"
+    ],
+    "ILLDWAANV": [
+        "hCG25509",
+        "Homo sapiens"
+    ],
+    "ILLGIGIYAL": [
+        "transmembrane and coiled-coil domain-containing protein 2",
+        "Homo sapiens"
+    ],
+    "ILLIIMRTFK": [
+        "ORF6",
+        "SARS-CoV2"
+    ],
+    "ILLIIMRTFKVSIWNLDYII": [
+        "ORF6",
+        "SARS-CoV2"
+    ],
+    "ILLNKHID": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "ILLNKHIDA": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "ILNAMITKI": [
+        "HAUS augmin-like complex subunit 3",
+        "Homo sapiens"
+    ],
+    "ILNVDVFTL": [
+        "BAI1-associated protein 3",
+        "Homo sapiens"
+    ],
+    "ILPDPSKPSK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "ILSPFIPLL": [
+        "surface antigen",
+        "HBV"
+    ],
+    "ILSPFLPLL": [
+        "surface antigen",
+        "HBV"
+    ],
+    "ILSPFMPLL": [
+        "surface antigen",
+        "HBV"
+    ],
+    "ILSRLDKVEAEVQIDRLITGRLQSLQTYVTQQLIRAAEIRASA": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "ILTGLNYEA": [
+        "Sterol-4-alpha-carboxylate 3-dehydrogenase, decarboxylating",
+        "Homo sapiens"
+    ],
+    "IMDQVPFSV": [
+        "PMEL",
+        "Homo sapiens"
+    ],
+    "IMIEFCPGG": [
+        "Serine/threonine-protein kinase 10",
+        "Homo sapiens"
+    ],
+    "IMLEALERV": [
+        "small nuclear ribonucleoprotein G isoform f",
+        "Homo sapiens"
+    ],
+    "IMLIIFWFSL": [
+        "ORF7b",
+        "SARS-CoV2"
+    ],
+    "IMNDMPIYM": [
+        "EphA2",
+        "Homo sapiens"
+    ],
+    "IMRTFKVSI": [
+        "ORF6",
+        "SARS-CoV2"
+    ],
+    "IMYNYPAM": [
+        "ESAT-6-like protein esxH",
+        "Mycobacterium tuberculosis"
+    ],
+    "INFVRIIMR": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "INITRFQTL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "INVFAFPFTI": [
+        "ORF10",
+        "SARS-CoV2"
+    ],
+    "IPAAAGRFF": [
+        "rhoptry protein ROP7",
+        "Toxoplasma gondii"
+    ],
+    "IPFAMQMAY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "IPIGAGICASY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "IPIQASLPF": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "IPLTEEAEL": [
+        "Gag-Pol polyprotein",
+        "HIV"
+    ],
+    "IPRRNVATL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "IPSINVHHY": [
+        "pp65",
+        "CMV"
+    ],
+    "IPTNFTISV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "IPYNSVTSSI": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "IQPGQTFSV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "IQYIDIGNY": [
+        "ORF8",
+        "SARS-CoV2"
+    ],
+    "ISDYDYYRY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "ISPRTLNAW": [
+        "Pol",
+        "HIV"
+    ],
+    "ISQAVHAAHAEINEAGR": [
+        "ovalbumin",
+        "Gallus gallus (chicken)"
+    ],
+    "ITDQVPFSV": [
+        "Melanocyte protein Pmel 17 precursor",
+        "Homo sapiens"
+    ],
+    "ITDVFYKENSY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "ITEEVGHTDLMAAY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "ITLATCELY": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "ITLKKRWQL": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "ITLKKRWQLAL": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "IVDTVSALV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "IVGVALLAVF": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "IVSPFIFLL": [
+        "Olfactory receptor 52D1",
+        "Homo sapiens"
+    ],
+    "IVSPFIPLL": [
+        "surface antigen",
+        "HBV"
+    ],
+    "IVTDFSVIK": [
+        "EBNA4",
+        "EBV"
+    ],
+    "IYATVAGSL": [
+        "Hemagglutinin precursor",
+        "Influenza"
+    ],
+    "IYKTPPIKDF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "IYSKHTPINL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "IYSTVASSL": [
+        "Hemagglutinin precursor",
+        "Influenza"
+    ],
+    "KAALDLSHF": [
+        "Nef",
+        "HIV"
+    ],
+    "KAANIVLTV": [
+        "hypothetical protein",
+        "Bacteroides stercoris"
+    ],
+    "KAAVDLSHF": [
+        "Nef",
+        "HIV"
+    ],
+    "KAAYNFATCGI": [
+        "glycoprotein",
+        "Lymphocytic choriomeningitis virus"
+    ],
+    "KAFSPEVIPMF": [
+        "Gag",
+        "HIV"
+    ],
+    "KASEKIFYV": [
+        "SSX2",
+        "Homo sapiens"
+    ],
+    "KAVYNFAT": [
+        "glycoprotein",
+        "Lymphocytic choriomeningitis virus"
+    ],
+    "KAVYNFATC": [
+        "glycoprotein",
+        "Lymphocytic choriomeningitis virus"
+    ],
+    "KAVYNFATM": [
+        "glycoprotein",
+        "Lymphocytic choriomeningitis virus"
+    ],
+    "KAYNVTQAF": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "KDFGGFNFSQILPDPSKPSKRSFIEDLLFNKVTLADAGFIKQY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "KEIDRLNEV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "KEIIFLEGETL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "KFPRGQGVPI": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "KIADYNYKL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "KIFGSLAFL": [
+        "ERBB2",
+        "Homo sapiens"
+    ],
+    "KIILFLPCI": [
+        "Metalloreductase STEAP2",
+        "Homo sapiens"
+    ],
+    "KINAWIKVV": [
+        "Gag",
+        "HIV"
+    ],
+    "KLAKPLPYT": [
+        "Spermine oxidase",
+        "Homo sapiens"
+    ],
+    "KLEFMDWRL": [
+        "synthetic",
+        "synthetic"
+    ],
+    "KLEQLDWTV": [
+        "GEMIN",
+        "Homo sapiens"
+    ],
+    "KLFAAETLK": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "KLFEFLVHGV": [
+        "SWI/SNF-related matrix-associated actin-dependent regulator of chromatin subfamily D member 3",
+        "Homo sapiens"
+    ],
+    "KLFEFLVYGV": [
+        "SMARCD3",
+        "Homo sapiens"
+    ],
+    "KLFIRQEEV": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "KLGASPLHV": [
+        "V-type proton ATPase subunit S1 precursor",
+        "Homo sapiens"
+    ],
+    "KLGGALQAK": [
+        "IE1",
+        "CMV"
+    ],
+    "KLGIGFAKA": [
+        "sodium channel alpha subunit",
+        "Homo sapiens"
+    ],
+    "KLKSLGLNAV": [
+        "polyprotein",
+        "HCV"
+    ],
+    "KLLAGDEIV": [
+        "Protein Shroom2",
+        "Homo sapiens"
+    ],
+    "KLLEIAPNC": [
+        "large T antigen",
+        "Merkel cell polyomavirus (MCPyV isolate R17b)"
+    ],
+    "KLLEQWNLV": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "KLMNIQQKL": [
+        "AKAP13",
+        "Homo sapiens"
+    ],
+    "KLMNIQQQL": [
+        "A-kinase anchor protein 13",
+        "Homo sapiens"
+    ],
+    "KLNDLCFTNV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "KLNDLCFTNVYADSFVIR": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "KLNTITPVV": [
+        "Chromodomain-helicase-DNA-binding protein 8",
+        "Homo sapiens"
+    ],
+    "KLNVGDYFV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "KLPDDFTGCV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "KLPLDINPV": [
+        "Tubulin--tyrosine ligase-like protein 12",
+        "Homo sapiens"
+    ],
+    "KLQCVDLHV": [
+        "KLK3",
+        "Homo sapiens"
+    ],
+    "KLSALGINAV": [
+        "NS3",
+        "HCV"
+    ],
+    "KLSELHAYI": [
+        "Hemoglobin subunit zeta",
+        "Homo sapiens"
+    ],
+    "KLSGLGINAV": [
+        "Hepatitis C virus core, matrix, envelope and non-structural protein RNA.",
+        "HCV"
+    ],
+    "KLSHQLVLL": [
+        "SNX24",
+        "Homo sapiens"
+    ],
+    "KLSHQPVLL": [
+        "Sorting nexin-24",
+        "Homo sapiens"
+    ],
+    "KLSREIMPV": [
+        "Histone acetyltransferase KAT6A",
+        "Homo sapiens"
+    ],
+    "KLSYGIATV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "KLTPLCVTL": [
+        "Envelope glycoprotein gp160 precursor",
+        "HIV"
+    ],
+    "KLVALGINAV": [
+        "NS3",
+        "HCV"
+    ],
+    "KLVANNTRL": [
+        "Antigen 85-B",
+        "Mycobacterium tuberculosis"
+    ],
+    "KLVVLGINAV": [
+        "polyprotein",
+        "HCV"
+    ],
+    "KLWAQCVQL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "KLYGLDWAEL": [
+        "ASTN1",
+        "Homo sapiens"
+    ],
+    "KMDYFSGQL": [
+        "synthetic",
+        "synthetic"
+    ],
+    "KMGIGWKPL": [
+        "Uncharacterized protein C2orf71",
+        "Homo sapiens"
+    ],
+    "KMGVTYEM": [
+        "synthetic",
+        "synthetic"
+    ],
+    "KMKDLSPRW": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "KMQRMLLEK": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "KMVAVFYTT": [
+        "olfactory receptor 5M8",
+        "Homo sapiens"
+    ],
+    "KMVTVCPNT": [
+        "Zinc finger protein 483",
+        "Homo sapiens"
+    ],
+    "KPFERDISTEI": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "KPFERDISTEIY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "KPLEFGATSAAL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "KQFDTYNLW": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "KQIYKTPPIK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "KQIYKTPPIKDF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "KRWIILGLNK": [
+        "Gag",
+        "HIV"
+    ],
+    "KRWIIMGLNK": [
+        "Gag",
+        "HIV"
+    ],
+    "KSALDLSHF": [
+        "Nef",
+        "HIV"
+    ],
+    "KSPWFTTL": [
+        "env polyprotein",
+        "AKR (endogenous) murine leukemia virus (AKR murine leukemia virus)"
+    ],
+    "KSWMESEFRV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "KSWMESEFRVY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "KTAYSHLSTSK": [
+        "DNA polymerase",
+        "HBV"
+    ],
+    "KTFPPTEPK": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "KTSVDCTMYI": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "KTVGIYPNA": [
+        "Alpha-N-acetylgalactosaminide alpha-2,6-sialyltransferase 3",
+        "Homo sapiens"
+    ],
+    "KTWGQYWQV": [
+        "PMEL",
+        "Homo sapiens"
+    ],
+    "KVAELVHFL": [
+        "MAGEA3",
+        "Homo sapiens"
+    ],
+    "KVANFANTM": [
+        "glycoprotein",
+        "Lymphocytic choriomeningitis virus"
+    ],
+    "KVCEFQFCNDPFLGVYYHKNNKSWMESEFRVYSSANNCTFEYV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "KVDPIGHVY": [
+        "MAGEA6",
+        "Homo sapiens"
+    ],
+    "KVFRSSVLH": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "KVKEVCPNV": [
+        "Fatty acyl-CoA reductase 2",
+        "Homo sapiens"
+    ],
+    "KVLEYVIKV": [
+        "MAGEA1",
+        "Homo sapiens"
+    ],
+    "KVPRNQDWL": [
+        "Melanocyte protein Pmel 17 precursor",
+        "Homo sapiens"
+    ],
+    "KVPTDNYITTY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "KVSIWNLDY": [
+        "ORF6",
+        "SARS-CoV2"
+    ],
+    "KVSIWNLDYI": [
+        "ORF6",
+        "SARS-CoV2"
+    ],
+    "LAAVYRINWI": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LADAGFIKQY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "LAITPEIAPYF": [
+        "HAD family hydrolase",
+        "Bacillus <genus>"
+    ],
+    "LALLLLDRL": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "LAMPFATPM": [
+        "NY-ESO-1",
+        "Homo sapiens"
+    ],
+    "LASYFFWGL": [
+        "ETNK-2",
+        "Homo sapiens"
+    ],
+    "LCWKCRSKNPLLYDANYFLCWHTNCYDYCIPYNSVTSS": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "LDYIINLII": [
+        "ORF6",
+        "SARS-CoV2"
+    ],
+    "LEPLVDLPI": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LEYHDVRVV": [
+        "ORF8",
+        "SARS-CoV2"
+    ],
+    "LEYHDVRVVL": [
+        "ORF8",
+        "SARS-CoV2"
+    ],
+    "LFARTRSMW": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LGAENSVAY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LGAENSVAYSNN": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LGIGVITI": [
+        "Immunoglobulin heavy chain",
+        "Homo sapiens"
+    ],
+    "LGYGFVNYI": [
+        "ELAVL4",
+        "Homo sapiens"
+    ],
+    "LHMEFCSCC": [
+        "Sorting nexin 11",
+        "Homo sapiens"
+    ],
+    "LIDFYLCFL": [
+        "ORF7b",
+        "SARS-CoV2"
+    ],
+    "LIDLQELGKY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LIGIGIAPL": [
+        "iron-responsive element-binding protein 2",
+        "Homo sapiens"
+    ],
+    "LIGIGLNLV": [
+        "Spatacsin",
+        "Homo sapiens"
+    ],
+    "LIIMRTFKV": [
+        "ORF6",
+        "SARS-CoV2"
+    ],
+    "LIIPCIHLI": [
+        "Ubiquitin carboxyl-terminal hydrolase 28",
+        "Homo sapiens"
+    ],
+    "LITGRLQSL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LITGRLQSLQTYV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LITLATCELY": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "LITLATCELYHYQECV": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "LIVNSVLLFL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "LKKRWQLAL": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "LKKRWQLALSKGVHFVCNLLLLFVTVYSHLLLVAAGLE": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "LLAGTLAGV": [
+        "H(+)/Cl(-) exchange transporter 4",
+        "Homo sapiens"
+    ],
+    "LLAILPYYV": [
+        "KCNB1 protein, partial",
+        "Homo sapiens"
+    ],
+    "LLALHRSYL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LLAMKVPNV": [
+        "Putative ATP-dependent RNA helicase DHX33",
+        "Homo sapiens"
+    ],
+    "LLCRMNSRNY": [
+        "ORF10",
+        "SARS-CoV2"
+    ],
+    "LLDDFVEII": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "LLDFVRFMGV": [
+        "EBNA3B",
+        "EBV"
+    ],
+    "LLEDLDWDV": [
+        "WDR87",
+        "Homo sapiens"
+    ],
+    "LLFALYFSA": [
+        "alpha-N-acetylgalactosaminide alpha-2,6-sialyltransferase 2 precursor",
+        "Homo sapiens"
+    ],
+    "LLFGFPVYV": [
+        "Tax",
+        "HTLV-1"
+    ],
+    "LLFGKPVYV": [
+        "Tax",
+        "HTLV-1"
+    ],
+    "LLFGLALIEV": [
+        "Melanoma-associated antigen C2",
+        "Homo sapiens"
+    ],
+    "LLFGMTPCL": [
+        "rRNA methyltransferase 1, mitochondrial",
+        "Homo sapiens"
+    ],
+    "LLFGPVYV": [
+        "Tax",
+        "HTLV-1"
+    ],
+    "LLFGYAVYV": [
+        "Tax",
+        "HTLV-1"
+    ],
+    "LLFGYPRYV": [
+        "Tax",
+        "HTLV-1"
+    ],
+    "LLFGYPVAV": [
+        "Tax",
+        "HTLV-1"
+    ],
+    "LLFGYPVYV": [
+        "Tax",
+        "HTLV-1"
+    ],
+    "LLFLAFVVFL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "LLFLVLIML": [
+        "ORF7b",
+        "SARS-CoV2"
+    ],
+    "LLFNILGGWV": [
+        "polyprotein",
+        "HCV"
+    ],
+    "LLFNKVTLA": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LLFVTVYSHL": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "LLGATCMFV": [
+        "G1/S-specific cyclin-D1",
+        "Homo sapiens"
+    ],
+    "LLGCFLPLL": [
+        "Proteinase-activated receptor 4",
+        "Homo sapiens"
+    ],
+    "LLGIGILVL": [
+        "Bone marrow stromal antigen 2",
+        "Homo sapiens"
+    ],
+    "LLGIGIYAL": [
+        "transmembrane and coiled-coil domain-containing protein 2",
+        "Homo sapiens"
+    ],
+    "LLHGFSFYL": [
+        "PORCN",
+        "Homo sapiens"
+    ],
+    "LLIDLTSFLL": [
+        "Zinc transporter 8",
+        "Homo sapiens"
+    ],
+    "LLLCRMNSR": [
+        "ORF10",
+        "SARS-CoV2"
+    ],
+    "LLLDDFVEI": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "LLLDDFVEII": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "LLLDRLNQL": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "LLLGIGILV": [
+        "BST2",
+        "Homo sapiens"
+    ],
+    "LLLGIGILVL": [
+        "Bone marrow stromal antigen 2",
+        "Homo sapiens"
+    ],
+    "LLLLDRLNQ": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "LLLLDRLNQL": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "LLLNMLIAL": [
+        "Transient receptor potential cation channel subfamily V member 3",
+        "Homo sapiens"
+    ],
+    "LLLQYGSFC": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LLLVSLWGL": [
+        "Thymus-specific serine protease",
+        "Homo sapiens"
+    ],
+    "LLMPILTLT": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "LLQCTQQAV": [
+        "API5",
+        "Homo sapiens"
+    ],
+    "LLQYGSFCT": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LLSAGIFGA": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "LLSIISFPA": [
+        "phosphorylase b kinase regulatory subunit alpha, liver isoform",
+        "Homo sapiens"
+    ],
+    "LLSLFSLWL": [
+        "zinc transporter 8 isoform a",
+        "Homo sapiens"
+    ],
+    "LLSVFLHLL": [
+        "Carboxypeptidase N catalytic chain",
+        "Homo sapiens"
+    ],
+    "LLTDEMIAQY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LLVDLAEEL": [
+        "CDKN2A",
+        "Homo sapiens"
+    ],
+    "LLWNGPMAV": [
+        "NS4B",
+        "YFV"
+    ],
+    "LLWNTVWNM": [
+        "pORF1",
+        "Hepatitis E virus"
+    ],
+    "LLYDANYFL": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "LLYDANYFLC": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "LMDMHNGQL": [
+        "synthetic",
+        "synthetic"
+    ],
+    "LMDYWQGQL": [
+        "synthetic",
+        "synthetic"
+    ],
+    "LMIERFVSL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "LMLWASSSI": [
+        "vomeronasal type-1 receptor 2",
+        "Homo sapiens"
+    ],
+    "LMVLHSPSL": [
+        "chromosome 3 open reading frame 58, isoform CRA_b",
+        "Homo sapiens"
+    ],
+    "LNDLCFTNVY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LPAADLDDF": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "LPDDFTGCVIAWNSNNLDSKVGGNYNYLYRLFRKSNLKPFERD": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LPEGLPQGQLTAY": [
+        "BZLF1",
+        "EBV"
+    ],
+    "LPEPLGQGQLTAY": [
+        "BZLF1",
+        "EBV"
+    ],
+    "LPEPLPQAQLTAY": [
+        "BZLF1",
+        "EBV"
+    ],
+    "LPEPLPQGGLTAY": [
+        "BZLF1",
+        "EBV"
+    ],
+    "LPEPLPQGQGTAY": [
+        "BZLF1",
+        "EBV"
+    ],
+    "LPEPLPQGQLGAY": [
+        "BZLF1",
+        "EBV"
+    ],
+    "LPEPLPQGQLTAY": [
+        "BZLF1",
+        "EBV"
+    ],
+    "LPEPLPQGQLTGY": [
+        "BZLF1",
+        "EBV"
+    ],
+    "LPFFSNVTW": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LPFFSNVTWF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LPFNDGVYF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LPFNDGVYFA": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LPIGINITRF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LPNNTASWF": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "LPPAYTNSF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LPPIVAKEI": [
+        "Pol",
+        "HIV"
+    ],
+    "LPQGFSAL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LPRRSGAAGA": [
+        "Nucleocapsid protein",
+        "Influenza"
+    ],
+    "LQFAYANRNR": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LQFAYANRNRFLY": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LQIPFAMQM": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LQIPFAMQMAY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LQLGFSTGV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "LQLPQGTTL": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "LQSINFVRI": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "LQSINFVRII": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "LSDDAVVCFNSTY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "LSEFCRVLCCYVLEE": [
+        "IE1",
+        "CMV"
+    ],
+    "LSITPEIAPYF": [
+        "HAD family hydrolase",
+        "Bacillus <genus>"
+    ],
+    "LSITPEISPYF": [
+        "MULTISPECIES: HAD family hydrolase",
+        "Bacillus <genus>"
+    ],
+    "LSKSLTENKY": [
+        "ORF6",
+        "SARS-CoV2"
+    ],
+    "LSLRNPILV": [
+        "Protein PB1-F2",
+        "Influenza"
+    ],
+    "LSPRWYFYY": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "LSPRWYFYYL": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "LSSTASALGK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LSYYKLGASQRVAGDSGFAAYSRYRIGNYKLNTDHSS": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LTDEMIAQY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LTDEMIAQYT": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LTISPEIPPYF": [
+        "HAD family hydrolase",
+        "Sporosarcina newyorkensis"
+    ],
+    "LTISPEIPSYF": [
+        "MULTISPECIES: HAD family hydrolase",
+        "Sporosarcina"
+    ],
+    "LTITPEIAPFF": [
+        "HAD family hydrolase",
+        "Bacillus <genus>"
+    ],
+    "LTITPEIAPYF": [
+        "HAD family hydrolase",
+        "Bacillus <genus>"
+    ],
+    "LTITPEIRPYF": [
+        "HAD family hydrolase",
+        "Bacillus <genus>"
+    ],
+    "LTLTPEIAPYF": [
+        "HAD family hydrolase",
+        "Enterococcus saccharolyticus"
+    ],
+    "LVLEVDPNI": [
+        "Keratin, type II cytoskeletal 8",
+        "Homo sapiens"
+    ],
+    "LVLPLVMGV": [
+        "Proline-, glutamic acid- and leucine-rich protein 1",
+        "Homo sapiens"
+    ],
+    "LVLSVNPYV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "LVMPFSIVYI": [
+        "5-hydroxytryptamine receptor 1F",
+        "Homo sapiens"
+    ],
+    "LVVDFSQFSR": [
+        "DNA polymerase",
+        "HBV"
+    ],
+    "LWLLWPVTL": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LWPVTLACF": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LYDANYFLCW": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "LYIIKLIFL": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LYIIKLIFLW": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LYNSASFSTF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "LYPEFIASI": [
+        "DPY19L4",
+        "Homo sapiens"
+    ],
+    "LYPELIASI": [
+        "Probable C-mannosyltransferase DPY19L4",
+        "Homo sapiens"
+    ],
+    "LYSPIFLIV": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "MADSNGTITVEELKKLLEQWNLVIGFLFLTWICLLQFAYAN": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "MDLFMRIFTI": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "MDLFMRIFTIGTVTLKQGEIKDATPSDFVRATATIPIQ": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "MEVDPIGHLY": [
+        "MAGEA3",
+        "Homo sapiens"
+    ],
+    "MEVTPSGTWL": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "MFHLVDFQVTIAEILLIIMRTFKVSIWNLDY": [
+        "ORF6",
+        "SARS-CoV2"
+    ],
+    "MGRRAGAEPAPRPCLGRRCSAPAAASVA": [
+        "hypocretin (orexin) neuropeptide precursor",
+        "Homo sapiens"
+    ],
+    "MGYINVFAF": [
+        "ORF10",
+        "SARS-CoV2"
+    ],
+    "MGYINVFAFPFTIYSL": [
+        "ORF10",
+        "SARS-CoV2"
+    ],
+    "MGYINVFAFPFTIYSLLLCRMN": [
+        "ORF10",
+        "SARS-CoV2"
+    ],
+    "MIAQYTSALLAGTITSGWTFGAGAALQIPFAMQMAYRFNGIGV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "MIELSLIDFY": [
+        "ORF7b",
+        "SARS-CoV2"
+    ],
+    "MIELSLIDFYLCFLAFLLFLVLIML": [
+        "ORF7b",
+        "SARS-CoV2"
+    ],
+    "MIISHLSLI": [
+        "vomeronasal type-1 receptor 5",
+        "Homo sapiens"
+    ],
+    "MLDLQPETT": [
+        "E7",
+        "HPV"
+    ],
+    "MLFSHGLVK": [
+        "SKIV2L",
+        "Homo sapiens"
+    ],
+    "MLGEQLFPL": [
+        "PABPC1",
+        "Homo sapiens"
+    ],
+    "MLGERLFPL": [
+        "PABPC4 protein",
+        "Homo sapiens"
+    ],
+    "MLIGIPVYV": [
+        "RNF19B",
+        "Homo sapiens"
+    ],
+    "MLIIFWFSL": [
+        "ORF7b",
+        "SARS-CoV2"
+    ],
+    "MLLKQDVSL": [
+        "Short transient receptor potential channel 1",
+        "Homo sapiens"
+    ],
+    "MLNIPSINV": [
+        "pp65",
+        "CMV"
+    ],
+    "MLWCKDGHV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "MLWGYLQYV": [
+        "Tel1",
+        "Saccharomyces Cerevisiae"
+    ],
+    "MLYQHLLPL": [
+        "alternatively spliced Insulin",
+        "Homo sapiens"
+    ],
+    "MMDFFNAQM": [
+        "U2AF2",
+        "Homo sapiens"
+    ],
+    "MMISAGFSL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "MPASWVMRI": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "MPYGYVLNEF": [
+        "KIAA0368",
+        "Homo sapiens"
+    ],
+    "MTSCCSCLK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "MVIGIPVYV": [
+        "RNF19B protein",
+        "Homo sapiens"
+    ],
+    "MVMCGGSLYV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "MVNTVAGAMK": [
+        "ARHGAP35",
+        "Homo sapiens"
+    ],
+    "MVWGPDPLYV": [
+        "DUF5119 domain-containing protein",
+        "Bacteroides fragilis"
+    ],
+    "MWSFNPETNI": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "NAITNAKII": [
+        "Matrix protein",
+        "Human respiratory syncytial virus A2 (Human respiratory syncytial virus (strain A2))"
+    ],
+    "NATRFASVY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "NDMLVCANI": [
+        "Rho guanine nucleotide exchange factor 10-like protein",
+        "Homo sapiens"
+    ],
+    "NEGVKAAW": [
+        "IE2",
+        "CMV"
+    ],
+    "NGVEGFNCY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "NILSPFIPLL": [
+        "surface antigen",
+        "HBV"
+    ],
+    "NILSPFLPLL": [
+        "surface antigen",
+        "HBV"
+    ],
+    "NILSPFMPLL": [
+        "surface antigen",
+        "HBV"
+    ],
+    "NLDSKVGGNY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "NLFNRYPAL": [
+        "Plastin-2",
+        "Homo sapiens"
+    ],
+    "NLFSQDISV": [
+        "RecName: Full=Zinc finger protein 827",
+        "Homo sapiens"
+    ],
+    "NLMDGDLGL": [
+        "Complement C1s subcomponent",
+        "Homo sapiens"
+    ],
+    "NLNCCSVPV": [
+        "GNL3L",
+        "Homo sapiens"
+    ],
+    "NLNESLIDL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "NLNRCSVPV": [
+        "Guanine nucleotide-binding protein-like 3-like protein",
+        "Homo sapiens"
+    ],
+    "NLQREEYTV": [
+        "TR10BP",
+        "Homo sapiens"
+    ],
+    "NLSALGIFST": [
+        "IGF2BP2",
+        "Homo sapiens"
+    ],
+    "NLSKSLTENK": [
+        "ORF6",
+        "SARS-CoV2"
+    ],
+    "NLTTRTQL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "NLVPMVATV": [
+        "pp65",
+        "CMV"
+    ],
+    "NLWNTFTRL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "NMEYMTWDV": [
+        "CRISPLD1",
+        "Homo sapiens"
+    ],
+    "NMIHFAPNV": [
+        "C3 and PZP-like alpha-2-macroglobulin domain-containing protein 8",
+        "Homo sapiens"
+    ],
+    "NMINFAPNI": [
+        "CD109 antigen",
+        "Homo sapiens"
+    ],
+    "NMLRIMASL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "NMMWFQGQL": [
+        "synthetic",
+        "synthetic"
+    ],
+    "NNILIATCV": [
+        "Protein NPAT",
+        "Homo sapiens"
+    ],
+    "NPANNAAIV": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "NPANNAAIVL": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "NPLLYDANY": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "NPLLYDANYFLCW": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "NQKLIANQF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "NRDVDTDFVNEFY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "NRDVDTDFVNEFYAY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "NSASFSTFK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "NSIAIPTNF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "NSRIKASM": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "NSSPDDQIGY": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "NSVTSSIVITSGDGTTSPISEHDYQIGGYTEKWESGVK": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "NTNSSPDDQIGYY": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "NTQGYFPDW": [
+        "Nef",
+        "HIV"
+    ],
+    "NVEYYDIKL": [
+        "KLHL7",
+        "Homo sapiens"
+    ],
+    "NVFAFPFTI": [
+        "ORF10",
+        "SARS-CoV2"
+    ],
+    "NVFAFPFTIY": [
+        "ORF10",
+        "SARS-CoV2"
+    ],
+    "NVYADSFVIR": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "NYIAQVDVV": [
+        "ORF10",
+        "SARS-CoV2"
+    ],
+    "NYIAQVDVVNFNL": [
+        "ORF10",
+        "SARS-CoV2"
+    ],
+    "NYLYRLFRK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "NYNYLYRLF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "NYNYLYRLFRK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "NYSGVVTTVMF": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "NYTVSCLPF": [
+        "ORF8",
+        "SARS-CoV2"
+    ],
+    "PFFSNVTWF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "PLIELCVDEAGSKSPIQYIDIGNYTVSCLPFTINCQE": [
+        "ORF8",
+        "SARS-CoV2"
+    ],
+    "PLLYDANYFL": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "PPWQAGILARNLVPMVATVQGQN": [
+        "pp65",
+        "CMV"
+    ],
+    "PTNGVGYQPYRVVVLSFELLHAPATVCGPKKSTNLVKNKCVNF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "PYNSVTSSI": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "PYRVVVLSF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "QAEPDRAHYNIVTFCCKCD": [
+        "E7",
+        "HPV"
+    ],
+    "QASQEVKNW": [
+        "Gag",
+        "HIV"
+    ],
+    "QDVEIPPNI": [
+        "Fibrous sheath CABYR-binding protein",
+        "Homo sapiens"
+    ],
+    "QECVRGTTVL": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "QELGKYEQYI": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "QELGKYEQYIKW": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "QELIRQGTDY": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "QELIRQGTDYKHW": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "QELYSPIFL": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "QEVFAQVKQIY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "QEVFAQVKQIYK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "QIKVRVDMV": [
+        "IE1",
+        "CMV"
+    ],
+    "QIKVRVKMV": [
+        "IE1",
+        "CMV"
+    ],
+    "QLCDVMFYL": [
+        "BRAP",
+        "Homo sapiens"
+    ],
+    "QLIPCMDVV": [
+        "Alpha-gliadin",
+        "Triticum aestivum (Canadian hard winter wheat)"
+    ],
+    "QLMCQPILL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "QLMCQPILLL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "QLPQGTTLPK": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "QLRSLGLNAV": [
+        "polyprotein",
+        "HCV"
+    ],
+    "QLRTLGLNAV": [
+        "polyprotein",
+        "HCV"
+    ],
+    "QLSSLGLNAV": [
+        "polyprotein",
+        "HCV"
+    ],
+    "QLTSLGLNAV": [
+        "polyprotein",
+        "HCV"
+    ],
+    "QPRAPIRPI": [
+        "EBNA6",
+        "EBV"
+    ],
+    "QPTESIVRF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "QPYRVVVL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "QPYRVVVLSF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "QQQGQTVTK": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "QQQQGQTVTK": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "QQWNFAGIEAAASA": [
+        "6 kDa early secretory antigenic target",
+        "Mycobacterium tuberculosis"
+    ],
+    "QRRPQGLPNNTASWFTALTQHGKEDLKFPRGQGVPINT": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "QSINFVRII": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "QTDPVTLQY": [
+        "Helicase with zinc finger domain 2",
+        "Homo sapiens"
+    ],
+    "QTGKIADYNY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "QTNSPRRAR": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "QVPLRPMTYK": [
+        "Nef",
+        "HIV"
+    ],
+    "QWNLVIGFLF": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "QYDPVAALF": [
+        "pp65",
+        "CMV"
+    ],
+    "QYIKWPWYI": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "RAFSPEVIPMF": [
+        "Gag",
+        "HIV"
+    ],
+    "RAKFKQLL": [
+        "BZLF1",
+        "EBV"
+    ],
+    "RALEYKNL": [
+        "Immediate-early protein 3 (IE3)",
+        "Murid betaherpesvirus 1 (Murine cytomegalovirus)"
+    ],
+    "RARSVSPKL": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "RARSVSPKLFIR": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "RCMLQCPSV": [
+        "Vacuolar protein sorting-associated protein 13C",
+        "Homo sapiens"
+    ],
+    "REGVFVSNGTHW": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "RFDNPVLPF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "RFLYIIKLIF": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "RFPLTFGWCF": [
+        "Nef",
+        "HIV"
+    ],
+    "RFPNITNLCPF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "RGPGRAFVTI": [
+        "Envelope glycoprotein gp160 precursor",
+        "HIV"
+    ],
+    "RGYVYQGL": [
+        "nucleocapsid protein",
+        "Vesicular stomatitis virus (vesicular stomatitis virus VSV)"
+    ],
+    "RHDLPPYRVYL": [
+        "KIAA1967",
+        "Homo sapiens"
+    ],
+    "RIAAWMATY": [
+        "BCL2L1",
+        "Homo sapiens"
+    ],
+    "RIAGHHLGR": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "RIFTIGTVTLK": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "RILGAGCFV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "RILLVAASY": [
+        "TUBGCP2",
+        "Homo sapiens"
+    ],
+    "RIRGGDGKM": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "RIRGGDGKMK": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "RISNCVADY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "RLARLALVL": [
+        "5T4",
+        "Homo sapiens"
+    ],
+    "RLDAMNGQL": [
+        "synthetic",
+        "synthetic"
+    ],
+    "RLDKVEAEV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "RLFARTRSM": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "RLFARTRSMW": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "RLFRKSNLK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "RLGPYLEFL": [
+        "Inter-alpha-trypsin inhibitor heavy chain H6",
+        "Homo sapiens"
+    ],
+    "RLHDLVLPL": [
+        "Proline-, glutamic acid- and leucine-rich protein 1",
+        "Homo sapiens"
+    ],
+    "RLLCALTSL": [
+        "islet-specific glucose-6-phosphatase-related protein isoform 1",
+        "Homo sapiens"
+    ],
+    "RLLPLLALL": [
+        "proinsulin precursor",
+        "Homo sapiens"
+    ],
+    "RLLQCTQQAV": [
+        "API5",
+        "Homo sapiens"
+    ],
+    "RLMKHYPGI": [
+        "Storkhead-box protein 1",
+        "Homo sapiens"
+    ],
+    "RLNEVAKNL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "RLQSLQTYV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "RLRAEAQVK": [
+        "EBNA3A",
+        "EBV"
+    ],
+    "RLRPGGKKK": [
+        "Gag",
+        "HIV"
+    ],
+    "RLRPGGKKR": [
+        "Gag",
+        "HIV"
+    ],
+    "RLRPGGRKR": [
+        "Gag",
+        "HIV"
+    ],
+    "RLSDFSEQL": [
+        "AKAP9",
+        "Homo sapiens"
+    ],
+    "RLWEPLRVV": [
+        "TPA: Mas-related G protein-coupled receptor C",
+        "Homo sapiens"
+    ],
+    "RLYYDSMSY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "RMAAISNTV": [
+        "Tripartite motif-containing protein 16",
+        "Homo sapiens"
+    ],
+    "RMDYNNMQM": [
+        "synthetic",
+        "synthetic"
+    ],
+    "RMEQVDWTV": [
+        "synthetic",
+        "synthetic"
+    ],
+    "RMFPNAPYL": [
+        "WT1",
+        "Homo sapiens"
+    ],
+    "RMNSRNYIA": [
+        "ORF10",
+        "SARS-CoV2"
+    ],
+    "RMWDFDIFL": [
+        "PDE7B",
+        "Homo sapiens"
+    ],
+    "RNPANNAAIV": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "RNPANNAAIVL": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "RPHERNGFTV": [
+        "pp65",
+        "CMV"
+    ],
+    "RPHERNGFTVL": [
+        "pp65",
+        "CMV"
+    ],
+    "RPPIFIRRL": [
+        "EBNA3A",
+        "EBV"
+    ],
+    "RPRGEVRFL": [
+        "UL49",
+        "HSV-2"
+    ],
+    "RQFGPDWIVA": [
+        "butanol dehydrogenase",
+        "Enterocloster asparagiformis"
+    ],
+    "RQIAPGQTGK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "RQIAPGQTGKIADYNYKL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "RQLLFVVEV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "RREVHTYY": [
+        "Polymerase acidic protein",
+        "Influenza"
+    ],
+    "RSGGFSFGK": [
+        "T-Ag",
+        "MCPyV"
+    ],
+    "RSLAPEVRGYW": [
+        "PD-(D/E)XK nuclease family protein",
+        "Olsenella uli"
+    ],
+    "RSVASQSII": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "RSVASQSIIAYTMSL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "RTFKVSIWNL": [
+        "ORF6",
+        "SARS-CoV2"
+    ],
+    "RTLNAWVKV": [
+        "Gag",
+        "HIV"
+    ],
+    "RTMEVCYNT": [
+        "Uncharacterized protein C20orf194",
+        "Homo sapiens"
+    ],
+    "RTQSPRRR": [
+        "precore/core protein",
+        "HBV"
+    ],
+    "RVDFCGKGY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "RVGARKSAPL": [
+        "ORF8",
+        "SARS-CoV2"
+    ],
+    "RVIGMPPPV": [
+        "Myopalladin",
+        "Homo sapiens"
+    ],
+    "RVRFFFPSL": [
+        "MAGEA1",
+        "Homo sapiens"
+    ],
+    "RVSTLRVSL": [
+        "GNB5",
+        "Homo sapiens"
+    ],
+    "RYCNLEGPPI": [
+        "LY6K protein, partial",
+        "Homo sapiens"
+    ],
+    "RYGSFSVTL": [
+        "gp100",
+        "Homo sapiens"
+    ],
+    "RYLENGKETL": [
+        "MHC class I antigen, partial",
+        "Homo sapiens"
+    ],
+    "RYLKNGKETL": [
+        "HLA-Cw3",
+        "Homo sapiens"
+    ],
+    "RYPLTFGW": [
+        "Nef",
+        "HIV"
+    ],
+    "RYPLTFGWCF": [
+        "Nef",
+        "HIV"
+    ],
+    "RYPLTLGWCF": [
+        "Nef",
+        "HIV"
+    ],
+    "RYRIGNYKL": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SASAFFGMSR": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "SASKIITLK": [
+        "ORF1ab,ORF3a",
+        "SARS-CoV2"
+    ],
+    "SAYGEPRKL": [
+        "MAGE1",
+        "Homo sapiens"
+    ],
+    "SEETGTLIV": [
+        "envelope",
+        "SARS-CoV2"
+    ],
+    "SEHDYQIGGYTEKW": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "SEISMDNSPNL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "SELVIGAVI": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SELVIGAVIL": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SEPVLKGVKL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SETKCTLKSF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SETKCTLKSFTVEK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SEVGPEHSLAEY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "SEYKGPITDVFY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "SEYKGPITDVFYKENSY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "SFHSLHLLF": [
+        "Tax",
+        "HTLV-1"
+    ],
+    "SFNPETNIL": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SGPDNGAVAV": [
+        "Neuraminidase",
+        "Influenza"
+    ],
+    "SGPDNGAVAVL": [
+        "Neuraminidase",
+        "Influenza"
+    ],
+    "SGPSNTPPEI": [
+        "Early E1A 32 kDa protein",
+        "Human adenovirus 5 (Adenovirus 5)"
+    ],
+    "SIDCYLLAI": [
+        "olfactory receptor 9Q2",
+        "Homo sapiens"
+    ],
+    "SIIAYTMSL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SIIGRLLEV": [
+        "serine/threonine-protein phosphatase PP1-alpha catalytic subunit isoform 1",
+        "Homo sapiens"
+    ],
+    "SIINFEKL": [
+        "ovalbumin",
+        "Gallus gallus (chicken)"
+    ],
+    "SILDAVQRV": [
+        "Peroxidasin-like protein",
+        "Homo sapiens"
+    ],
+    "SILSPFIPLL": [
+        "surface antigen",
+        "HBV"
+    ],
+    "SILSPFLPLL": [
+        "surface antigen",
+        "HBV"
+    ],
+    "SINFVRIIMR": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "SIVSPFIPLL": [
+        "surface antigen",
+        "HBV"
+    ],
+    "SIWNLDYII": [
+        "ORF6",
+        "SARS-CoV2"
+    ],
+    "SIYRYYGL": [
+        "TetR/AcrR family transcriptional regulator",
+        "Streptomyces hainanensis"
+    ],
+    "SLAPLSPRA": [
+        "Connector enhancer of kinase suppressor of ras 1",
+        "Homo sapiens"
+    ],
+    "SLDPTTSPV": [
+        "Golgin subfamily A member 3",
+        "Homo sapiens"
+    ],
+    "SLFNTIAVL": [
+        "Gag",
+        "HIV"
+    ],
+    "SLFNTVATL": [
+        "Gag",
+        "HIV"
+    ],
+    "SLFNTVATLY": [
+        "Gag",
+        "HIV"
+    ],
+    "SLFWNEPAI": [
+        "pORF1",
+        "Hepatitis E virus"
+    ],
+    "SLIDFYLCFL": [
+        "ORF7b",
+        "SARS-CoV2"
+    ],
+    "SLIDLQELGK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SLIDLQELGKYEQYIKW": [
+        "E2 glycoprotein precursor",
+        "SARS coronavirus Tor2 (Severe acute respiratory syndrome-related coronavirus Tor2)"
+    ],
+    "SLLLCRMNSR": [
+        "ORF10",
+        "SARS-CoV2"
+    ],
+    "SLLLCRMNSRNYIA": [
+        "ORF10",
+        "SARS-CoV2"
+    ],
+    "SLLMWITQC": [
+        "NY-ESO-1",
+        "Homo sapiens"
+    ],
+    "SLLMWITQV": [
+        "NY-ESO-1",
+        "Homo sapiens"
+    ],
+    "SLLQGSPHL": [
+        "OVO-like 1 binding protein",
+        "Homo sapiens"
+    ],
+    "SLLRSLENV": [
+        "GCN1L1",
+        "Homo sapiens"
+    ],
+    "SLLWMNPFV": [
+        "Palmitoyltransferase ZDHHC7",
+        "Homo sapiens"
+    ],
+    "SLPITVYYA": [
+        "glycoprotein D",
+        "HSV-1"
+    ],
+    "SLVKPSFYV": [
+        "envelope",
+        "SARS-CoV2"
+    ],
+    "SLYNTIATL": [
+        "Gag",
+        "HIV"
+    ],
+    "SLYNTVATL": [
+        "Gag",
+        "HIV"
+    ],
+    "SLYNTVATLY": [
+        "Gag",
+        "HIV"
+    ],
+    "SMDWFQGQM": [
+        "synthetic",
+        "synthetic"
+    ],
+    "SMGVTYEM": [
+        "synthetic",
+        "synthetic"
+    ],
+    "SMWSFNPET": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SMWSFNPETNIL": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SNEKQEILGTVSW": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "SNEKQEILGTVSWNL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "SNVTWFHAI": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SPFHPLADNKFAL": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "SPRRARSVA": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SPRWYFYYL": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "SPSYVYHQF": [
+        "envelope protein",
+        "Murine leukemia virus (murine leukemia virus MLV)"
+    ],
+    "SQASSRSSSR": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "SQLLNAKYL": [
+        "acid phosphatase",
+        "Plasmodium berghei ANKA"
+    ],
+    "SQSIIAYTM": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SRIGMEVTPSGTW": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "SRYWAIRTR": [
+        "Nucleocapsid protein",
+        "Influenza"
+    ],
+    "SSADEQIQW": [
+        "Gag",
+        "Simian immunodeficiency virus (Chimpanzee immunodeficiency virus)"
+    ],
+    "SSANNCTFEY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SSCMGGMNWR": [
+        "p53",
+        "Homo sapiens"
+    ],
+    "SSIEFARL": [
+        "glycoprotein B",
+        "HSV-1"
+    ],
+    "SSLENFRAYV": [
+        "Polymerase acidic protein",
+        "Influenza"
+    ],
+    "SSNVANYQK": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "SSPDDQIGY": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "SSPDDQIGYY": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "SSPPMFRV": [
+        "M38 protein",
+        "Murid betaherpesvirus 1 (Murine cytomegalovirus)"
+    ],
+    "SSRGTSPAR": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "SSTASALGK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SSTFNVPMEKLK": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "SSVDEQIQW": [
+        "Gag",
+        "Simian immunodeficiency virus (Chimpanzee immunodeficiency virus)"
+    ],
+    "SSYRRPVGI": [
+        "RNA-directed RNA polymerase catalytic subunit",
+        "Influenza"
+    ],
+    "STDTGVEHVTFFIY": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "STDTGVEHVTFFIYNK": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "STGSNVFQTR": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "STLPETAVVRR": [
+        "precore/core protein",
+        "HBV"
+    ],
+    "STQDLFLPFF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SVASTITGV": [
+        "Perilipin-2",
+        "Homo sapiens"
+    ],
+    "SVLENFTILL": [
+        "Transcriptional enhancer factor TEF-1",
+        "Homo sapiens"
+    ],
+    "SVLLFLAFV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "SVLNDILSR": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SVLNDILSRL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SVLYNSASF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SVSPKLFIR": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "SVTTEILPVSMTKTSVDCTMYICGDSTECSNLLLQYGSFCTQL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SVYRYYGL": [
+        "DUF1919 domain-containing protein",
+        "Bifidobacterium breve"
+    ],
+    "SWMESEFRVY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SYFIASFRLF": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SYFIASFRLFA": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SYFTSDYYQL": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "SYIGSINNI": [
+        "Matrix M2",
+        "Human respiratory syncytial virus A2 (Human respiratory syncytial virus (strain A2))"
+    ],
+    "SYMIMEIE": [
+        "FBXO21",
+        "Homo sapiens"
+    ],
+    "SYQTQTNSPR": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "SYQTQTNSPRRARSVA": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "TAFTIPSI": [
+        "Pol",
+        "HIV"
+    ],
+    "TAMDLFVTV": [
+        "GABAA receptor gamma 3 subunit",
+        "Homo sapiens"
+    ],
+    "TEILPVSMTK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "TEKSNIIRGW": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "TESIVRFPNI": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "TFKVSIWNL": [
+        "ORF6",
+        "SARS-CoV2"
+    ],
+    "TFYLTNDVSFL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "TGSNVFQTR": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "THLMVLCCV": [
+        "Family with sequence similarity 120A",
+        "Homo sapiens"
+    ],
+    "TINCQEPKLGSLVVRCSFYEDFLEYHDVRVVLDFI": [
+        "ORF8",
+        "SARS-CoV2"
+    ],
+    "TLACFVLAAV": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "TLADAGFIK": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "TLATCELYHY": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "TLDSKTQSL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "TLEELDWCL": [
+        "PDE4A",
+        "Homo sapiens"
+    ],
+    "TLEYMDWLV": [
+        "synthetic",
+        "synthetic"
+    ],
+    "TLFTIVGTV": [
+        "Protocadherin-16",
+        "Homo sapiens"
+    ],
+    "TLGVYDYLV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "TLGVYDYLVST": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "TLIGDCATV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "TLKKRWQLA": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "TLKKRWQLAL": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "TLKSFTVEK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "TLLALHRSYLTPGDSSSGWTAGAAAYYVGYLQPRTFLLKYNEN": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "TLLANVTAV": [
+        "VP6",
+        "Human rotavirus A (Human group A rotavirus)"
+    ],
+    "TLNAWVKVV": [
+        "Gag",
+        "HIV"
+    ],
+    "TLREIRRYQK": [
+        "H3F3B",
+        "Homo sapiens"
+    ],
+    "TLSKPSPMPV": [
+        "Chromogranin-A",
+        "Homo sapiens"
+    ],
+    "TLSPFLPLL": [
+        "surface antigen",
+        "HBV"
+    ],
+    "TLVPQEHYV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "TLWCSPIKV": [
+        "SRPX",
+        "Homo sapiens"
+    ],
+    "TLYSLTPLY": [
+        "Centromere protein L",
+        "Homo sapiens"
+    ],
+    "TMADLVYAL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "TMDFYQGQL": [
+        "synthetic",
+        "synthetic"
+    ],
+    "TMETIDWKV": [
+        "CD74",
+        "Homo sapiens"
+    ],
+    "TMSSSHLFYL": [
+        "Insulin-like growth factor I",
+        "Homo sapiens"
+    ],
+    "TPGPGVRYPL": [
+        "Nef",
+        "HIV"
+    ],
+    "TPINLVRDL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "TPQDLNTML": [
+        "Gag",
+        "HIV"
+    ],
+    "TPRVTGGGAM": [
+        "pp65",
+        "CMV"
+    ],
+    "TPSGTWLTY": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "TPWCSPIKV": [
+        "Sushi repeat-containing protein SRPX",
+        "Homo sapiens"
+    ],
+    "TQDLFLPFF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "TQGYFPDWQNY": [
+        "Nef",
+        "HIV"
+    ],
+    "TQLNRALTGI": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "TQNVLYENQK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "TQTNSPRRAR": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "TRSMWSFNPETNILLNVPLHGTILTRPLLESELVIGAVILR": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "TSDLATNNLVVMAY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "TSNQVAVLY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "TSPISEHDY": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "TSRTLSYYK": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "TSTLAEQIAW": [
+        "Gag",
+        "HIV"
+    ],
+    "TSTLAEQMAW": [
+        "Gag",
+        "HIV"
+    ],
+    "TSTLAEQVAW": [
+        "Gag",
+        "HIV"
+    ],
+    "TSTLQEQIGW": [
+        "Gag",
+        "HIV"
+    ],
+    "TSTLSEQVAW": [
+        "Gag",
+        "HIV"
+    ],
+    "TSTLTEQIAW": [
+        "Gag",
+        "HIV"
+    ],
+    "TSTLTEQVAW": [
+        "Gag",
+        "HIV"
+    ],
+    "TTLPKGFYA": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "TTLPVNVAF": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "TTSPISEHDY": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "TVATSRTLSY": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "TVATSRTLSYYK": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "TVLSFCAFA": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "TVLSFCAFAV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "TVYDPLQPELDSFK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "TVYGFCLL": [
+        "m139 protein",
+        "Murid betaherpesvirus 1 (Murine cytomegalovirus)"
+    ],
+    "TVYSHLLLV": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "TYDTVHRHL": [
+        "CADPS2",
+        "Homo sapiens"
+    ],
+    "TYVPAQEKNF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VAAGLEAPFLYLYALVYFLQSINFVRIIMRLWLCWKCR": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "VAANIVLTV": [
+        "SLC30A8",
+        "Homo sapiens"
+    ],
+    "VAGDSGFAAY": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VASQSIIAY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VDDPCPIHFY": [
+        "ORF8",
+        "SARS-CoV2"
+    ],
+    "VEAEVQIDRL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VEAEVQIDRLITGR": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VEHVTFFIY": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "VFAQVKQIYK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VFITLCFTL": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "VFITLCFTLK": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "VGARKSAPL": [
+        "ORF8",
+        "SARS-CoV2"
+    ],
+    "VGVALLAVF": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "VLASPSVPL": [
+        "E3 ubiquitin-protein ligase TRIM58",
+        "Homo sapiens"
+    ],
+    "VLAWLYAAV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "VLDGFIPGT": [
+        "MPV17",
+        "Homo sapiens"
+    ],
+    "VLDLFQGQL": [
+        "TXNDC11",
+        "Homo sapiens"
+    ],
+    "VLEETSVML": [
+        "IE1",
+        "CMV"
+    ],
+    "VLEEVDWLI": [
+        "FANCI",
+        "Homo sapiens"
+    ],
+    "VLENFTILLV": [
+        "TEAD1 protein",
+        "Homo sapiens"
+    ],
+    "VLFAAFSSA": [
+        "plexin-B1 precursor",
+        "Homo sapiens"
+    ],
+    "VLFGLGFAI": [
+        "IGRP",
+        "Homo sapiens"
+    ],
+    "VLHDDLLEA": [
+        "histocompatibility (minor) HA-1",
+        "Homo sapiens"
+    ],
+    "VLHSYFTSDY": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "VLHSYFTSDYYQLY": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "VLIYFLPLL": [
+        "Substance-P receptor",
+        "Homo sapiens"
+    ],
+    "VLLGVKLFGV": [
+        "COL18A1",
+        "Homo sapiens"
+    ],
+    "VLLGVKLSGV": [
+        "Collagen alpha-1(XVIII) chain",
+        "Homo sapiens"
+    ],
+    "VLMGGVPGVE": [
+        "Alanine dehydrogenase",
+        "Mycobacterium tuberculosis"
+    ],
+    "VLNDILSRL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VLNGTVHPV": [
+        "ABCB5",
+        "Homo sapiens"
+    ],
+    "VLNPFIYTL": [
+        "olfactory receptor 6F1",
+        "Homo sapiens"
+    ],
+    "VLNYFEPYL": [
+        "Ryanodine receptor 3",
+        "Homo sapiens"
+    ],
+    "VLPFNDGVY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VLPFNDGVYF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VLPFNDGVYFASTEK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VLPPLLTDEMIAQY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VLPPLLTDEMIAQYT": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VLQAVGACV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "VLQLPQGTTL": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "VLQLPQGTTLPKGFYA": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "VLSFCAFAV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "VLWAHGFEL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "VLYQDVNCTEVPVAIHADQLTPTWRVYSTGSNVFQTRAGCLIG": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VMAPRTLIL": [
+        "UL40",
+        "CMV"
+    ],
+    "VMCGGSLYV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "VMIIVSSLAV": [
+        "zinc transporter 8",
+        "Homo sapiens"
+    ],
+    "VMPFSIVYI": [
+        "5-hydroxytryptamine receptor 1F",
+        "Homo sapiens"
+    ],
+    "VMPFSIVYIV": [
+        "5-hydroxytryptamine receptor 1F",
+        "Homo sapiens"
+    ],
+    "VPHVGEIPVAY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "VPHVGEIPVAYRKVLL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "VPLHGTIL": [
+        "membrane glycoprotein,surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VQELYSPIF": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "VQELYSPIFL": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "VQELYSPIFLIV": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "VQIDRLITGR": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VQIISCQY": [
+        "MED13",
+        "Homo sapiens"
+    ],
+    "VQPTESIVRF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VQPTESIVRFPNITNLCPF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VQYLGMLPV": [
+        "Amyloid beta A4 precursor protein-binding family B member 2",
+        "Homo sapiens"
+    ],
+    "VRFPNITNL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VSFIEFVGW": [
+        "EBNA3B",
+        "EBV"
+    ],
+    "VSIWNLDYII": [
+        "ORF6",
+        "SARS-CoV2"
+    ],
+    "VTEHDTLLY": [
+        "pp50",
+        "CMV"
+    ],
+    "VTIAEILLI": [
+        "ORF6",
+        "SARS-CoV2"
+    ],
+    "VTPSGTWLTY": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "VTYVPAQEK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VVDDPCPIHFY": [
+        "ORF8",
+        "SARS-CoV2"
+    ],
+    "VVDKYFDCY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "VVFLHVTYV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VVLSWAPPV": [
+        "Fibronectin type III domain-containing protein 3B",
+        "Homo sapiens"
+    ],
+    "VVMSWAPPV": [
+        "FNDC3B",
+        "Homo sapiens"
+    ],
+    "VVTGVLVYL": [
+        "zinc transporter 8 isoform a",
+        "Homo sapiens"
+    ],
+    "VVYRGTTTY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "VYADSFVIR": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VYFFLPDHL": [
+        "gp100",
+        "Homo sapiens"
+    ],
+    "VYFLQSINF": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "VYFLQSINFV": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "VYGIRLEHF": [
+        "Kinetochore protein Nuf2",
+        "Homo sapiens"
+    ],
+    "VYSSANNCTF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VYSSANNCTFEY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VYSTGSNVF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VYSTGSNVFQTR": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VYYPDKVFR": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "VYYPDKVFRSSVLH": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "WESGVKDCVVLHSYFTSDYYQLYSTQLSTDTGVEHVTF": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "WICLLQFAY": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "WIFGTTLDSK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "WLDNFELCL": [
+        "synthetic",
+        "synthetic"
+    ],
+    "WLIRETQPITK": [
+        "XPNPEP1",
+        "Homo sapiens"
+    ],
+    "WLLWPVTLA": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "WLSLLVPFV": [
+        "surface antigen",
+        "HBV"
+    ],
+    "WMESEFRVY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "WPVTLACFVL": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "WSYDSTLLAY": [
+        "NBAS",
+        "Homo sapiens"
+    ],
+    "WTAGAAAYY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "WTAGAAAYYV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "WTAGAAAYYVGY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "WVLALFDEV": [
+        "POGK",
+        "Homo sapiens"
+    ],
+    "YANRNRFLY": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "YAVANYFFL": [
+        "type II rhoptry protein 5",
+        "Toxoplasma gondii"
+    ],
+    "YAWNRKRISNCVADYSVLYNSASFSTFKCYGVSPTKLNDLCFT": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "YDANYFLCW": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "YEDFLEYHDVRVVL": [
+        "ORF8",
+        "SARS-CoV2"
+    ],
+    "YEGNSPFHPL": [
+        "ORF7a",
+        "SARS-CoV2"
+    ],
+    "YEQYIKWPW": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "YEQYIKWPWY": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "YEQYIKWPWYI": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "YFFWGLWAL": [
+        "ETNK-1",
+        "Homo sapiens"
+    ],
+    "YFIASFRLF": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "YFIASFRLFA": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "YFLQSINFVR": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "YFPLQSYGF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "YFTSDYYQLY": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "YHLMSFPQSA": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "YHSIEWA": [
+        "KIAA1279",
+        "Homo sapiens"
+    ],
+    "YIDDVVLGA": [
+        "DNA polymerase",
+        "HBV"
+    ],
+    "YIFFASFYY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "YIFLGNLAL": [
+        "Olfactory receptor 5K4",
+        "Homo sapiens"
+    ],
+    "YIIKLIFLW": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "YIIKLIFLWL": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "YILEETSVM": [
+        "IE1",
+        "CMV"
+    ],
+    "YILKYSVFL": [
+        "ZDBF2",
+        "Homo sapiens"
+    ],
+    "YINVFAFPF": [
+        "ORF10",
+        "SARS-CoV2"
+    ],
+    "YLAMPFATPMEAELARRSLA": [
+        "NY-ESO-1",
+        "Homo sapiens"
+    ],
+    "YLCFLAFLL": [
+        "ORF7b",
+        "SARS-CoV2"
+    ],
+    "YLCLQNNFI": [
+        "PRELP",
+        "Homo sapiens"
+    ],
+    "YLCSGSSYF": [
+        "Fragile X mental retardation 1 neighbor protein",
+        "Homo sapiens"
+    ],
+    "YLCSGSSYFV": [
+        "Fragile X mental retardation 1 neighbor protein",
+        "Homo sapiens"
+    ],
+    "YLDAYNMMI": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "YLDELIKNT": [
+        "Alpha-2-macroglobulin-like protein 1",
+        "Homo sapiens"
+    ],
+    "YLEPGPVTA": [
+        "gp100",
+        "Homo sapiens"
+    ],
+    "YLEPGPVTV": [
+        "PMEL",
+        "Homo sapiens"
+    ],
+    "YLKLTDNVYIK": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "YLLEMLWRL": [
+        "LMP1",
+        "EBV"
+    ],
+    "YLLFMIGYA": [
+        "transient receptor potential cation channel subfamily V member 4 isoform X1",
+        "Homo sapiens"
+    ],
+    "YLLPAIVHI": [
+        "Probable ATP-dependent RNA helicase DDX5",
+        "Homo sapiens"
+    ],
+    "YLLPRRGPRL": [
+        "polyprotein",
+        "HCV"
+    ],
+    "YLNDHLEPWI": [
+        "BCL2L1",
+        "Homo sapiens"
+    ],
+    "YLNTLTLAV": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "YLQDSLATT": [
+        "Sterol regulatory element-binding protein 1",
+        "Homo sapiens"
+    ],
+    "YLQPRTFL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "YLQPRTFLL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "YLQQNWWTL": [
+        "LMP1",
+        "EBV"
+    ],
+    "YLSFYTAEQL": [
+        "RNF213",
+        "Homo sapiens"
+    ],
+    "YLSHLPLTCKF": [
+        "RNF10",
+        "Homo sapiens"
+    ],
+    "YLSNIIPAL": [
+        "RFC5",
+        "Homo sapiens"
+    ],
+    "YLYALVYFL": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "YLYDRLLRI": [
+        "DNA replication complex GINS protein PSF1",
+        "Homo sapiens"
+    ],
+    "YLYDRLLRV": [
+        "GINS1",
+        "Homo sapiens"
+    ],
+    "YMDDVVLGA": [
+        "DNA polymerase",
+        "HBV"
+    ],
+    "YMDGTMSQV": [
+        "Tyrosinase",
+        "Homo sapiens"
+    ],
+    "YMGVSYEM": [
+        "synthetic",
+        "synthetic"
+    ],
+    "YMGVVYEM": [
+        "synthetic",
+        "synthetic"
+    ],
+    "YMLDLQPETT": [
+        "E7",
+        "HPV"
+    ],
+    "YMVLASPSV": [
+        "E3 ubiquitin-protein ligase TRIM58",
+        "Homo sapiens"
+    ],
+    "YMYGSPGEL": [
+        "homeobox protein Hox-C9",
+        "Homo sapiens"
+    ],
+    "YPDKVFRSS": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "YPDKVFRSSV": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "YPLHEQHGM": [
+        "EBNA3A",
+        "EBV"
+    ],
+    "YQIGGYTEK": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "YQIGGYTEKW": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "YQKVGMQKY": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "YRINWITGGIAIAMACLVGLMWLSYFIASFRLFARTRSMWS": [
+        "membrane glycoprotein",
+        "SARS-CoV2"
+    ],
+    "YSEHPTFTSQY": [
+        "pp65",
+        "CMV"
+    ],
+    "YSVLYNSASF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "YSVLYNSASFSTFK": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "YTMADLVYA": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "YTMADLVYAL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "YTVSCLPFTI": [
+        "ORF8",
+        "SARS-CoV2"
+    ],
+    "YVDDVVLGA": [
+        "DNA polymerase",
+        "HBV"
+    ],
+    "YVFCTVNAL": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "YVLDHLIVV": [
+        "BRLF1",
+        "EBV"
+    ],
+    "YVNELVVFV": [
+        "OR8B8",
+        "Homo sapiens"
+    ],
+    "YVTAMDLFV": [
+        "Gamma-aminobutyric acid receptor subunit gamma-2",
+        "Homo sapiens"
+    ],
+    "YVVDDPCPI": [
+        "ORF8",
+        "SARS-CoV2"
+    ],
+    "YVVDDPCPIHFY": [
+        "ORF8",
+        "SARS-CoV2"
+    ],
+    "YVVTWIVGA": [
+        "Galactocerebrosidase",
+        "Homo sapiens"
+    ],
+    "YVYSRVKNL": [
+        "envelope",
+        "SARS-CoV2"
+    ],
+    "YYHKNNKSW": [
+        "membrane glycoprotein,surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "YYQLYSTQL": [
+        "ORF3a",
+        "SARS-CoV2"
+    ],
+    "YYRARAGEAANF": [
+        "ORF1ab",
+        "SARS-CoV2"
+    ],
+    "YYRRATRRIR": [
+        "nucleocapsid phosphoprotein",
+        "SARS-CoV2"
+    ],
+    "YYVGYLQPRTF": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ],
+    "YYVGYLQPRTFLL": [
+        "surface glycoprotein",
+        "SARS-CoV2"
+    ]
+}

@@ -8,6 +8,7 @@ from django.contrib.postgres.search import TrigramSimilarity
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
+from rest_framework import status
 
 from mrnadesign_api import settings_local as local_settings
 from utils import tools, task
@@ -32,6 +33,9 @@ import string
 import pandas as pd
 import numpy as np
 import time
+from pathlib import Path
+# import logging
+# logger = logging.getLogger(__name__)
 
 def generate_id():
     id = "".join(random.choices(string.ascii_uppercase + string.digits, k=4))
@@ -666,7 +670,113 @@ class tsaView(APIView):
             return self.post_demo(request, *args, **kwargs)
         else:
             return self.post_upload(request, *args, **kwargs)
+
+class tcrannoView(APIView):
+    def post(self, request, *args, **kwargs):
+        # Extract parameters
+        k = request.data['k']
+        ref_db = request.data['ref_db']
+        frequency_col = request.data['frequency_col']
+        anno_type = request.data['anno_type']
+        analysistype = request.data['analysistype']
+        user_id = request.data['userid']
+        inputtype = request.data['inputtype']
+        is_demo_input = (request.data['rundemo'] == 'true')
+        tcrannoanalysistype = request.data['tcrannoanalysistype']
+
+        # Generate unique task ID
+        usertask = f"{int(time.time())}_{generate_id()}"
+
+        # Construct workspace paths
+        base_path = Path(local_settings.USER_PATH) / usertask
+        input_folder = base_path / 'input'
+        result_folder = base_path / 'output' / 'result'
+        log_folder = base_path / 'output' / 'log'
+
+        # Create directories
+        input_folder.mkdir(parents=True, exist_ok=True)
+        result_folder.mkdir(parents=True, exist_ok=True)
+        log_folder.mkdir(parents=True, exist_ok=True)
+
+        # Define file path
+        repertoire_path = input_folder / 'input_repertoire.tsv'
+
+        # Handle file upload
+        if inputtype == 'upload':
+            submitfile = request.FILES['submitfile']
+
+            # Read file once
+            file_content = submitfile.read()
+            if not file_content:
+                print("Uploaded file is empty!")
+
+            # Save the file and ensure flush
+            with repertoire_path.open('wb') as f:
+                f.write(file_content)
+                f.flush()
+                os.fsync(f.fileno())
     
+            # Create DB task
+            newtask = mrna_task.objects.create(
+                user_id=user_id,
+                user_input_path={'repertoire_path': str(repertoire_path)},
+                is_demo_input=is_demo_input,
+                output_result_path=str(result_folder),
+                output_log_path=str(log_folder),
+                analysis_type=analysistype,
+                parameters={
+                    'tcrannoanalysistype': tcrannoanalysistype,
+                    'k': k,
+                    'frequency_col': frequency_col,
+                    'ref_db': ref_db,
+                    'anno_type': anno_type,
+                },
+                status='Created',
+            )
+
+            # Run task
+            res = {
+                'task_id': newtask.id,
+                'user_id': newtask.user_id,
+                'analysis_type': newtask.analysis_type,
+            }
+
+            sbatch_dict = {
+                'user_input_path': newtask.user_input_path,
+                'parameters': {
+                    'tcrannoanalysistype': tcrannoanalysistype,
+                    'k': k,
+                    'frequency_col': frequency_col,
+                    'ref_db': ref_db,
+                    'anno_type': anno_type,
+                },
+                'output_result_path': newtask.output_result_path,
+                'output_log_path': newtask.output_log_path,
+            }
+
+            try:
+                taskdetail_dict = task.run_tcranno(sbatch_dict)
+                res['status'] = 'Create Success'
+                res['message'] = 'Job created successfully'
+                newtask.job_id = taskdetail_dict['job_id']
+                newtask.status = 'Running'
+            except Exception as e:
+                res['status'] = 'Create Failed'
+                res['message'] = 'Job creation failed'
+                newtask.status = 'Failed'
+                traceback.print_exc()
+
+            newtask.save()
+        else:
+            res = {
+                'status': 'Failed',
+                'message': 'Pipeline creation failed: The uploaded file is not a FASTA file',
+            }
+
+        return Response(res)
+
+
+
 @api_view(['GET'])
 def tsaHLATypesView(request):
     sample = request.query_params.dict()['sample']
@@ -799,7 +909,7 @@ def viewtasklog(request):
 
     sbatch_log = slurm_api.get_job_output(task_obj.output_log_path)
     sbatch_error = slurm_api.get_job_error(task_obj.output_log_path)
-    if task_obj.analysis_type in ['Linear Design', 'Prediction', 'Safety', 'Sequence Align', 'Antigen Screening', 'TSA']:
+    if task_obj.analysis_type in ['Linear Design', 'Prediction', 'Safety', 'Sequence Align', 'Antigen Screening', 'TSA', 'TCRanno']:
         task_log = task.get_job_output(task_obj.analysis_type, task_obj.output_log_path)
     return Response({
         'sbatch_log': sbatch_log,

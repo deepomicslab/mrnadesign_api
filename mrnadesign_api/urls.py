@@ -103,6 +103,7 @@ urlpatterns = [
     path('analyze/antigen_screening/', mrna_task.views.antigenscreeningView.as_view()),
     path('analyze/tsa/', mrna_task.views.tsaView.as_view()),
     path('analyze/tsa/hla_types', mrna_task.views.tsaHLATypesView),
+    path('analyze/tcranno/', mrna_task.views.tcrannoView.as_view()),
 
     path('tasks/detail/', mrna_task.views.viewtaskdetail),
     path('tasks/detail/log/', mrna_task.views.viewtasklog),

@@ -97,7 +97,8 @@ def safetyresultView(request):
         for k, v in filterjson.items():
             if v:
                 merged_df = merged_df[merged_df[k].isin(v)]
-    return Response({'results': merged_df.to_dict(orient='records'), 'mutation_types': mrnatask_obj.parameters['mutation_type']})
+    # return Response({'results': merged_df.to_dict(orient='records'), 'mutation_types': mrnatask_obj.parameters['mutation_type']})
+    return Response({'results': merged_df.to_dict(orient='records'),})
 
 @api_view(['GET'])
 def sequencealignresultView(request):
@@ -242,7 +243,7 @@ def getZipData(request):
     
     s = BytesIO()
     zf = zipfile.ZipFile(s, "w")
-    assert mrnatask_obj.analysis_type in ['Linear Design', 'Prediction', 'Safety', 'Sequence Align', 'Antigen Screening', 'TSA']
+    assert mrnatask_obj.analysis_type in ['Linear Design', 'Prediction', 'Safety', 'Sequence Align', 'Antigen Screening', 'TSA', 'TCRanno']
     for i in get_all_files(fpath):
         zf.write(i, i.replace(fpath, '')) # server里的path, zip folder里面的目标path
     zf.close()

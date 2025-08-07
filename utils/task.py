@@ -64,6 +64,15 @@ def check_tsa_result(output_log_path):
         return True
     return False
 
+def check_tcranno_result(output_result_path):
+    if not os.path.exists(output_result_path + 'result.txt'): 
+        return False
+    with open(output_result_path + 'result.txt') as f:
+        L = f.read()
+    if 'All done.' in L: 
+        return True
+    return False
+
 def get_job_output(analysis_type, output_log_path):
     if analysis_type == 'Linear Design':
         path = output_log_path + 'lineardesign.log'
@@ -125,6 +134,16 @@ def get_job_output(analysis_type, output_log_path):
                 return output
         except:
             return 'no tsa log'
+    elif analysis_type == 'TCRanno':
+        path = output_log_path + 'tcranno.log'
+        try:
+            with open(path, 'r') as f:
+                output = f.read()
+                if output == '':
+                    output = 'no tcranno log'
+                return output
+        except:
+            return 'no tcranno log'
     
 def run_lineardesign(sbatch_dict):
     user_input_path = sbatch_dict['user_input_path']
@@ -324,6 +343,36 @@ def run_tsa(sbatch_dict):
             ' -h ' + str(parameters['spe_lcount']) 
         )
 
+    print('sbatch_command', sbatch_command)
+    sbatch_output = subprocess.check_output(sbatch_command, shell=True).decode("utf-8")  # Submitted batch job 1410435
+    job_id = re.search(r"Submitted batch job (\d+)", sbatch_output).group(1)  # 1410435
+    status = slurm_api.get_job_status(job_id)  # PENDING
+    taskdetail_dict = {
+        'job_id': job_id,
+        'status': status,
+    }
+    return taskdetail_dict
+
+def run_tcranno(sbatch_dict):
+    user_input_path = sbatch_dict['user_input_path']['repertoire_path']
+    output_result_path = sbatch_dict['output_result_path']
+    output_log_path = sbatch_dict['output_log_path']
+    parameters = sbatch_dict['parameters']
+
+    sbatch_command = (
+        'sbatch' +
+        ' --output=' + output_log_path + '/sbatch.out' +
+        ' --error=' + output_log_path + '/sbatch.err' +
+        ' ' + str(local_settings.SCRIPTS / 'run_tcranno.sh') +
+        ' -a ' + user_input_path +
+        ' -b ' + output_result_path + '/' +
+        ' -c ' + output_log_path + '/tcranno.log' + 
+        ' -d ' + str(parameters['tcrannoanalysistype']) +
+        ' -e ' + str(parameters['k']) + 
+        ' -f ' + str(parameters['frequency_col']) + 
+        ' -g ' + str(parameters['ref_db']) +
+        ' -h ' + str(parameters['anno_type']) 
+    )
     print('sbatch_command', sbatch_command)
     sbatch_output = subprocess.check_output(sbatch_command, shell=True).decode("utf-8")  # Submitted batch job 1410435
     job_id = re.search(r"Submitted batch job (\d+)", sbatch_output).group(1)  # 1410435
