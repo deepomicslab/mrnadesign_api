@@ -9,6 +9,7 @@ from scripts import (
     import_rebase_db,
     import_utrdb,
     import_codon,
+    import_transcripthub,
 )
 from scripts.import_isoform import (
     import_meta_data_to_database,
@@ -27,7 +28,7 @@ def get_current_datetime():
 
 
 def log(log_str):
-    f = open(local_settings.TASKLOG+"additional_scripts/" +
+    f = open(local_settings.TASKLOG / "additional_scripts" /
              "01_database_add_data.log", "a")
     f.write(get_current_datetime() + log_str)
     f.close()
@@ -64,6 +65,9 @@ def log(log_str):
 
 # import_reference_annotation_to_database.add_data()
 # log(" [completed] scripts.import_isoform.import_reference_annotation_to_database\n")
+
+# import_transcripthub.add_data()
+# log(" [completed] scripts.import_transcripthub\n")
 
 # import_codon.add_data()
 # log(" [completed] scripts.import_codon\n")

@@ -229,6 +229,21 @@ def predictionresultView(request): #############################################
             merged_df = merged_df.sort_values(by=columnKey, ascending=False)
     return Response({'results': merged_df.to_dict(orient='records')})
 
+@api_view(['GET'])
+def tcrannoresultView(request): #####################################################################
+    querydict = request.query_params.dict()
+    taskid = int(querydict['taskid'])
+    mrnatask_obj = mrna_task.objects.filter(id=taskid)[0]
+
+    assert mrnatask_obj.analysis_type == 'TCRanno'
+    subpaths = glob.glob(mrnatask_obj.output_result_path + '*')
+    df = []
+    for p in subpaths:
+        if 'tsv' in p: continue
+        df.append(p.split('/')[-1])
+
+    return Response({'parameters': mrnatask_obj.parameters})
+
 def get_all_files(directory):
     from pathlib import Path
     return [str(file) for file in Path(directory).rglob('*') if file.is_file()]
@@ -256,6 +271,24 @@ def getZipData(request):
     filename += '_' + str(round(timestamp)) + '.zip'
     response['Content-Disposition'] = 'attachment; filename="'+filename
     return response
+
+@api_view(['GET'])
+def serve_image(request):
+    querydict = request.query_params.dict()
+    taskid = querydict.get('taskid')
+    image_name = querydict.get('imageName')
+
+    # Retrieve the mrna_task object using the task ID
+    mrnatask_obj = mrna_task.objects.get(id=taskid)
+    fpath = mrnatask_obj.output_result_path
+    
+    # Construct the full path to the image file
+    image_path = os.path.join(fpath, image_name)
+
+    if os.path.exists(image_path):
+        # Return the image file as a response
+        return FileResponse(open(image_path, 'rb'), content_type='image/png')  # Adjust content_type as necessary
+        
 
 @api_view(['GET'])
 def sequencemarker(request):

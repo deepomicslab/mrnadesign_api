@@ -36,6 +36,10 @@ from isoform_sequences.views import (
     isoformdbGenesViewSet, 
     FileTrackView
 )
+from transcripthub.views import (
+    transcripthubAssemblyViewSet,
+    transcripthubAnnotationViewSet,
+)
 
 import mrna_task.views
 import taskresult.views
@@ -44,6 +48,7 @@ import tantigen.views
 import three_utr.views
 import utrdb.views
 import codon.views
+import transcripthub.views
 
 from django.urls import include, re_path
 
@@ -86,7 +91,9 @@ urlpatterns = [
     path('codon_pair/', codon.views.codonpairViewSet.as_view()),
     path('codon_pair/heatmap/', codon.views.codonpairHeatmapViewSet),
     path('codon_pair/download/', codon.views.codonpairDownloadViewSet),
-
+    path('transcripthub/assembly/', transcripthubAssemblyViewSet.as_view()),
+    path('transcripthub/annotation/', transcripthubAnnotationViewSet.as_view()),
+    path('transcripthub/annotation/sequence/', transcripthub.views.transcripthubAnnotationSequenceView),
 
     path('overview/antigensourceorganism/', antigen.views.getsourceorganism),
     path('overview/stats/antigen/', antigen.views.getstats),
@@ -114,9 +121,11 @@ urlpatterns = [
     path('tasks/antigenscreening_result/', taskresult.views.antigenscreeningresultView),
     path('tasks/lineardesign_result/', taskresult.views.lineardesignresultView),
     path('tasks/prediction_result/', taskresult.views.predictionresultView),
+    path('tasks/tcranno_result/', taskresult.views.tcrannoresultView),
     path('tasks/proteinstructure/', taskresult.views.viewproteinstructure),
     path('tasks/secondarystructure/', taskresult.views.viewsecondarystructure),
     path('tasks/zip/', taskresult.views.getZipData),
+    path('tasks/image/serve_image/', taskresult.views.serve_image, name='serve_image'),
 
     path('task/result/sequencemarker/', taskresult.views.sequencemarker),
     path('task/result/primarystructure_mainregion/',

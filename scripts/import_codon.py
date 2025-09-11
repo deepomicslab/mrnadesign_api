@@ -6,7 +6,7 @@ django.setup()
 
 from mrnadesign_api import settings_local as local_settings
 import logging
-logging.basicConfig(filename=local_settings.TASKLOG+"additional_scripts/02_import_data.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename=local_settings.TASKLOG / "additional_scripts/02_import_data.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def util(calculation_type):
     

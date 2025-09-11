@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'isoform_samples',
     'isoform_sequences',
     'codon',
+    'transcripthub',
 
 
     'django_extensions',
