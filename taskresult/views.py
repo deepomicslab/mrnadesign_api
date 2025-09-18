@@ -244,6 +244,57 @@ def tcrannoresultView(request): ################################################
 
     return Response({'parameters': mrnatask_obj.parameters})
 
+@api_view(['GET'])
+def tcrabpairingresultView(request):
+    querydict = request.query_params.dict()
+    flist_entry = querydict['flist_entry'] 
+    taskid = querydict['taskid']
+    mrnatask_obj = mrna_task.objects.get(id=taskid)
+
+    assert mrnatask_obj.analysis_type == 'TCR Alpha-Beta Chain Pairing'
+
+    input_df = pd.read_csv(mrnatask_obj.user_input_path['record'], sep='\t').astype(str)
+    flist_details = input_df.to_dict(orient='records')
+    # flist_details = {}
+    # for i, row in input_df.iterrows():
+    #     flist_details[row['seq_id'] + '_' + row['name']] = {
+    #         'chain': row['chain'],
+    #         'element': row['element'], 
+    #         'seq': row['seq'], 
+    #     }
+
+    output_folder = mrnatask_obj.output_result_path
+    _flist = [os.path.basename(i) for i in glob.glob(output_folder + '/*')]
+    flist = [i.replace('_result.csv', '') for i in _flist]
+
+    if flist_entry == '':
+        flist_entry = _flist[0]
+    if not flist_entry.endswith('_result.csv'):
+        flist_entry = flist_entry + '_result.csv'
+    
+    output_df = pd.read_csv(mrnatask_obj.output_result_path + '/' + flist_entry)
+    output_df = output_df.astype(str)
+
+    if 'sorter' in querydict and querydict['sorter'] != '':
+        sorterjson = json.loads(querydict['sorter'])
+        order = sorterjson['order']
+        columnKey = sorterjson['columnKey']
+        if order == 'false':
+            output_df = output_df.sort_values(by='id', ascending=True)
+        elif order == 'ascend':
+            output_df = output_df.sort_values(by=columnKey, ascending=True)
+        else: # 'descend
+            output_df = output_df.sort_values(by=columnKey, ascending=False)
+                
+    data = output_df.to_dict(orient='records')
+    paginator = LargeResultsSetPagination()
+    result_page = paginator.paginate_queryset(data, request)
+    response = paginator.get_paginated_response(result_page)
+    response.data['flist'] = flist
+    response.data['flist_details'] = flist_details
+    return response
+
+
 def get_all_files(directory):
     from pathlib import Path
     return [str(file) for file in Path(directory).rglob('*') if file.is_file()]
@@ -258,7 +309,7 @@ def getZipData(request):
     
     s = BytesIO()
     zf = zipfile.ZipFile(s, "w")
-    assert mrnatask_obj.analysis_type in ['Linear Design', 'Prediction', 'Safety', 'Sequence Align', 'Antigen Screening', 'TSA', 'TCRanno']
+    assert mrnatask_obj.analysis_type in ['Linear Design', 'Prediction', 'Safety', 'Sequence Align', 'Antigen Screening', 'TSA', 'TCRanno', 'TCR Alpha-Beta Chain Pairing']
     for i in get_all_files(fpath):
         zf.write(i, i.replace(fpath, '')) # server里的path, zip folder里面的目标path
     zf.close()

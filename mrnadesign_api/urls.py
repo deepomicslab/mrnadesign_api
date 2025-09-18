@@ -40,6 +40,7 @@ from transcripthub.views import (
     transcripthubAssemblyViewSet,
     transcripthubAnnotationViewSet,
 )
+from tcrabpairing.views import tcrabpairingView
 
 import mrna_task.views
 import taskresult.views
@@ -94,6 +95,7 @@ urlpatterns = [
     path('transcripthub/assembly/', transcripthubAssemblyViewSet.as_view()),
     path('transcripthub/annotation/', transcripthubAnnotationViewSet.as_view()),
     path('transcripthub/annotation/sequence/', transcripthub.views.transcripthubAnnotationSequenceView),
+    path('tcrabpairing/', tcrabpairingView.as_view()),
 
     path('overview/antigensourceorganism/', antigen.views.getsourceorganism),
     path('overview/stats/antigen/', antigen.views.getstats),
@@ -111,6 +113,7 @@ urlpatterns = [
     path('analyze/tsa/', mrna_task.views.tsaView.as_view()),
     path('analyze/tsa/hla_types', mrna_task.views.tsaHLATypesView),
     path('analyze/tcranno/', mrna_task.views.tcrannoView.as_view()),
+    path('analyze/tcrabpairing/', mrna_task.views.tcrabpairingView.as_view()),
 
     path('tasks/detail/', mrna_task.views.viewtaskdetail),
     path('tasks/detail/log/', mrna_task.views.viewtasklog),
@@ -122,6 +125,7 @@ urlpatterns = [
     path('tasks/lineardesign_result/', taskresult.views.lineardesignresultView),
     path('tasks/prediction_result/', taskresult.views.predictionresultView),
     path('tasks/tcranno_result/', taskresult.views.tcrannoresultView),
+    path('tasks/tcrabpairing_result/', taskresult.views.tcrabpairingresultView),
     path('tasks/proteinstructure/', taskresult.views.viewproteinstructure),
     path('tasks/secondarystructure/', taskresult.views.viewsecondarystructure),
     path('tasks/zip/', taskresult.views.getZipData),

@@ -30,7 +30,7 @@ class transcripthubAssemblyViewSet(APIView):
         querydict = request.query_params.dict()
         
         queryset = self.queryset
-        
+
         if 'sorter' in querydict and querydict['sorter'] != '':
             sorterjson = json.loads(querydict['sorter'])
             order = sorterjson['order']

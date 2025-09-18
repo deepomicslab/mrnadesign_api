@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'isoform_sequences',
     'codon',
     'transcripthub',
+    'tcrabpairing',
 
 
     'django_extensions',

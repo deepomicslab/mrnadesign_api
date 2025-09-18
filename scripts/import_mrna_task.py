@@ -177,26 +177,41 @@ demo_user_map = {
     # },
 
     # ============================== one demo case of tcranno ============================================ 
-    'Demo User TCRanno': {
-        'task_id': -40,
-        'job_id': '1427000',
-        'user_input_path': {
-            'repertoire_path': local_settings.DEMO_ANALYSIS / 'demouser_tcranno/input/input_repertoire.tsv',
-        },
-        'is_demo_input': True,
-        'output_result_path': local_settings.DEMO_ANALYSIS / 'demouser_tcranno/output/result/',
-        'output_log_path': local_settings.DEMO_ANALYSIS / 'demouser_tcranno/output/log/',
-        'analysis_type': 'TCRanno',
-        'parameters': {
-            "k": "10",
-            "ref_db": "IEDB",
-            "anno_type": "all",
-            "frequency_col": "frequency",
-            "tcrannoanalysistype": "qual_quant",
-        },
-        'status': 'Success',
-        'created_at': 'N/A',
-    }
+    # 'Demo User TCRanno': {
+    #     'task_id': -40,
+    #     'job_id': '1427000',
+    #     'user_input_path': {
+    #         'repertoire_path': local_settings.DEMO_ANALYSIS / 'demouser_tcranno/input/input_repertoire.tsv',
+    #     },
+    #     'is_demo_input': True,
+    #     'output_result_path': local_settings.DEMO_ANALYSIS / 'demouser_tcranno/output/result/',
+    #     'output_log_path': local_settings.DEMO_ANALYSIS / 'demouser_tcranno/output/log/',
+    #     'analysis_type': 'TCRanno',
+    #     'parameters': {
+    #         "k": "10",
+    #         "ref_db": "IEDB",
+    #         "anno_type": "all",
+    #         "frequency_col": "frequency",
+    #         "tcrannoanalysistype": "qual_quant",
+    #     },
+    #     'status': 'Success',
+    #     'created_at': 'N/A',
+    # }
+
+    # ============================== one demo case of tcrabpairing ============================================ 
+    # 'Demo User TCR Alpha-Beta Chain Pairing': {
+    #     'task_id': -30,
+    #     'job_id': '1627000',
+    #     'user_input_path': {
+    #         "record": "/home/platform/project/mrnadesign_platform/mrnadesign_api/workspace/analysis_script/user/1758206669_EFVM/input/record.csv"
+    #     },
+    #     'is_demo_input': True,
+    #     'output_result_path': str(local_settings.DEMO_ANALYSIS / 'demouser_tcrabpairing/output/result'),
+    #     'output_log_path': str(local_settings.DEMO_ANALYSIS / 'demouser_tcrabpairing/output/log'),
+    #     'analysis_type': 'TCR Alpha-Beta Chain Pairing',
+    #     'status': 'Success',
+    #     'created_at': 'N/A',
+    # }
 }
 
 def add_data():
@@ -213,7 +228,7 @@ def add_data():
             output_result_path=demo_user_map[userid]['output_result_path'],
             output_log_path=demo_user_map[userid]['output_log_path'],
             analysis_type=demo_user_map[userid]['analysis_type'],
-            parameters=demo_user_map[userid]['parameters'],
+            parameters=demo_user_map[userid]['parameters'] if 'parameters' in demo_user_map[userid] else {},
             status=demo_user_map[userid]['status'],
             created_at = demo_user_map[userid]['created_at'],
         )

@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from antigen.models import antigen
 
 from transcripthub.models import transcripthub_assembly, transcripthub_annotation, genome_seq
 

@@ -41,8 +41,11 @@ def task_status_updata():
             elif task_obj.analysis_type == 'TSA' \
                     and task.check_tsa_result(task_obj.output_log_path):
                 task_obj.status = 'Success'
-            if task_obj.analysis_type == 'TCRanno' \
+            elif task_obj.analysis_type == 'TCRanno' \
                     and task.check_tcranno_result(task_obj.output_result_path):
+                task_obj.status = 'Success'
+            elif task_obj.analysis_type == 'TCR Alpha-Beta Chain Pairing' \
+                    and task.check_tcrabpairing_result(task_obj.output_log_path):
                 task_obj.status = 'Success'
         task_obj.save()
 

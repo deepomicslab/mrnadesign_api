@@ -15,6 +15,7 @@ from scripts.import_isoform import (
     import_meta_data_to_database,
     import_reference_annotation_to_database,
 )
+from scripts.import_tcrabpairing import import_tcrabpairing
 
 from datetime import timedelta
 import datetime
@@ -42,8 +43,8 @@ def log(log_str):
 # import_three_utr.add_data()
 # log(" [completed] scripts.import_three_utr\n")
 
-# import_mrna_task.add_data()
-# log(" [completed] scripts.import_mrna_task\n")
+import_mrna_task.add_data()
+log(" [completed] scripts.import_mrna_task\n")
 
 # import_mirtarbase_db.add_data()
 # log(" [completed] scripts.import_mirtarbase_db\n")
@@ -68,6 +69,9 @@ def log(log_str):
 
 # import_transcripthub.add_data()
 # log(" [completed] scripts.import_transcripthub\n")
+
+# import_tcrabpairing.add_data()
+# log(" [completed] scripts.import_tcrabpairing\n")
 
 # import_codon.add_data()
 # log(" [completed] scripts.import_codon\n")

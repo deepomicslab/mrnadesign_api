@@ -715,6 +715,9 @@ class tcrannoView(APIView):
                 f.write(file_content)
                 f.flush()
                 os.fsync(f.fileno())
+
+        elif inputtype == 'rundemo':
+            shutil.copy(local_settings.DEMO_ANALYSIS / 'demouser_tcranno/input/input_repertoire.tsv', repertoire_path)
     
             # Create DB task
             newtask = mrna_task.objects.create(
@@ -770,17 +773,96 @@ class tcrannoView(APIView):
         else:
             res = {
                 'status': 'Failed',
-                'message': 'Pipeline creation failed: The uploaded file is not a FASTA file',
+                'message': 'Task submission failed: Please upload a valid file.',
             }
 
         return Response(res)
 
+class tcrabpairingView(APIView):
+    def post(self, request, *args, **kwargs):    
+        analysistype = request.data['analysistype']
+        assert analysistype == 'TCR Alpha-Beta Chain Pairing'
+        user_id = request.data['userid']
+        inputtype = request.data['inputtype']
+        is_demo_input = (request.data['rundemo'] == 'true')
 
+        # Generate unique task ID
+        usertask = f"{int(time.time())}_{generate_id()}"
+
+        # Construct workspace paths
+        base_path = Path(local_settings.USER_PATH) / usertask
+        input_folder = base_path / 'input'
+        result_folder = base_path / 'output' / 'result'
+        log_folder = base_path / 'output' / 'log'
+
+        # Create directories
+        input_folder.mkdir(parents=True, exist_ok=True)
+        result_folder.mkdir(parents=True, exist_ok=True)
+        log_folder.mkdir(parents=True, exist_ok=True)
+
+        fpath = input_folder / 'record.csv'
+
+        if inputtype == 'rundemo':
+            shutil.copy(local_settings.DEMO_ANALYSIS / 'demouser_tcrabpairing/input/record.csv', fpath)
+        else:
+            if inputtype == 'upload':
+                submitfile = request.FILES['submitfile']
+                _seq_path = default_storage.save(os.path.relpath(fpath), ContentFile(submitfile.read()))
+            elif inputtype == 'paste':
+                seq_dict_list = json.loads(request.data['seq'])
+                seq_data = []
+                for idx, entry in enumerate(seq_dict_list):
+                    seq_data.append([idx, entry['name'], entry['chain'], entry['element'], entry['seq']])
+                pd.DataFrame(seq_data, columns=['seq_id', 'name', 'chain', 'element', 'seq']).to_csv(fpath, sep='\t', index=False)
+
+        # create task object
+        newtask = mrna_task.objects.create(
+            user_id=user_id,
+            user_input_path={
+                'record': str(fpath),
+            },
+            is_demo_input=is_demo_input,
+            output_result_path=str(local_settings.USER_PATH / usertask / 'output/result/'),
+            output_log_path=str(local_settings.USER_PATH / usertask / 'output/log/'),
+            analysis_type=analysistype,
+            parameters={},
+            status='Created',
+            subtasks=[],
+        )
+
+        # run task
+        res = {
+            'task_id': newtask.id,
+            'user_id': newtask.user_id,
+            'analysis_type': newtask.analysis_type,
+        }
+        sbatch_dict = {
+            'user_input_path': newtask.user_input_path,
+            'output_log_path': newtask.output_log_path,
+            'output_result_path': newtask.output_result_path,
+            'task_id': newtask.id,
+        }
+        try:
+            taskdetail_dict = task.run_tcrabpairing(sbatch_dict)
+            res['status'] = 'Create Success'
+            res['message'] = 'Job create successfully'
+            newtask.job_id = taskdetail_dict['job_id']
+            newtask.status = taskdetail_dict['status']
+            newtask.status = 'Running'
+        except Exception as e:
+            res['status'] = 'Create Failed'
+            res['message'] = 'Job create failed'
+            newtask.status = 'Failed'
+            traceback.print_exc()
+
+        newtask.save()
+
+        return Response(res)
 
 @api_view(['GET'])
 def tsaHLATypesView(request):
     sample = request.query_params.dict()['sample']
-    with open(local_settings.MRNADESIGN_DATABASE + 'TSApipe/TSApipe_reference/HLA/' + sample + '.hlaI.txt', 'r') as f:
+    with open(local_settings.MRNADESIGN_DATABASE / f'TSApipe/TSApipe_reference/HLA/{sample}.hlaI.txt', 'r') as f:
         lines = f.readlines()
     types = [i.replace('\t', '').replace('\n', '') for i in lines]
     return Response({'hla_types': types})
@@ -909,7 +991,9 @@ def viewtasklog(request):
 
     sbatch_log = slurm_api.get_job_output(task_obj.output_log_path)
     sbatch_error = slurm_api.get_job_error(task_obj.output_log_path)
-    if task_obj.analysis_type in ['Linear Design', 'Prediction', 'Safety', 'Sequence Align', 'Antigen Screening', 'TSA', 'TCRanno']:
+    if task_obj.analysis_type in [
+        'Linear Design', 'Prediction', 'Safety', 'Sequence Align', 
+        'Antigen Screening', 'TSA', 'TCRanno', 'TCR Alpha-Beta Chain Pairing']:
         task_log = task.get_job_output(task_obj.analysis_type, task_obj.output_log_path)
     return Response({
         'sbatch_log': sbatch_log,
