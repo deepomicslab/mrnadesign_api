@@ -203,7 +203,7 @@ demo_user_map = {
     #     'task_id': -30,
     #     'job_id': '1627000',
     #     'user_input_path': {
-    #         "record": "/home/platform/project/mrnadesign_platform/mrnadesign_api/workspace/analysis_script/user/1758206669_EFVM/input/record.csv"
+    #         "record": str(local_settings.DEMO_ANALYSIS / 'demouser_tcrabpairing/input/record.csv'), 
     #     },
     #     'is_demo_input': True,
     #     'output_result_path': str(local_settings.DEMO_ANALYSIS / 'demouser_tcrabpairing/output/result'),
