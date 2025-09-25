@@ -157,7 +157,7 @@ def lineardesignresultView(request):
     assert mrnatask_obj.analysis_type == 'Linear Design'
     lineardesignanalysistype = mrnatask_obj.parameters['lineardesignanalysistype']
     
-    with open(mrnatask_obj.output_result_path + 'result.txt', 'r') as fout:
+    with open(mrnatask_obj.output_result_path + '/result.txt', 'r') as fout:
         L = fout.readlines()
 
     seq_name = []
@@ -188,7 +188,7 @@ def lineardesignresultView(request):
                 utr5_dict[seq_name[i]][0], utr5_dict[seq_name[i]][1], 
                 float(folding_free_energy[i]), float(cai[i]),])
         merged_df = pd.DataFrame(merged_df, columns=['seq_name', 'utr3_seq', 'utr3_structure', 'sequence', 'structure', 'utr5_seq', 'utr5_structure', 'folding_free_energy', 'cai'])
-    elif lineardesignanalysistype == 'cds_only':
+    elif lineardesignanalysistype in ['cds_only', 'fix_codon']:
         for i in range(len(seq_name)):
             merged_df.append([seq_name[i], sequence[i], structure[i], float(folding_free_energy[i]), float(cai[i]),])
         merged_df = pd.DataFrame(merged_df, columns=['seq_name', 'sequence', 'structure', 'folding_free_energy', 'cai'])

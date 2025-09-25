@@ -8,7 +8,7 @@ import os
 import pandas as pd
 
 def check_lineardesign_result_v1(output_result_path):
-    with open(output_result_path+'result.txt') as f: 
+    with open(output_result_path+'/result.txt') as f: 
         L = f.read()
     if 'mRNA sequence' not in L: 
         print('Linear Design Failed')
@@ -26,7 +26,7 @@ def check_lineardesign_result_v1(output_result_path):
     return True
 
 def check_lineardesign_result_v2(output_result_path):
-    with open(output_result_path+'result.txt') as f: 
+    with open(output_result_path+'/result.txt') as f: 
         L = f.read()
     if 'mRNA sequence' not in L: 
         print('Linear Design Failed')
@@ -196,6 +196,19 @@ def run_lineardesign(sbatch_dict):
             ' -c ' + parameters['codonusage'] + 
             ' -d ' + output_result_path +
             ' -e ' + output_log_path + 'lineardesign.log'
+        )
+    elif parameters['lineardesignanalysistype'] == 'fix_codon':
+        sbatch_command = (
+            'sbatch' +
+            ' --output=' + output_log_path + '/sbatch.out' +
+            ' --error=' + output_log_path + '/sbatch.err' +
+            ' ' + str(local_settings.SCRIPTS / 'run_lineardesign_fix_codon.sh') +
+            ' -a ' + user_input_path['fasta'] +
+            ' -b ' + user_input_path['conf_path'] +
+            ' -c ' + str(parameters['lambda']) + 
+            ' -d ' + parameters['codonusage'] + 
+            ' -e ' + output_result_path +
+            ' -f ' + output_log_path + '/lineardesign.log'
         )
     print('sbatch_command', sbatch_command)
     sbatch_output = subprocess.check_output(sbatch_command, shell=True).decode("utf-8")  # Submitted batch job 1410435

@@ -45,6 +45,15 @@ def generate_id():
 
 class lineardesignView(APIView):
     def post(self, request, *args, **kwargs):
+        lineardesignanalysistype = request.data['lineardesignanalysistype']
+        if lineardesignanalysistype in ['cds_only', 'cds_plus_35utr']:
+            return self.mode_cds_only_or_cds_plus_35utr(request, lineardesignanalysistype)
+        elif lineardesignanalysistype in ['fix_codon']:
+            return self.mode_fix_codon(request, lineardesignanalysistype)
+        else:
+            raise ValueError('Invalid lineardesignanalysistype')
+    
+    def mode_cds_only_or_cds_plus_35utr(self, request, lineardesignanalysistype):
         parameters = json.loads(request.data['parameters'])
         codonusage = parameters['codonusage']
         lambda_ = parameters['lambda']
@@ -52,7 +61,6 @@ class lineardesignView(APIView):
         user_id = request.data['userid']
         inputtype = request.data['inputtype']
         is_demo_input = (request.data['rundemo'] == 'true')
-        lineardesignanalysistype = request.data['lineardesignanalysistype']
 
         usertask = str(int(time.time()))+'_' + generate_id()
         os.makedirs(local_settings.USER_PATH + usertask, exist_ok=False)
@@ -132,6 +140,121 @@ class lineardesignView(APIView):
                     },
                     status='Created',
                     task_results=[],
+                )
+
+                # run task
+                res = {
+                    'task_id': newtask.id,
+                    'user_id': newtask.user_id,
+                    'analysis_type': newtask.analysis_type,
+                }
+                sbatch_dict = {
+                    'user_input_path': newtask.user_input_path,
+                    'parameters': {
+                        'lineardesignanalysistype': lineardesignanalysistype,
+                        'lambda': lambda_,
+                        'codonusage': codonusage,
+                    },
+                    'output_result_path': newtask.output_result_path,
+                    'output_log_path': newtask.output_log_path,
+                }
+                try:
+                    taskdetail_dict = task.run_lineardesign(sbatch_dict)
+                    res['status'] = 'Create Success'
+                    res['message'] = 'Job create successfully'
+                    newtask.job_id = taskdetail_dict['job_id']
+                    newtask.status = taskdetail_dict['status']
+                    newtask.status = 'Running'
+                except Exception as e:
+                    res['status'] = 'Create Failed'
+                    res['message'] = 'Job create failed'
+                    newtask.status = 'Failed'
+                    traceback.print_exc()
+
+                newtask.save()
+
+            else:
+                res = {
+                    'status': 'Failed',
+                    'message': 'Pipline create failed: The file you uploaded is not a fasta file',
+                }
+        return Response(res)
+
+    def mode_fix_codon(self, request, lineardesignanalysistype):
+        parameters_taskparam = json.loads(request.data['parameters_taskparam'])
+        parameters_fixcodonconfig = json.loads(request.data['parameters_fixcodonconfig'])
+        codonusage = parameters_taskparam['codonusage']
+        lambda_ = parameters_taskparam['lambda']
+        analysistype = request.data['analysistype']
+        user_id = request.data['userid']
+        inputtype = request.data['inputtype']
+        is_demo_input = (request.data['rundemo'] == 'true')
+
+        # Generate unique task ID
+        usertask = f"{int(time.time())}_{generate_id()}"
+
+        # Construct workspace paths
+        base_path = Path(local_settings.USER_PATH) / usertask
+        input_folder = base_path / 'input'
+        result_folder = base_path / 'output' / 'result'
+        log_folder = base_path / 'output' / 'log'
+
+        # Create directories
+        input_folder.mkdir(parents=True, exist_ok=True)
+        result_folder.mkdir(parents=True, exist_ok=True)
+        log_folder.mkdir(parents=True, exist_ok=True)
+
+        cds_path = input_folder / 'sequence.fasta' 
+        conf_path = input_folder / 'fix_codon_config.csv'
+
+        if inputtype == 'upload':
+            submitfilefasta = request.FILES['submitfilefasta']
+            print(submitfilefasta)
+            submitfilecsv = request.FILES['submitfilecsv']
+            print(submitfilecsv)
+            _cds_pathpath = default_storage.save(os.path.relpath(cds_path), ContentFile(submitfilefasta.read()))
+            _conf_path = default_storage.save(os.path.relpath(conf_path), ContentFile(submitfilecsv.read()))
+        
+        elif inputtype == 'paste':
+            seq_dict = json.loads(request.data['seq'])
+            cds_seq_data = '>' + seq_dict['name'] + '\n' + seq_dict['cds'] + '\n'
+            with open(cds_path, 'w') as file: file.write(cds_seq_data)
+        
+            conf_df = pd.DataFrame(parameters_fixcodonconfig, columns=['index', 'aminoacid', 'codon'])
+            # conf_df['index'] = conf_df['index'] + 1 # convert from 0-index to 1-index
+            conf_df = conf_df.rename(columns={'aminoacid': 'AA'})
+            conf_df.to_csv(conf_path, index=False) 
+
+        elif inputtype == 'rundemo':
+            shutil.copy(local_settings.DEMO_ANALYSIS / 'demouser_lineardesign_fix_codon/input/sequence.fasta', cds_path)
+            shutil.copy(local_settings.DEMO_ANALYSIS / 'demouser_lineardesign_fix_codon/input/fix_codon_config.csv', conf_path)
+
+        with open(cds_path, 'r') as file:
+            # file format check
+            is_upload = tools.is_fasta(file)
+            if is_upload:
+                tools.uploadphagefastapreprocess(cds_path)
+
+                # create task object
+                newtask = mrna_task.objects.create(
+                    user_id=user_id,
+                    user_input_path={
+                        'fasta': str(cds_path),
+                        'conf_path': str(conf_path),
+                    },
+                    is_demo_input=is_demo_input,
+                    output_result_path=str(local_settings.USER_PATH / usertask / 'output/result/'),
+                    output_log_path=str(local_settings.USER_PATH / usertask / 'output/log/'),
+                    analysis_type=analysistype,
+                    parameters={
+                        # task parameter
+                        'lineardesignanalysistype': lineardesignanalysistype,
+                        # script parameter
+                        'lambda': lambda_,
+                        'codonusage': codonusage,
+                    },
+                    status='Created',
+                    subtasks=[],
                 )
 
                 # run task

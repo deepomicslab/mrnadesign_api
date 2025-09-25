@@ -23,7 +23,7 @@ def task_status_updata():
             if task_obj.analysis_type == 'Linear Design':
                 if task_obj.parameters['lineardesignanalysistype'] == 'cds_plus_35utr' \
                         and task.check_lineardesign_result_v1(task_obj.output_result_path) \
-                        or task_obj.parameters['lineardesignanalysistype'] == 'cds_only' \
+                        or task_obj.parameters['lineardesignanalysistype'] in ['cds_only', 'fix_codon'] \
                         and task.check_lineardesign_result_v2(task_obj.output_result_path):
                     task_obj.status = 'Success'
             elif task_obj.analysis_type == 'Prediction' \

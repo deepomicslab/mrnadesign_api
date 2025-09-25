@@ -47,6 +47,25 @@ demo_user_map = {
     #     'status': 'Success',
     #     'created_at': 'N/A',
     # },
+    # 'Demo User Linear Design - Fix Codon': {
+    #     'task_id': -97,
+    #     'job_id': '1443110',
+    #     'user_input_path': {
+    #         'fasta': str(local_settings.DEMO_ANALYSIS / 'demouser_lineardesign_fix_codon/input/sequence.fasta'), 
+    #         'conf_path': str(local_settings.DEMO_ANALYSIS / 'demouser_lineardesign_fix_codon/input/fix_codon_config.csv'),
+    #     },
+    #     'is_demo_input': True,
+    #     'output_result_path': str(local_settings.DEMO_ANALYSIS / 'demouser_lineardesign_fix_codon/output/result/'),
+    #     'output_log_path': str(local_settings.DEMO_ANALYSIS / 'demouser_lineardesign_fix_codon/output/log/'),
+    #     'analysis_type': 'Linear Design',
+    #     'parameters': {
+    #         "lambda": "0", 
+    #         "codonusage": "human",
+    #         "lineardesignanalysistype": "fix_codon",
+    #     },
+    #     'status': 'Success',
+    #     'created_at': 'N/A',
+    # },
 
     # # ============================== three demo cases of prediction ============================== 
     # 'Demo User Prediction Task0001': {
