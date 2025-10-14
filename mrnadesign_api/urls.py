@@ -115,6 +115,7 @@ urlpatterns = [
     path('analyze/tcranno/', mrna_task.views.tcrannoView.as_view()),
     path('analyze/tcrabpairing/', mrna_task.views.tcrabpairingView.as_view()),
 
+    path('tasks/parameter/lineardesign/', mrna_task.views.viewlineardesignparamdetail),
     path('tasks/detail/', mrna_task.views.viewtaskdetail),
     path('tasks/detail/log/', mrna_task.views.viewtasklog),
     path('tasks/list/', mrna_task.views.viewtask),

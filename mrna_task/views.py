@@ -34,6 +34,7 @@ import pandas as pd
 import numpy as np
 import time
 from pathlib import Path
+from Bio import SeqIO
 # import logging
 # logger = logging.getLogger(__name__)
 
@@ -1122,6 +1123,29 @@ def viewtasklog(request):
         'sbatch_log': sbatch_log,
         'sbatch_error': sbatch_error,
         'task_log': task_log,
+    })
+
+
+@api_view(['GET'])
+def viewlineardesignparamdetail(request):
+    querydict = request.query_params.dict()
+    taskid = querydict['taskid']
+    mrnatask_obj = mrna_task.objects.get(id=taskid)
+    assert mrnatask_obj.analysis_type == 'Linear Design'
+
+    seq_name = ''
+    seq = ''
+    with open(mrnatask_obj.user_input_path['fasta'], 'r') as file:
+        first_record = next(SeqIO.parse(file, "fasta"))
+        seq_name = first_record.id
+        seq = str(first_record.seq)
+    df = pd.read_csv(mrnatask_obj.user_input_path['conf_path'])
+    
+    return Response({
+        'seq_name': seq_name,
+        'seq': seq,
+        'conf': df.to_dict(orient='records'), 
+        'parameters': mrnatask_obj.parameters,
     })
 
 class lineardesigninputcheckView(APIView):
